@@ -24,6 +24,7 @@
 		EAC4C5AE2B0D291C00930A14 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4C5AD2B0D291C00930A14 /* AuthenticationViewController.swift */; };
 		EAC4C5B32B0D291F00930A14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAC4C5B22B0D291F00930A14 /* Assets.xcassets */; };
 		EAC4C5B62B0D291F00930A14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC4C5B42B0D291F00930A14 /* LaunchScreen.storyboard */; };
+		EAF7850C2B155F7000719089 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF7850B2B155F7000719089 /* JournalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		EAC4C5B22B0D291F00930A14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAC4C5B52B0D291F00930A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAC4C5B72B0D291F00930A14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAF7850B2B155F7000719089 /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				EAC4C5A92B0D291C00930A14 /* AppDelegate.swift */,
 				EAC4C5AB2B0D291C00930A14 /* SceneDelegate.swift */,
 				EAC4C5AD2B0D291C00930A14 /* AuthenticationViewController.swift */,
+				EAF7850B2B155F7000719089 /* JournalViewController.swift */,
 				EA7277A32B13D4250044F320 /* AuthenticationModel.swift */,
 				EA72779B2B1380800044F320 /* UIElements */,
 				EAC4C5B22B0D291F00930A14 /* Assets.xcassets */,
@@ -254,6 +257,7 @@
 				EA72779A2B13807C0044F320 /* TextView.swift in Sources */,
 				EA7277A42B13D4250044F320 /* AuthenticationModel.swift in Sources */,
 				EAC4C5AA2B0D291C00930A14 /* AppDelegate.swift in Sources */,
+				EAF7850C2B155F7000719089 /* JournalViewController.swift in Sources */,
 				EAC4C5AC2B0D291C00930A14 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
