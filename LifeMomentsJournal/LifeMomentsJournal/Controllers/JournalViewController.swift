@@ -14,6 +14,7 @@ import GoogleSignIn
 
 class JournalViewController: UIViewController {
     
+    let journalView = JournalView()
     var authModel = AuthenticationModel()
     var textView = TextView()
     
@@ -24,10 +25,11 @@ class JournalViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view = journalView
+        navigationItem.title = "Life Moments Journal"
         title = "Life Moments Journal"
-        view.backgroundColor = .cyan
         navigationController?.navigationBar.prefersLargeTitles = true
-        configureUIElements()
+//        configureUIElements()
     }
     
     func configureUIElements() {
@@ -36,7 +38,13 @@ class JournalViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         containerView.backgroundColor = UIColor(named: "mainColor")
+        configSignOutButton()
         
+        
+        
+    }
+    
+    private func configSignOutButton() {
         signOutButton.setTitle("Sign Out", for: .normal)
         signOutButton.setTitleColor(.white, for: .normal)
         signOutButton.tintColor = .white
@@ -47,11 +55,9 @@ class JournalViewController: UIViewController {
         containerView.addSubview(signOutButton)
 
         signOutButton.snp.makeConstraints { make in
-            make.centerX.equalTo(containerView.snp.centerX)  
+            make.centerX.equalTo(containerView.snp.centerX)
             make.centerY.equalTo(containerView.snp.centerY)
         }
-        
-        
     }
     
     @objc
