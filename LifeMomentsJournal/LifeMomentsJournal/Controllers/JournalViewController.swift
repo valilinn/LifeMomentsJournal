@@ -26,7 +26,7 @@ class JournalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = journalView
-        navigationItem.title = "Life Moments Journal"
+//        navigationItem.title = "Life Moments \nJournal"
         title = "Life Moments Journal"
         navigationController?.navigationBar.prefersLargeTitles = true
 //        configureUIElements()

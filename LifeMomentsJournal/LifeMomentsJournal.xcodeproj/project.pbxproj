@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		C24A022297B1E26EB6D10BE0 /* Pods_LifeMomentsJournal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF7EA8CCA9A6CD5ABFBCB20 /* Pods_LifeMomentsJournal.framework */; };
 		EA50DA5B2B17CE83003B50A5 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA5A2B17CE83003B50A5 /* JournalView.swift */; };
-		EA50DA602B17F676003B50A5 /* NotesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA5F2B17F676003B50A5 /* NotesListCell.swift */; };
+		EA50DA602B17F676003B50A5 /* EntriesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */; };
+		EA50DA632B17FAD4003B50A5 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA622B17FAD4003B50A5 /* Entry.swift */; };
 		EA72778E2B1379D30044F320 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EA72778D2B1379D30044F320 /* FirebaseAnalytics */; };
 		EA7277902B1379D30044F320 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = EA72778F2B1379D30044F320 /* FirebaseAnalyticsOnDeviceConversion */; };
 		EA7277922B1379D30044F320 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EA7277912B1379D30044F320 /* FirebaseAnalyticsSwift */; };
@@ -34,7 +35,8 @@
 		9F1CCD98DA4DD271FFBBABF6 /* Pods-LifeMomentsJournal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeMomentsJournal.release.xcconfig"; path = "Target Support Files/Pods-LifeMomentsJournal/Pods-LifeMomentsJournal.release.xcconfig"; sourceTree = "<group>"; };
 		E5566D380F2006B633BE1B08 /* Pods-LifeMomentsJournal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeMomentsJournal.debug.xcconfig"; path = "Target Support Files/Pods-LifeMomentsJournal/Pods-LifeMomentsJournal.debug.xcconfig"; sourceTree = "<group>"; };
 		EA50DA5A2B17CE83003B50A5 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
-		EA50DA5F2B17F676003B50A5 /* NotesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListCell.swift; sourceTree = "<group>"; };
+		EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesListCell.swift; sourceTree = "<group>"; };
+		EA50DA622B17FAD4003B50A5 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		EA7277992B13807C0044F320 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		EA72779C2B13A9500044F320 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EA7277A32B13D4250044F320 /* AuthenticationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationModel.swift; sourceTree = "<group>"; };
@@ -89,9 +91,17 @@
 		EA50DA5E2B17F506003B50A5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				EA50DA5F2B17F676003B50A5 /* NotesListCell.swift */,
+				EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		EA50DA612B17FAB0003B50A5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EA50DA622B17FAD4003B50A5 /* Entry.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		EA72779B2B1380800044F320 /* UIElements */ = {
@@ -128,6 +138,7 @@
 				EAC4C5AB2B0D291C00930A14 /* SceneDelegate.swift */,
 				EA50DA5C2B17F4DB003B50A5 /* Controllers */,
 				EA50DA5D2B17F4EE003B50A5 /* Views */,
+				EA50DA612B17FAB0003B50A5 /* Models */,
 				EA7277A32B13D4250044F320 /* AuthenticationModel.swift */,
 				EA72779B2B1380800044F320 /* UIElements */,
 				EAC4C5B22B0D291F00930A14 /* Assets.xcassets */,
@@ -284,9 +295,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAC4C5AE2B0D291C00930A14 /* AuthenticationViewController.swift in Sources */,
+				EA50DA632B17FAD4003B50A5 /* Entry.swift in Sources */,
 				EA72779A2B13807C0044F320 /* TextView.swift in Sources */,
 				EA7277A42B13D4250044F320 /* AuthenticationModel.swift in Sources */,
-				EA50DA602B17F676003B50A5 /* NotesListCell.swift in Sources */,
+				EA50DA602B17F676003B50A5 /* EntriesListCell.swift in Sources */,
 				EAC4C5AA2B0D291C00930A14 /* AppDelegate.swift in Sources */,
 				EA50DA5B2B17CE83003B50A5 /* JournalView.swift in Sources */,
 				EAF7850C2B155F7000719089 /* JournalViewController.swift in Sources */,
