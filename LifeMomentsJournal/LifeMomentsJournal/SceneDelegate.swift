@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let defaults = UserDefaults.standard
         print(defaults.string(forKey: "authentication"))
         if let stateRawValue = defaults.string(forKey: "authentication"), stateRawValue == "signedIn" {
-            window.rootViewController = UINavigationController(rootViewController: JournalViewController())
+            window.rootViewController = TabBarViewController()
             
         } else {
             let authenticatedViewController = AuthenticationViewController()

@@ -11,6 +11,7 @@ class CreateEntryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .blue
 
        
     }

@@ -27,23 +27,15 @@ class JournalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = journalView
-        setupNavigationController()
 //        navigationItem.title = "Life Moments \nJournal"
         journalView.collectionView.delegate = self
         journalView.collectionView.dataSource = self
         journalView.collectionView.collectionViewLayout = createLayout()
+        navigationController?.navigationBar.prefersLargeTitles = true
 //        configureUIElements()
     }
     
-    private func setupNavigationController() {
-        title = "Life Moments Journal"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.backgroundColor = UIColor(named: "mainColor")
-        
-        let textChangeColor = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes = textChangeColor
-        navigationController?.navigationBar.largeTitleTextAttributes = textChangeColor
-    }
+   
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnvironment in
