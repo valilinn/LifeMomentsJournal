@@ -11,6 +11,7 @@ class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         setupTabs()
         setupTabBarView()
     }
@@ -47,14 +48,16 @@ class TabBarViewController: UITabBarController {
     
     private func createNav(with title: String?, and image: UIImage?, mainTitle: String, selectedImage: UIImage?, vc: UIViewController) -> UINavigationController {
         let nav = UINavigationController(rootViewController: vc)
-        
         nav.viewControllers.first?.navigationItem.title = mainTitle //main name
         nav.tabBarItem.title = title //tab name
         nav.tabBarItem.image = image
         nav.tabBarItem.selectedImage = selectedImage
         
-        
         return nav
     }
 
+}
+
+extension TabBarViewController: UITabBarControllerDelegate {
+    
 }

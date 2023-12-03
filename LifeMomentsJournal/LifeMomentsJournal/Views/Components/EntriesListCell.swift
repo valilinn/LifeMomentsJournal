@@ -40,7 +40,7 @@ MON
         
         titleLabel.text = "Name of Entry"
         titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        titleLabel.numberOfLines = 0
+        titleLabel.numberOfLines = 2
         
         contentLabel.text = "Lorem Ipsum Loremmm Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum and typesetting industry. Lorem Ipsum is simply dummy text."
         contentLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)

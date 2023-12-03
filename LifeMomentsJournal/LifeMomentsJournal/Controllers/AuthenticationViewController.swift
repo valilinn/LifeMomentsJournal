@@ -65,10 +65,12 @@ class AuthenticationViewController: UIViewController {
     @objc
     private func loginWithGoogle() {
         authModel.signIn(vc: self) { [weak self] success in
-            let newRootController = JournalViewController()
-            let navigationController = UINavigationController(rootViewController: newRootController)
-            navigationController.modalPresentationStyle = .fullScreen
-            self?.present(navigationController, animated: true)
+//            let newRootController = JournalViewController()
+//            let navigationController = UINavigationController(rootViewController: newRootController)
+//            navigationController.modalPresentationStyle = .fullScreen
+//            self?.present(navigationController, animated: true)
+            
+//            self?.present(TabBarViewController(), animated: true)
         }
     }
     
