@@ -13,18 +13,18 @@ class JournalView: UIView {
     
     init() {
         super.init(frame: .zero)
-        backgroundColor = .white
+        backgroundColor = UIColor(named: "mainColor")
         setupCollectionView()
     }
-    
-    
+
     
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         addSubview(collectionView)
         
-        collectionView.backgroundColor = .systemBlue
+        collectionView.register(EntriesListCell.self, forCellWithReuseIdentifier: EntriesListCell.reuseID)
+        collectionView.backgroundColor = UIColor(named: "mainColor")
         
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide.snp.edges)
@@ -36,6 +36,6 @@ class JournalView: UIView {
     }
 }
 
-#Preview {
-    JournalViewController()
-}
+//#Preview {
+//    JournalViewController()
+//}

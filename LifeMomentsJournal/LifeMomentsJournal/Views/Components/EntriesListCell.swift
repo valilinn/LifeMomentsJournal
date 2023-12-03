@@ -12,11 +12,10 @@ class EntriesListCell: UICollectionViewCell {
     
     static let reuseID = "EntriesCell" //переиспользуемый идентификатор
     
-    var containerView = UIView()
-    var textView = TextView()
-    var dateLabel = UILabel()
-    var titleLabel = UILabel()
-    var contentLabel = UILabel()
+    private let containerView = UIView()
+    let dateLabel = UILabel()
+    let titleLabel = UILabel()
+    let contentLabel = UILabel()
     let entryImageView = UIImageView()
     
     override init(frame: CGRect) { //must be frame, because will not work without it
@@ -29,40 +28,45 @@ class EntriesListCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setViews() {
-        dateLabel = textView.textLabel(
-            text:
+    private func setViews() {
+        dateLabel.text =
 """
 MON
 14
-""", fontSize: 18, weight: .light)
+"""
+        dateLabel.font = UIFont.systemFont(ofSize: 18, weight: .light)
         dateLabel.numberOfLines = 0
         dateLabel.textAlignment = .center
         
-        titleLabel = textView.textLabel(text: "Name of Entry Name of Entry Name of Entry Name of Entry ", fontSize: 16, weight: .bold)
+        titleLabel.text = "Name of Entry"
+        titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         titleLabel.numberOfLines = 0
-        contentLabel = textView.textLabel(text: "Lorem Ipsum Loremmm Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum and typesetting industry. Lorem Ipsum is simply dummy text.", fontSize: 14, weight: .light)
-        contentLabel.numberOfLines = 3
-        entryImageView.image = UIImage(named: "study")
-        entryImageView.contentMode = .scaleAspectFill
         
+        contentLabel.text = "Lorem Ipsum Loremmm Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum and typesetting industry. Lorem Ipsum is simply dummy text."
+        contentLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)
+        
+        contentLabel.numberOfLines = 3
+        entryImageView.image = UIImage(named: "morskieOko")
+        entryImageView.contentMode = .scaleToFill
+        entryImageView.layer.cornerRadius = 8 
+        entryImageView.layer.masksToBounds = true
         
     }
     
-    func setConstraints() {
+    private func setConstraints() { 
         addSubview(containerView)
         
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        containerView.backgroundColor = .cyan
+        containerView.backgroundColor = .white
         
         containerView.addSubview(dateLabel)
         
         dateLabel.snp.makeConstraints { make in
             make.leading.equalTo(containerView.snp.leading).offset(16)
             make.centerY.equalTo(containerView.snp.centerY)
-            make.width.equalTo(50)
+            make.width.equalTo(45)
         }
         
         let stack = UIStackView(arrangedSubviews: [titleLabel, contentLabel])
@@ -79,19 +83,19 @@ MON
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(contentLabel.snp.top).offset(-8)
+            make.bottom.equalTo(contentLabel.snp.top).offset(-6)
         }
         
         
         entryImageView.snp.makeConstraints { make in
             make.trailing.equalTo(contentView.snp.trailing).offset(-16)
             make.centerY.equalTo(stack.snp.centerY)
-            make.width.height.equalTo(70)
+            make.width.height.equalTo(80)
         }
     }
     
 }
 
-#Preview {
-    EntriesListCell()
-}
+//#Preview {
+//    EntriesListCell()
+//}
