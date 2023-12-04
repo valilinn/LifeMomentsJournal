@@ -1,5 +1,5 @@
 //
-//  CreateEntryViewController.swift
+//  NewEntryViewController.swift
 //  LifeMomentsJournal
 //
 //  Created by Валентина Лінчук on 03/12/2023.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-class CreateEntryViewController: UIViewController {
+class NewEntryViewController: UIViewController {
     
-    private let createEntryView = CreateEntryView()
+    private let newEntryView = NewEntryView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view = createEntryView
+        view = newEntryView
         navigationController?.tabBarController?.tabBar.isHidden = true
         navigationController?.tabBarController?.tabBar.barTintColor = UIColor(named: "mainColor")
         

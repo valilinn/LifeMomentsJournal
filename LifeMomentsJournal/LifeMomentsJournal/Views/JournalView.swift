@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class JournalView: UIView {
+    
     var collectionView: UICollectionView!
     
     init() {

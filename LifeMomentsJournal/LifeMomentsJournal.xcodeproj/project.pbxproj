@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		C24A022297B1E26EB6D10BE0 /* Pods_LifeMomentsJournal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF7EA8CCA9A6CD5ABFBCB20 /* Pods_LifeMomentsJournal.framework */; };
 		EA1583DC2B1C6C66006A6242 /* CompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1583DB2B1C6C66006A6242 /* CompositionalLayout.swift */; };
-		EA1583DE2B1C8172006A6242 /* CreateEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1583DD2B1C8172006A6242 /* CreateEntryViewController.swift */; };
+		EA1583DE2B1C8172006A6242 /* NewEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1583DD2B1C8172006A6242 /* NewEntryViewController.swift */; };
 		EA1583E02B1C9141006A6242 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1583DF2B1C9141006A6242 /* TabBarViewController.swift */; };
+		EA1F432C2B1E83980033ED82 /* ImagesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F432B2B1E83980033ED82 /* ImagesViewCell.swift */; };
 		EA50DA5B2B17CE83003B50A5 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA5A2B17CE83003B50A5 /* JournalView.swift */; };
 		EA50DA602B17F676003B50A5 /* EntriesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */; };
 		EA50DA632B17FAD4003B50A5 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA622B17FAD4003B50A5 /* Entry.swift */; };
@@ -30,7 +31,7 @@
 		EAC4C5AE2B0D291C00930A14 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4C5AD2B0D291C00930A14 /* AuthenticationViewController.swift */; };
 		EAC4C5B32B0D291F00930A14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAC4C5B22B0D291F00930A14 /* Assets.xcassets */; };
 		EAC4C5B62B0D291F00930A14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC4C5B42B0D291F00930A14 /* LaunchScreen.storyboard */; };
-		EAF71CC72B1D0ACF00217052 /* CreateEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF71CC62B1D0ACF00217052 /* CreateEntryView.swift */; };
+		EAF71CC72B1D0ACF00217052 /* NewEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF71CC62B1D0ACF00217052 /* NewEntryView.swift */; };
 		EAF71CC92B1D152600217052 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF71CC82B1D152600217052 /* TestViewController.swift */; };
 		EAF7850C2B155F7000719089 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF7850B2B155F7000719089 /* JournalViewController.swift */; };
 /* End PBXBuildFile section */
@@ -40,8 +41,9 @@
 		9F1CCD98DA4DD271FFBBABF6 /* Pods-LifeMomentsJournal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeMomentsJournal.release.xcconfig"; path = "Target Support Files/Pods-LifeMomentsJournal/Pods-LifeMomentsJournal.release.xcconfig"; sourceTree = "<group>"; };
 		E5566D380F2006B633BE1B08 /* Pods-LifeMomentsJournal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeMomentsJournal.debug.xcconfig"; path = "Target Support Files/Pods-LifeMomentsJournal/Pods-LifeMomentsJournal.debug.xcconfig"; sourceTree = "<group>"; };
 		EA1583DB2B1C6C66006A6242 /* CompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalLayout.swift; sourceTree = "<group>"; };
-		EA1583DD2B1C8172006A6242 /* CreateEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEntryViewController.swift; sourceTree = "<group>"; };
+		EA1583DD2B1C8172006A6242 /* NewEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryViewController.swift; sourceTree = "<group>"; };
 		EA1583DF2B1C9141006A6242 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		EA1F432B2B1E83980033ED82 /* ImagesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewCell.swift; sourceTree = "<group>"; };
 		EA50DA5A2B17CE83003B50A5 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesListCell.swift; sourceTree = "<group>"; };
 		EA50DA622B17FAD4003B50A5 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
@@ -55,7 +57,7 @@
 		EAC4C5B22B0D291F00930A14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAC4C5B52B0D291F00930A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAC4C5B72B0D291F00930A14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EAF71CC62B1D0ACF00217052 /* CreateEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEntryView.swift; sourceTree = "<group>"; };
+		EAF71CC62B1D0ACF00217052 /* NewEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryView.swift; sourceTree = "<group>"; };
 		EAF71CC82B1D152600217052 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		EAF7850B2B155F7000719089 /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,9 +94,9 @@
 			isa = PBXGroup;
 			children = (
 				EAC4C5AD2B0D291C00930A14 /* AuthenticationViewController.swift */,
-				EAF7850B2B155F7000719089 /* JournalViewController.swift */,
-				EA1583DD2B1C8172006A6242 /* CreateEntryViewController.swift */,
 				EA1583DF2B1C9141006A6242 /* TabBarViewController.swift */,
+				EAF7850B2B155F7000719089 /* JournalViewController.swift */,
+				EA1583DD2B1C8172006A6242 /* NewEntryViewController.swift */,
 				EAF71CC82B1D152600217052 /* TestViewController.swift */,
 			);
 			path = Controllers;
@@ -104,7 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				EA50DA5A2B17CE83003B50A5 /* JournalView.swift */,
-				EAF71CC62B1D0ACF00217052 /* CreateEntryView.swift */,
+				EAF71CC62B1D0ACF00217052 /* NewEntryView.swift */,
 				EA50DA5E2B17F506003B50A5 /* Components */,
 			);
 			path = Views;
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */,
+				EA1F432B2B1E83980033ED82 /* ImagesViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -319,11 +322,12 @@
 			files = (
 				EAF71CC92B1D152600217052 /* TestViewController.swift in Sources */,
 				EAC4C5AE2B0D291C00930A14 /* AuthenticationViewController.swift in Sources */,
-				EA1583DE2B1C8172006A6242 /* CreateEntryViewController.swift in Sources */,
+				EA1583DE2B1C8172006A6242 /* NewEntryViewController.swift in Sources */,
 				EA50DA632B17FAD4003B50A5 /* Entry.swift in Sources */,
 				EA72779A2B13807C0044F320 /* TextView.swift in Sources */,
 				EA1583E02B1C9141006A6242 /* TabBarViewController.swift in Sources */,
-				EAF71CC72B1D0ACF00217052 /* CreateEntryView.swift in Sources */,
+				EA1F432C2B1E83980033ED82 /* ImagesViewCell.swift in Sources */,
+				EAF71CC72B1D0ACF00217052 /* NewEntryView.swift in Sources */,
 				EA7277A42B13D4250044F320 /* AuthenticationService.swift in Sources */,
 				EA50DA602B17F676003B50A5 /* EntriesListCell.swift in Sources */,
 				EA1583DC2B1C6C66006A6242 /* CompositionalLayout.swift in Sources */,

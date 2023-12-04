@@ -19,7 +19,7 @@ class TabBarViewController: UITabBarController {
 
     private func setupTabs() {
         let journal = self.createNav(with: "Journal", and: UIImage(systemName: "book"), mainTitle: "Life Moments Journal", selectedImage: UIImage(systemName: "book.fill"), vc: JournalViewController())
-        let createEntry = self.createNav(with: nil, and: UIImage(systemName: "plus.circle"), mainTitle: "Your story...", selectedImage: UIImage(systemName: "plus.circle.fill"), vc: CreateEntryViewController())
+        let createEntry = self.createNav(with: nil, and: UIImage(systemName: "plus.circle"), mainTitle: "Your story...", selectedImage: UIImage(systemName: "plus.circle.fill"), vc: NewEntryViewController())
        
         self.setViewControllers([journal, createEntry], animated: true)
     }
