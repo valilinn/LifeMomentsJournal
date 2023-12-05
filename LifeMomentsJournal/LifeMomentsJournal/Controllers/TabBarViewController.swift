@@ -19,7 +19,7 @@ class TabBarViewController: UITabBarController {
 
     private func setupTabs() {
         let journal = self.createNav(with: "Journal", and: UIImage(systemName: "book"), mainTitle: "Life Moments Journal", selectedImage: UIImage(systemName: "book.fill"), vc: JournalViewController())
-        let createEntry = self.createNav(with: nil, and: UIImage(systemName: "plus.circle"), mainTitle: "Your story...", selectedImage: UIImage(systemName: "plus.circle.fill"), vc: NewEntryViewController())
+        let createEntry = self.createNav(with: nil, and: UIImage(systemName: "plus.circle"), mainTitle: nil, selectedImage: UIImage(systemName: "plus.circle.fill"), vc: JournalViewController())
        
         self.setViewControllers([journal, createEntry], animated: true)
     }
@@ -46,7 +46,7 @@ class TabBarViewController: UITabBarController {
         self.tabBar.unselectedItemTintColor = UIColor.white //unselected text and icon
     }
     
-    private func createNav(with title: String?, and image: UIImage?, mainTitle: String, selectedImage: UIImage?, vc: UIViewController) -> UINavigationController {
+    private func createNav(with title: String?, and image: UIImage?, mainTitle: String?, selectedImage: UIImage?, vc: UIViewController) -> UINavigationController {
         let nav = UINavigationController(rootViewController: vc)
         nav.viewControllers.first?.navigationItem.title = mainTitle //main name
         nav.tabBarItem.title = title //tab name
@@ -59,5 +59,12 @@ class TabBarViewController: UITabBarController {
 }
 
 extension TabBarViewController: UITabBarControllerDelegate {
-    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if self.selectedIndex == 1 {
+            let vc = NewEntryViewController()
+            vc.modalPresentationStyle = .fullScreen
+            
+            present(vc, animated: true)
+        }
+    }
 }

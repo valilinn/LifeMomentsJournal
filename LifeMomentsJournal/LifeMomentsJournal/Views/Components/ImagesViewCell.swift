@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ImagesViewCell: UICollectionViewCell {
     
@@ -42,14 +43,15 @@ class ImagesViewCell: UICollectionViewCell {
         containerView.addSubview(imageView)
         
         imageView.snp.makeConstraints { make in
-            make.leading.equalTo(contentView.snp.leading).offset(16)
+            make.centerX.equalTo(containerView.snp.centerX)
             make.centerY.equalTo(containerView.snp.centerY)
-            make.width.height.equalTo(80)
+            make.height.equalTo(300)
+            make.width.equalTo(containerView.snp.width)
         }
     }
 }
 
-#Preview {
-    ImagesViewCell()
-}
+//#Preview {
+//    ImagesViewCell()
+//}
 
