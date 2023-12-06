@@ -14,7 +14,7 @@ class NewEntryCollectionView: UIView {
     
     init() {
         super.init(frame: .zero)
-        backgroundColor = UIColor.blue
+        backgroundColor = UIColor.red
         setupCollectionView()
     }
     
@@ -28,7 +28,7 @@ class NewEntryCollectionView: UIView {
         addSubview(collectionView)
         
         collectionView.register(ImagesViewCell.self, forCellWithReuseIdentifier: ImagesViewCell.reuseID)
-        collectionView.backgroundColor = UIColor(named: "mainColor")
+        collectionView.backgroundColor = UIColor.brown
         
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

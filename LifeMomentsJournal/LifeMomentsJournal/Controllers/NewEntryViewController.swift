@@ -10,34 +10,37 @@ import UIKit
 class NewEntryViewController: UIViewController {
     
     private let newEntryView = NewEntryView()
-    private let newEntryImagesView = NewEntryCollectionView()
+//    private let newEntryImagesView = NewEntryCollectionView()
     private let imageView = UIImageView()
     private let entries = Entry.getMockData()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view = newEntryView
-        newEntryImagesView.collectionView.delegate = self
-        newEntryImagesView.collectionView.dataSource = self
-        newEntryImagesView.collectionView.collectionViewLayout = createLayout()
-        
+        newEntryView.imagesCollectionView.collectionView.delegate = self
+        newEntryView.imagesCollectionView.collectionView.dataSource = self
+        newEntryView.imagesCollectionView.collectionView.collectionViewLayout = createLayout()
+        newEntryView.doneButton.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
     }
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnvironment in
             guard let self = self else { return nil }
-            
-            
-            let item = CompositionalLayout.createItem(width: .fractionalWidth(1), height: .fractionalHeight(0.4), spacing: 1)
-            let group = CompositionalLayout.createGroup(alignment: .vertical, width: .fractionalWidth(1), height: .fractionalHeight(0.5), item: item, count: 3)
+            let item = CompositionalLayout.createItem(width: .fractionalWidth(1), height: .fractionalHeight(1), spacing: 0)
+            let group = CompositionalLayout.createGroup(alignment: .horizontal, width: .fractionalWidth(1), height: .fractionalHeight(1), items: [item])
             let section = NSCollectionLayoutSection(group: group)
-            //                section.boundarySupplementaryItems = [self.supplementaryHeaderItem()]
+            section.orthogonalScrollingBehavior = .continuous
             return section
             
         }
     }
 
-    
+    @objc
+    func doneButtonTapped() {
+        dismiss(animated: true)
+        let vc = TabBarViewController()
+        present(vc, animated: true)
+    }
 
     
 
@@ -46,7 +49,7 @@ class NewEntryViewController: UIViewController {
 extension NewEntryViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if entries.count >= 10 {
+        if entries.count <= 10 {
             return entries.count
         } else {
             return 10

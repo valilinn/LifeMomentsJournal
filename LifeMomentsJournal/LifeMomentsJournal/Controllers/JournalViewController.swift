@@ -56,7 +56,7 @@ class JournalViewController: UIViewController {
 //                return section
 //            case .dailySection:
                 let item = CompositionalLayout.createItem(width: .fractionalWidth(1), height: .fractionalHeight(0.4), spacing: 1)
-            let group = CompositionalLayout.createGroup(alignment: .vertical, width: .fractionalWidth(1), height: .fractionalHeight(0.5), item: item, count: 3)
+            let group = CompositionalLayout.createGroup(alignment: .vertical, width: .fractionalWidth(1), height: .fractionalHeight(0.2), item: item, count: 1)
                 let section = NSCollectionLayoutSection(group: group)
 //                section.boundarySupplementaryItems = [self.supplementaryHeaderItem()]
                 return section

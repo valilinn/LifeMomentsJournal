@@ -27,9 +27,9 @@ class ImagesViewCell: UICollectionViewCell {
     
     private func setViews() {
         imageView.image = UIImage(named: "morskieOko")
-        imageView.contentMode = .scaleToFill
-        imageView.layer.cornerRadius = 8
-        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
+//        imageView.layer.cornerRadius = 8
+//        imageView.layer.masksToBounds = true
     }
     
     private func setConstraints() {
@@ -45,13 +45,14 @@ class ImagesViewCell: UICollectionViewCell {
         imageView.snp.makeConstraints { make in
             make.centerX.equalTo(containerView.snp.centerX)
             make.centerY.equalTo(containerView.snp.centerY)
-            make.height.equalTo(300)
+//            make.height.equalTo(300)
             make.width.equalTo(containerView.snp.width)
+            make.height.equalTo(containerView.snp.height)
         }
     }
 }
 
-//#Preview {
-//    ImagesViewCell()
-//}
+#Preview {
+    ImagesViewCell()
+}
 

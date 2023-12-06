@@ -12,7 +12,12 @@ class NewEntryView: UIView {
     
     private let scrollView = UIScrollView()
     private let containerView = UIView()
-    private let imagesCollectionView = NewEntryCollectionView()
+    let imagesCollectionView = NewEntryCollectionView()
+    
+    let doneButton = UIButton()
+    let dateLabel = UILabel()
+    let titleLabel = UILabel()
+    let textView = UITextView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,6 +32,11 @@ class NewEntryView: UIView {
     
     private func setViews() {
         containerView.backgroundColor = .cyan
+        
+//        doneButton.setTitle("Done", for: .normal)
+        doneButton.setImage(UIImage(systemName: "chevron.backward.circle"), for: .normal)
+        doneButton.tintColor = .white
+//        doneButton.backgroundColor = .red
     }
     
     private func setConstraints() {
@@ -34,33 +44,43 @@ class NewEntryView: UIView {
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        scrollView.backgroundColor = .orange
         
         scrollView.addSubview(containerView)
         
         containerView.snp.makeConstraints { make in
-            make.edges.equalTo(scrollView)
-            make.width.equalTo(scrollView)
-            make.height.equalTo(scrollView)
-        }
+                make.top.equalTo(safeAreaLayoutGuide.snp.top) // Устанавливаем верхний constraint, игнорируя safe area
+                make.leading.equalToSuperview()
+                make.trailing.equalToSuperview()
+                make.bottom.equalToSuperview()
+                make.width.equalTo(scrollView)
+                make.height.equalTo(scrollView)
+            }
         
         containerView.addSubview(imagesCollectionView)
         
         imagesCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(containerView.snp.top)
+            make.top.equalTo(scrollView.snp.top)
             make.leading.equalTo(containerView.snp.leading)
             make.trailing.equalTo(containerView.snp.trailing)
-            make.height.equalTo(320)
+            make.height.equalTo(300)
         }
-       
         
+        containerView.addSubview(doneButton)
         
-  
+        doneButton.snp.makeConstraints { make in
+            make.leading.equalTo(imagesCollectionView.snp.leading)
+            make.width.height.equalTo(50)
+        }
+      
     }
+    
     
    
     
+    
 }
 
-//#Preview {
-//    NewEntryViewController()
-//}
+#Preview {
+    NewEntryViewController()
+}

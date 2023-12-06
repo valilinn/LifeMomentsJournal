@@ -12,6 +12,7 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
+        selectedIndex = 0
         setupTabs()
         setupTabBarView()
     }
@@ -26,6 +27,7 @@ class TabBarViewController: UITabBarController {
 
     
     private func setupTabBarView() {
+        
         self.tabBar.barTintColor = UIColor(named: "mainColor")//background
         self.tabBar.tintColor = .white //text and icon
         let textChangeColor = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -67,4 +69,6 @@ extension TabBarViewController: UITabBarControllerDelegate {
             present(vc, animated: true)
         }
     }
+    
+    
 }
