@@ -12,17 +12,18 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        selectedIndex = 0
         setupTabs()
         setupTabBarView()
+        selectedIndex = 0
     }
     
 
     private func setupTabs() {
         let journal = self.createNav(with: "Journal", and: UIImage(systemName: "book"), mainTitle: "Life Moments Journal", selectedImage: UIImage(systemName: "book.fill"), vc: JournalViewController())
-        let createEntry = self.createNav(with: nil, and: UIImage(systemName: "plus.circle"), mainTitle: nil, selectedImage: UIImage(systemName: "plus.circle.fill"), vc: JournalViewController())
+        let createEntry = self.createNav(with: nil, and: UIImage(systemName: "plus.circle"), mainTitle: "Life Moments Journal", selectedImage: UIImage(systemName: "plus.circle.fill"), vc: JournalViewController())
        
         self.setViewControllers([journal, createEntry], animated: true)
+        
     }
 
     

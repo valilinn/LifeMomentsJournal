@@ -10,7 +10,7 @@ import UIKit
 class NewEntryViewController: UIViewController {
     
     private let newEntryView = NewEntryView()
-//    private let newEntryImagesView = NewEntryCollectionView()
+    private let newEntryImagesView = NewEntryCollectionView()
     private let imageView = UIImageView()
     private let entries = Entry.getMockData()
 
@@ -26,8 +26,8 @@ class NewEntryViewController: UIViewController {
     private func createLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnvironment in
             guard let self = self else { return nil }
-            let item = CompositionalLayout.createItem(width: .fractionalWidth(1), height: .fractionalHeight(1), spacing: 0)
-            let group = CompositionalLayout.createGroup(alignment: .horizontal, width: .fractionalWidth(1), height: .fractionalHeight(1), items: [item])
+            let item = CompositionalLayout.createItem(width: .fractionalWidth(1), height: .fractionalHeight(1), spacing: 1)
+            let group = CompositionalLayout.createGroup(alignment: .horizontal, width: .fractionalWidth(0.4), height: .fractionalHeight(1), items: [item])
             let section = NSCollectionLayoutSection(group: group)
             section.orthogonalScrollingBehavior = .continuous
             return section
@@ -38,10 +38,11 @@ class NewEntryViewController: UIViewController {
     @objc
     func doneButtonTapped() {
         dismiss(animated: true)
-        let vc = TabBarViewController()
-        present(vc, animated: true)
+        if let tabBarController = self.presentingViewController as? TabBarViewController {
+            tabBarController.selectedIndex = 0
+        }
     }
-
+    
     
 
 }
@@ -58,7 +59,7 @@ extension NewEntryViewController : UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let currentEntry = entries[indexPath.item]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImagesViewCell.reuseID, for: indexPath) as! ImagesViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewEntryImagesViewCell.reuseID, for: indexPath) as! NewEntryImagesViewCell
         
         cell.imageView.image = UIImage(named: currentEntry.image)
         

@@ -1,5 +1,5 @@
 //
-//  ImagesViewCell.swift
+//  NewEntryImagesViewCell.swift
 //  LifeMomentsJournal
 //
 //  Created by Валентина Лінчук on 04/12/2023.
@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 
-class ImagesViewCell: UICollectionViewCell {
+class NewEntryImagesViewCell: UICollectionViewCell {
     
-    static let reuseID = "ImagesCell"
+    static let reuseID = "ImageCell"
     
     private let containerView = UIView()
     let imageView = UIImageView()
@@ -28,8 +28,8 @@ class ImagesViewCell: UICollectionViewCell {
     private func setViews() {
         imageView.image = UIImage(named: "morskieOko")
         imageView.contentMode = .scaleAspectFill
-//        imageView.layer.cornerRadius = 8
-//        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = 8
+        imageView.layer.masksToBounds = true
     }
     
     private func setConstraints() {
@@ -46,13 +46,13 @@ class ImagesViewCell: UICollectionViewCell {
             make.centerX.equalTo(containerView.snp.centerX)
             make.centerY.equalTo(containerView.snp.centerY)
 //            make.height.equalTo(300)
-            make.width.equalTo(containerView.snp.width)
-            make.height.equalTo(containerView.snp.height)
+            make.width.equalTo(150)
+            make.height.equalTo(150)
         }
     }
 }
 
 #Preview {
-    ImagesViewCell()
+    NewEntryImagesViewCell()
 }
 
