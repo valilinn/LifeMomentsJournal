@@ -26,7 +26,8 @@ class NewEntryImagesViewCell: UICollectionViewCell {
     }
     
     private func setViews() {
-        imageView.image = UIImage(named: "morskieOko")
+        imageView.image = UIImage(systemName: "photo.circle")
+        imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 8
         imageView.layer.masksToBounds = true
@@ -38,7 +39,8 @@ class NewEntryImagesViewCell: UICollectionViewCell {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        containerView.backgroundColor = .green
+//        containerView.backgroundColor = .green
+        containerView.backgroundColor = .white
         
         containerView.addSubview(imageView)
         

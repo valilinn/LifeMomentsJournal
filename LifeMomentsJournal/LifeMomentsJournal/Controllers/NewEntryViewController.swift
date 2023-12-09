@@ -43,6 +43,13 @@ class NewEntryViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        newEntryView.contentView.becomeFirstResponder()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
 
 }
@@ -61,8 +68,11 @@ extension NewEntryViewController : UICollectionViewDelegate, UICollectionViewDat
         let currentEntry = entries[indexPath.item]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewEntryImagesViewCell.reuseID, for: indexPath) as! NewEntryImagesViewCell
         
-        cell.imageView.image = UIImage(named: currentEntry.image)
+//        cell.imageView.image = UIImage(named: currentEntry.image)
+        
         
         return cell
     }
 }
+
+

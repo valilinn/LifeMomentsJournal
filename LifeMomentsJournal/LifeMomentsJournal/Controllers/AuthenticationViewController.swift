@@ -70,7 +70,7 @@ class AuthenticationViewController: UIViewController {
 //            navigationController.modalPresentationStyle = .fullScreen
 //            self?.present(navigationController, animated: true)
             
-//            self?.present(TabBarViewController(), animated: true)
+            self?.present(TabBarViewController(), animated: true)
         }
     }
     
