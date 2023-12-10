@@ -33,10 +33,9 @@ class NewEntryView: UIView {
     }
     
     private func hidePlaceholder() {
-        if contentView.textColor == .lightGray {
+        guard contentView.textColor == .lightGray else { return }
             contentView.text = nil
             contentView.textColor = .black
-        }
     }
     
     private func setViews() {
@@ -72,79 +71,79 @@ class NewEntryView: UIView {
     
     private func setConstraints() {
         addSubview(scrollView)
-        scrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
         
         scrollView.addSubview(containerView)
         
-        containerView.snp.makeConstraints { make in
+        containerView.snp.makeConstraints {
             //            make.edges.equalTo(scrollView)
             //            make.width.equalTo(scrollView)
-            make.top.equalTo(scrollView.snp.top).offset(8)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
-            make.width.equalTo(scrollView)
-            make.height.equalTo(scrollView)
+            $0.top.equalTo(scrollView.snp.top).offset(8)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+//            &0.bottom.equalToSuperview()
+            $0.width.equalTo(scrollView)
+            $0.height.equalTo(scrollView)
         }
         
         containerView.addSubview(topOptionsView)
         
-        topOptionsView.snp.makeConstraints { make in
-            make.top.equalTo(scrollView.snp.top)
-            make.width.equalTo(containerView.snp.width)
-            make.height.equalTo(50)
+        topOptionsView.snp.makeConstraints {
+            $0.top.equalTo(scrollView.snp.top)
+            $0.width.equalTo(containerView.snp.width)
+            $0.height.equalTo(50)
         }
         topOptionsView.backgroundColor = UIColor(named: "mainColor")
         
         containerView.addSubview(doneButton)
         
-        doneButton.snp.makeConstraints { make in
-            //            make.leading.equalTo(imagesCollectionView.snp.leading)
-            //            make.width.height.equalTo(50)
-            make.trailing.equalTo(containerView.snp.trailing).offset(-16)
-            make.top.equalTo(topOptionsView.snp.top)
+        doneButton.snp.makeConstraints {
+            //            &0.leading.equalTo(imagesCollectionView.snp.leading)
+            //            &0.width.height.equalTo(50)
+            $0.trailing.equalTo(containerView.snp.trailing).offset(-16)
+            $0.top.equalTo(topOptionsView.snp.top)
         }
         
         containerView.addSubview(imagesCollectionView)
         
-        imagesCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(doneButton.snp.bottom)
-            make.leading.equalTo(containerView.snp.leading)
-            make.trailing.equalTo(containerView.snp.trailing)
-            make.height.equalTo(170)
+        imagesCollectionView.snp.makeConstraints {
+            $0.top.equalTo(doneButton.snp.bottom)
+            $0.leading.equalTo(containerView.snp.leading)
+            $0.trailing.equalTo(containerView.snp.trailing)
+            $0.height.equalTo(170)
         }
         
         containerView.addSubview(dateLabel)
         
-        dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(imagesCollectionView.snp.bottom).offset(16)
-            make.leading.equalTo(containerView.snp.leading).offset(16)
+        dateLabel.snp.makeConstraints {
+            $0.top.equalTo(imagesCollectionView.snp.bottom).offset(16)
+            $0.leading.equalTo(containerView.snp.leading).offset(16)
         }
         
         containerView.addSubview(changeDate)
         
-        changeDate.snp.makeConstraints { make in
-            make.centerY.equalTo(dateLabel.snp.centerY)
-            make.leading.equalTo(dateLabel.snp.trailing).offset(8)
+        changeDate.snp.makeConstraints {
+            $0.centerY.equalTo(dateLabel.snp.centerY)
+            $0.leading.equalTo(dateLabel.snp.trailing).offset(8)
         }
         
         containerView.addSubview(titleView)
         
-        titleView.snp.makeConstraints { make in
-            make.top.equalTo(dateLabel.snp.bottom).offset(32)
-            make.leading.equalTo(containerView.snp.leading).offset(16)
-            make.trailing.equalTo(containerView.snp.trailing).offset(-16)
+        titleView.snp.makeConstraints {
+            $0.top.equalTo(dateLabel.snp.bottom).offset(32)
+            $0.leading.equalTo(containerView.snp.leading).offset(16)
+            $0.trailing.equalTo(containerView.snp.trailing).offset(-16)
         }
         
         containerView.addSubview(contentView)
         
-        contentView.snp.makeConstraints { make in
-            make.top.equalTo(titleView.snp.bottom).offset(28)
-            make.leading.equalTo(containerView.snp.leading).offset(16)
-            make.trailing.equalTo(containerView.snp.trailing).offset(-16)
-            make.bottom.equalTo(containerView.snp.bottom)
+        contentView.snp.makeConstraints {
+            $0.top.equalTo(titleView.snp.bottom).offset(28)
+            $0.leading.equalTo(containerView.snp.leading).offset(16)
+            $0.trailing.equalTo(containerView.snp.trailing).offset(-16)
+            $0.bottom.equalTo(containerView.snp.bottom)
         }
         
     }

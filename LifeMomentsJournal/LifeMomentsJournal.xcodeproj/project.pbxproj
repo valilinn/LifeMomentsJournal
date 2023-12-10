@@ -18,6 +18,12 @@
 		EA67B7D82B20DC7C003DDBD7 /* DetailEntryImagesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67B7D72B20DC7C003DDBD7 /* DetailEntryImagesViewCell.swift */; };
 		EA67B7DA2B20DD2D003DDBD7 /* DetailEntryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67B7D92B20DD2D003DDBD7 /* DetailEntryCollectionView.swift */; };
 		EA67B7DC2B20DFBC003DDBD7 /* DetailEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67B7DB2B20DFBC003DDBD7 /* DetailEntryView.swift */; };
+		EA683EA72B263E6400CC1076 /* LifeMomentsJournalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA683EA62B263E6400CC1076 /* LifeMomentsJournalTests.swift */; };
+		EA683EAF2B263F9700CC1076 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = EA683EAE2B263F9700CC1076 /* RxBlocking */; };
+		EA683EB12B263F9700CC1076 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = EA683EB02B263F9700CC1076 /* RxCocoa */; };
+		EA683EB32B263F9700CC1076 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = EA683EB22B263F9700CC1076 /* RxRelay */; };
+		EA683EB52B263F9700CC1076 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EA683EB42B263F9700CC1076 /* RxSwift */; };
+		EA683EB72B263F9700CC1076 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = EA683EB62B263F9700CC1076 /* RxTest */; };
 		EA72778E2B1379D30044F320 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EA72778D2B1379D30044F320 /* FirebaseAnalytics */; };
 		EA7277902B1379D30044F320 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = EA72778F2B1379D30044F320 /* FirebaseAnalyticsOnDeviceConversion */; };
 		EA7277922B1379D30044F320 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EA7277912B1379D30044F320 /* FirebaseAnalyticsSwift */; };
@@ -40,6 +46,16 @@
 		EAF7850C2B155F7000719089 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF7850B2B155F7000719089 /* JournalViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		EA683EA82B263E6400CC1076 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAC4C59E2B0D291C00930A14 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAC4C5A52B0D291C00930A14;
+			remoteInfo = LifeMomentsJournal;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5DF7EA8CCA9A6CD5ABFBCB20 /* Pods_LifeMomentsJournal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LifeMomentsJournal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F1CCD98DA4DD271FFBBABF6 /* Pods-LifeMomentsJournal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeMomentsJournal.release.xcconfig"; path = "Target Support Files/Pods-LifeMomentsJournal/Pods-LifeMomentsJournal.release.xcconfig"; sourceTree = "<group>"; };
@@ -54,6 +70,8 @@
 		EA67B7D72B20DC7C003DDBD7 /* DetailEntryImagesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEntryImagesViewCell.swift; sourceTree = "<group>"; };
 		EA67B7D92B20DD2D003DDBD7 /* DetailEntryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEntryCollectionView.swift; sourceTree = "<group>"; };
 		EA67B7DB2B20DFBC003DDBD7 /* DetailEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEntryView.swift; sourceTree = "<group>"; };
+		EA683EA42B263E6400CC1076 /* LifeMomentsJournalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifeMomentsJournalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA683EA62B263E6400CC1076 /* LifeMomentsJournalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeMomentsJournalTests.swift; sourceTree = "<group>"; };
 		EA7277992B13807C0044F320 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		EA72779C2B13A9500044F320 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EA7277A32B13D4250044F320 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
@@ -71,19 +89,31 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EA683EA12B263E6400CC1076 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA683EB72B263F9700CC1076 /* RxTest in Frameworks */,
+				EA683EAF2B263F9700CC1076 /* RxBlocking in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EAC4C5A32B0D291C00930A14 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				EA7277A22B13D0840044F320 /* GoogleSignInSwift in Frameworks */,
 				EA7277922B1379D30044F320 /* FirebaseAnalyticsSwift in Frameworks */,
+				EA683EB12B263F9700CC1076 /* RxCocoa in Frameworks */,
 				EA7277A02B13D0840044F320 /* GoogleSignIn in Frameworks */,
 				EA7277942B1379D30044F320 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				EA72778E2B1379D30044F320 /* FirebaseAnalytics in Frameworks */,
+				EA683EB52B263F9700CC1076 /* RxSwift in Frameworks */,
 				EA7277902B1379D30044F320 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				EA7277962B1379D30044F320 /* FirebaseAppCheck in Frameworks */,
 				EA7277982B137DE50044F320 /* FirebaseAuth in Frameworks */,
 				C24A022297B1E26EB6D10BE0 /* Pods_LifeMomentsJournal.framework in Frameworks */,
+				EA683EB32B263F9700CC1076 /* RxRelay in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +171,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		EA683EA52B263E6400CC1076 /* LifeMomentsJournalTests */ = {
+			isa = PBXGroup;
+			children = (
+				EA683EA62B263E6400CC1076 /* LifeMomentsJournalTests.swift */,
+			);
+			path = LifeMomentsJournalTests;
+			sourceTree = "<group>";
+		};
 		EA72779B2B1380800044F320 /* UIElements */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				EAC4C5A82B0D291C00930A14 /* LifeMomentsJournal */,
+				EA683EA52B263E6400CC1076 /* LifeMomentsJournalTests */,
 				EAC4C5A72B0D291C00930A14 /* Products */,
 				F8B9C50402FA6C3B38DA3228 /* Pods */,
 				FA61C9A3E360305221F75DD6 /* Frameworks */,
@@ -163,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				EAC4C5A62B0D291C00930A14 /* LifeMomentsJournal.app */,
+				EA683EA42B263E6400CC1076 /* LifeMomentsJournalTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -206,6 +246,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		EA683EA32B263E6400CC1076 /* LifeMomentsJournalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA683EAA2B263E6400CC1076 /* Build configuration list for PBXNativeTarget "LifeMomentsJournalTests" */;
+			buildPhases = (
+				EA683EA02B263E6400CC1076 /* Sources */,
+				EA683EA12B263E6400CC1076 /* Frameworks */,
+				EA683EA22B263E6400CC1076 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA683EA92B263E6400CC1076 /* PBXTargetDependency */,
+			);
+			name = LifeMomentsJournalTests;
+			packageProductDependencies = (
+				EA683EAE2B263F9700CC1076 /* RxBlocking */,
+				EA683EB62B263F9700CC1076 /* RxTest */,
+			);
+			productName = LifeMomentsJournalTests;
+			productReference = EA683EA42B263E6400CC1076 /* LifeMomentsJournalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		EAC4C5A52B0D291C00930A14 /* LifeMomentsJournal */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EAC4C5BA2B0D291F00930A14 /* Build configuration list for PBXNativeTarget "LifeMomentsJournal" */;
@@ -230,6 +292,9 @@
 				EA7277972B137DE50044F320 /* FirebaseAuth */,
 				EA72779F2B13D0840044F320 /* GoogleSignIn */,
 				EA7277A12B13D0840044F320 /* GoogleSignInSwift */,
+				EA683EB02B263F9700CC1076 /* RxCocoa */,
+				EA683EB22B263F9700CC1076 /* RxRelay */,
+				EA683EB42B263F9700CC1076 /* RxSwift */,
 			);
 			productName = LifeMomentsJournal;
 			productReference = EAC4C5A62B0D291C00930A14 /* LifeMomentsJournal.app */;
@@ -245,6 +310,10 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					EA683EA32B263E6400CC1076 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = EAC4C5A52B0D291C00930A14;
+					};
 					EAC4C5A52B0D291C00930A14 = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
@@ -262,17 +331,26 @@
 			packageReferences = (
 				EA72778C2B1379D30044F320 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				EA72779E2B13D0840044F320 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				EA683EAD2B263F9700CC1076 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = EAC4C5A72B0D291C00930A14 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				EAC4C5A52B0D291C00930A14 /* LifeMomentsJournal */,
+				EA683EA32B263E6400CC1076 /* LifeMomentsJournalTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EA683EA22B263E6400CC1076 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EAC4C5A42B0D291C00930A14 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -328,6 +406,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		EA683EA02B263E6400CC1076 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA683EA72B263E6400CC1076 /* LifeMomentsJournalTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EAC4C5A22B0D291C00930A14 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -356,6 +442,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		EA683EA92B263E6400CC1076 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EAC4C5A52B0D291C00930A14 /* LifeMomentsJournal */;
+			targetProxy = EA683EA82B263E6400CC1076 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		EAC4C5B42B0D291F00930A14 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -368,6 +462,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		EA683EAB2B263E6400CC1076 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3QBZ3X93DR;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.valentyna.LifeMomentsJournalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LifeMomentsJournal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LifeMomentsJournal";
+			};
+			name = Debug;
+		};
+		EA683EAC2B263E6400CC1076 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3QBZ3X93DR;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.valentyna.LifeMomentsJournalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LifeMomentsJournal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LifeMomentsJournal";
+			};
+			name = Release;
+		};
 		EAC4C5B82B0D291F00930A14 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -496,6 +628,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3QBZ3X93DR;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LifeMomentsJournal/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -525,6 +658,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3QBZ3X93DR;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LifeMomentsJournal/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -548,6 +682,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EA683EAA2B263E6400CC1076 /* Build configuration list for PBXNativeTarget "LifeMomentsJournalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA683EAB2B263E6400CC1076 /* Debug */,
+				EA683EAC2B263E6400CC1076 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EAC4C5A12B0D291C00930A14 /* Build configuration list for PBXProject "LifeMomentsJournal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -569,6 +712,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		EA683EAD2B263F9700CC1076 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.6.0;
+			};
+		};
 		EA72778C2B1379D30044F320 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -588,6 +739,31 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EA683EAE2B263F9700CC1076 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EA683EAD2B263F9700CC1076 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		EA683EB02B263F9700CC1076 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EA683EAD2B263F9700CC1076 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		EA683EB22B263F9700CC1076 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EA683EAD2B263F9700CC1076 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		EA683EB42B263F9700CC1076 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EA683EAD2B263F9700CC1076 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		EA683EB62B263F9700CC1076 /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EA683EAD2B263F9700CC1076 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
 		EA72778D2B1379D30044F320 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EA72778C2B1379D30044F320 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

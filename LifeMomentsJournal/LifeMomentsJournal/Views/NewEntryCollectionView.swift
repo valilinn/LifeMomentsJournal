@@ -31,8 +31,8 @@ class NewEntryCollectionView: UIView {
 //        collectionView.backgroundColor = UIColor.brown
         collectionView.backgroundColor = UIColor.white
         
-        collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        collectionView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
     

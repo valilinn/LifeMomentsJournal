@@ -56,17 +56,17 @@ MON
     private func setConstraints() { 
         addSubview(containerView)
         
-        containerView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        containerView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
         containerView.backgroundColor = .white
         
         containerView.addSubview(dateLabel)
         
-        dateLabel.snp.makeConstraints { make in
-            make.leading.equalTo(containerView.snp.leading).offset(16)
-            make.centerY.equalTo(containerView.snp.centerY)
-            make.width.equalTo(45)
+        dateLabel.snp.makeConstraints {
+            $0.leading.equalTo(containerView.snp.leading).offset(16)
+            $0.centerY.equalTo(containerView.snp.centerY)
+            $0.width.equalTo(45)
         }
         
         let stack = UIStackView(arrangedSubviews: [titleLabel, contentLabel])
@@ -76,21 +76,21 @@ MON
         containerView.addSubview(stack)
         containerView.addSubview(entryImageView)
         
-        stack.snp.makeConstraints { make in
-            make.leading.equalTo(dateLabel.snp.trailing).offset(16)
-            make.centerY.equalTo(dateLabel.snp.centerY)
-            make.trailing.equalTo(entryImageView.snp.leading).offset(-16)
+        stack.snp.makeConstraints {
+            $0.leading.equalTo(dateLabel.snp.trailing).offset(16)
+            $0.centerY.equalTo(dateLabel.snp.centerY)
+            $0.trailing.equalTo(entryImageView.snp.leading).offset(-16)
         }
         
-        titleLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(contentLabel.snp.top).offset(-6)
+        titleLabel.snp.makeConstraints {
+            $0.bottom.equalTo(contentLabel.snp.top).offset(-6)
         }
         
         
-        entryImageView.snp.makeConstraints { make in
-            make.trailing.equalTo(contentView.snp.trailing).offset(-16)
-            make.centerY.equalTo(stack.snp.centerY)
-            make.width.height.equalTo(80)
+        entryImageView.snp.makeConstraints {
+            $0.trailing.equalTo(contentView.snp.trailing).offset(-16)
+            $0.centerY.equalTo(stack.snp.centerY)
+            $0.width.height.equalTo(80)
         }
     }
     

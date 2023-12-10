@@ -44,12 +44,12 @@ class NewEntryImagesViewCell: UICollectionViewCell {
         
         containerView.addSubview(imageView)
         
-        imageView.snp.makeConstraints { make in
-            make.centerX.equalTo(containerView.snp.centerX)
-            make.centerY.equalTo(containerView.snp.centerY)
-//            make.height.equalTo(300)
-            make.width.equalTo(150)
-            make.height.equalTo(150)
+        imageView.snp.makeConstraints {
+            $0.centerX.equalTo(containerView.snp.centerX)
+            $0.centerY.equalTo(containerView.snp.centerY)
+//            $0.height.equalTo(300)
+            $0.width.equalTo(150)
+            $0.height.equalTo(150)
         }
     }
 }
