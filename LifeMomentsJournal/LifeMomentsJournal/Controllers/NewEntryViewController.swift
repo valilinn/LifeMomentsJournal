@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class NewEntryViewController: UIViewController {
     
@@ -20,7 +21,30 @@ class NewEntryViewController: UIViewController {
         newEntryView.imagesCollectionView.collectionView.delegate = self
         newEntryView.imagesCollectionView.collectionView.dataSource = self
         newEntryView.imagesCollectionView.collectionView.collectionViewLayout = createLayout()
-        newEntryView.doneButton.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
+        //        newEntryView.doneButton.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
+        setNavBar()
+        
+        let bag = DisposeBag()
+        let helloSequence = Observable.just("Hello Rx")
+        let helloSubscription = helloSequence.subscribe { event in
+            switch event {
+            case .next(let value):
+                print(value)
+            case .error(let value):
+                print(value)
+            case .completed:
+                print("completed")
+            }
+        }
+        helloSubscription.disposed(by: bag)
+        
+    }
+    
+    private func setNavBar() {
+        title = "New Entry"
+        let closeButton = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonTapped))
+        closeButton.tintColor = .white
+        self.navigationItem.rightBarButtonItem = closeButton
     }
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
@@ -36,7 +60,7 @@ class NewEntryViewController: UIViewController {
     }
 
     @objc
-    func doneButtonTapped() {
+    func closeButtonTapped() {
         dismiss(animated: true)
         if let tabBarController = self.presentingViewController as? TabBarViewController {
             tabBarController.selectedIndex = 0
@@ -75,4 +99,6 @@ extension NewEntryViewController : UICollectionViewDelegate, UICollectionViewDat
     }
 }
 
-
+//#Preview {
+//    NewEntryViewController()
+//}

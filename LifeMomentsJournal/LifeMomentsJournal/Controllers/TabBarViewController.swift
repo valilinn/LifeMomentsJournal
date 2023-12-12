@@ -64,7 +64,7 @@ class TabBarViewController: UITabBarController {
 extension TabBarViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if self.selectedIndex == 1 {
-            let vc = NewEntryViewController()
+            let vc = UINavigationController(rootViewController: NewEntryViewController()) 
             vc.modalPresentationStyle = .fullScreen
             
             present(vc, animated: true)

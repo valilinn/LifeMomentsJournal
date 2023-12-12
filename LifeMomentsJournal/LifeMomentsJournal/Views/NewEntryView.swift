@@ -20,6 +20,8 @@ class NewEntryView: UIView {
     let changeDate = UIButton()
     let titleView = UITextField()
     let contentView = UITextView()
+    let addImagesButton = UIButton()
+    let saveEntryButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -67,6 +69,15 @@ class NewEntryView: UIView {
         contentView.delegate = self
         //        contentView.backgroundColor = .red
         
+        addImagesButton.setImage(UIImage(systemName: "camera.fill"), for: .normal)
+        addImagesButton.imageView?.tintColor = .black
+//        addImagesButton.backgroundColor = .red
+        addImagesButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 40), forImageIn: .normal)
+        
+        saveEntryButton.setTitle("Save", for: .normal)
+        saveEntryButton.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+        saveEntryButton.backgroundColor = UIColor(named: "saveButton")
+        saveEntryButton.layer.cornerRadius = 10
     }
     
     private func setConstraints() {
@@ -88,28 +99,11 @@ class NewEntryView: UIView {
             $0.height.equalTo(scrollView)
         }
         
-        containerView.addSubview(topOptionsView)
-        
-        topOptionsView.snp.makeConstraints {
-            $0.top.equalTo(scrollView.snp.top)
-            $0.width.equalTo(containerView.snp.width)
-            $0.height.equalTo(50)
-        }
-        topOptionsView.backgroundColor = UIColor(named: "mainColor")
-        
-        containerView.addSubview(doneButton)
-        
-        doneButton.snp.makeConstraints {
-            //            &0.leading.equalTo(imagesCollectionView.snp.leading)
-            //            &0.width.height.equalTo(50)
-            $0.trailing.equalTo(containerView.snp.trailing).offset(-16)
-            $0.top.equalTo(topOptionsView.snp.top)
-        }
-        
         containerView.addSubview(imagesCollectionView)
         
         imagesCollectionView.snp.makeConstraints {
-            $0.top.equalTo(doneButton.snp.bottom)
+//            $0.top.equalTo(doneButton.snp.bottom)
+            $0.top.equalTo(containerView.snp.top)
             $0.leading.equalTo(containerView.snp.leading)
             $0.trailing.equalTo(containerView.snp.trailing)
             $0.height.equalTo(170)
@@ -146,6 +140,23 @@ class NewEntryView: UIView {
             $0.bottom.equalTo(containerView.snp.bottom)
         }
         
+        contentView.addSubview(addImagesButton)
+        
+        addImagesButton.snp.makeConstraints {
+            $0.leading.equalTo(containerView.snp.leading).offset(32)
+            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
+            $0.width.equalTo(60)
+        }
+        
+        contentView.addSubview(saveEntryButton)
+        
+        saveEntryButton.snp.makeConstraints {
+            $0.trailing.equalTo(containerView.snp.trailing).offset(-32)
+            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
+            $0.width.equalTo(130)
+            $0.height.equalTo(40)
+        }
+        
     }
 }
 
@@ -169,6 +180,6 @@ extension NewEntryView: UITextViewDelegate {
     
 }
 
-#Preview {
-    NewEntryViewController()
-}
+//#Preview {
+//    NewEntryViewController()
+//}
