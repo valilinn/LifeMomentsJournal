@@ -28,15 +28,19 @@ class EntriesListCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configure(with value: String) {
+        dateLabel.text = value
+    }
+    
     private func setViews() {
-        dateLabel.text =
-"""
-MON
-14
-"""
-        dateLabel.font = UIFont.systemFont(ofSize: 18, weight: .light)
-        dateLabel.numberOfLines = 0
-        dateLabel.textAlignment = .center
+//        dateLabel.text =
+//"""
+//MON
+//14
+//"""
+//        dateLabel.font = UIFont.systemFont(ofSize: 18, weight: .light)
+//        dateLabel.numberOfLines = 0
+//        dateLabel.textAlignment = .center
         
         titleLabel.text = "Name of Entry"
         titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
