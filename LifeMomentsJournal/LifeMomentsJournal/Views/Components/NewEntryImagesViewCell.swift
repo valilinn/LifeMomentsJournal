@@ -48,13 +48,13 @@ class NewEntryImagesViewCell: UICollectionViewCell {
             $0.centerX.equalTo(containerView.snp.centerX)
             $0.centerY.equalTo(containerView.snp.centerY)
 //            $0.height.equalTo(300)
-            $0.width.equalTo(150)
-            $0.height.equalTo(150)
+            $0.width.equalTo(200)
+            $0.height.equalTo(200)
         }
     }
 }
 
-#Preview {
-    NewEntryImagesViewCell()
-}
+//#Preview {
+//    NewEntryImagesViewCell()
+//}
 

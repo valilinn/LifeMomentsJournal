@@ -28,19 +28,20 @@ class EntriesListCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with value: String) {
-        dateLabel.text = value
+    func configure(with item: Entry) {
+       titleLabel.text = item.title
+       contentLabel.text = "\(item.content)"
+        print("Cell is OK - \(item.title), \(item.content)")
     }
     
     private func setViews() {
-//        dateLabel.text =
-//"""
-//MON
-//14
-//"""
-//        dateLabel.font = UIFont.systemFont(ofSize: 18, weight: .light)
-//        dateLabel.numberOfLines = 0
-//        dateLabel.textAlignment = .center
+        dateLabel.text = "14 February 2023"
+        dateLabel.font = UIFont.systemFont(ofSize: 12, weight: .light)
+        dateLabel.numberOfLines = 0
+        dateLabel.textAlignment = .center
+        
+        containerView.backgroundColor = .white
+        containerView.layer.cornerRadius = 15
         
         titleLabel.text = "Name of Entry"
         titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
@@ -49,7 +50,7 @@ class EntriesListCell: UICollectionViewCell {
         contentLabel.text = "Lorem Ipsum Loremmm Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum and typesetting industry. Lorem Ipsum is simply dummy text."
         contentLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)
         
-        contentLabel.numberOfLines = 3
+        contentLabel.numberOfLines = 5
         entryImageView.image = UIImage(named: "morskieOko")
         entryImageView.contentMode = .scaleToFill
         entryImageView.layer.cornerRadius = 8 
@@ -63,17 +64,17 @@ class EntriesListCell: UICollectionViewCell {
         containerView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        containerView.backgroundColor = .white
         
-        containerView.addSubview(dateLabel)
         
-        dateLabel.snp.makeConstraints {
-            $0.leading.equalTo(containerView.snp.leading).offset(16)
-            $0.centerY.equalTo(containerView.snp.centerY)
-            $0.width.equalTo(45)
-        }
+//        containerView.addSubview(dateLabel)
+//        
+//        dateLabel.snp.makeConstraints {
+//            $0.leading.equalTo(containerView.snp.leading).offset(16)
+//            $0.centerY.equalTo(containerView.snp.centerY)
+//            $0.width.equalTo(45)
+//        }
         
-        let stack = UIStackView(arrangedSubviews: [titleLabel, contentLabel])
+        let stack = UIStackView(arrangedSubviews: [titleLabel, contentLabel, dateLabel])
         stack.axis = .vertical
         stack.alignment = .leading
         
@@ -81,8 +82,8 @@ class EntriesListCell: UICollectionViewCell {
         containerView.addSubview(entryImageView)
         
         stack.snp.makeConstraints {
-            $0.leading.equalTo(dateLabel.snp.trailing).offset(16)
-            $0.centerY.equalTo(dateLabel.snp.centerY)
+            $0.leading.equalTo(containerView.snp.leading).offset(16)
+            $0.centerY.equalTo(containerView.snp.centerY)
             $0.trailing.equalTo(entryImageView.snp.leading).offset(-16)
         }
         
@@ -92,9 +93,13 @@ class EntriesListCell: UICollectionViewCell {
         
         
         entryImageView.snp.makeConstraints {
-            $0.trailing.equalTo(contentView.snp.trailing).offset(-16)
+            $0.trailing.equalTo(containerView.snp.trailing).offset(-16)
             $0.centerY.equalTo(stack.snp.centerY)
-            $0.width.height.equalTo(80)
+            $0.width.height.equalTo(130)
+        }
+        
+        dateLabel.snp.makeConstraints {
+            $0.top.equalTo(contentLabel.snp.bottom).offset(16)
         }
     }
     

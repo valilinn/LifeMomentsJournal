@@ -35,6 +35,7 @@
 		EA7277A02B13D0840044F320 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = EA72779F2B13D0840044F320 /* GoogleSignIn */; };
 		EA7277A22B13D0840044F320 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EA7277A12B13D0840044F320 /* GoogleSignInSwift */; };
 		EA7277A42B13D4250044F320 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7277A32B13D4250044F320 /* AuthenticationService.swift */; };
+		EA8BC7302B2E5D2200046352 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8BC72F2B2E5D2200046352 /* JournalViewModel.swift */; };
 		EAC4C5AA2B0D291C00930A14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4C5A92B0D291C00930A14 /* AppDelegate.swift */; };
 		EAC4C5AC2B0D291C00930A14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4C5AB2B0D291C00930A14 /* SceneDelegate.swift */; };
 		EAC4C5AE2B0D291C00930A14 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4C5AD2B0D291C00930A14 /* AuthenticationViewController.swift */; };
@@ -75,6 +76,7 @@
 		EA7277992B13807C0044F320 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		EA72779C2B13A9500044F320 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EA7277A32B13D4250044F320 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		EA8BC72F2B2E5D2200046352 /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
 		EAC4C5A62B0D291C00930A14 /* LifeMomentsJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifeMomentsJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAC4C5A92B0D291C00930A14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAC4C5AB2B0D291C00930A14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +189,14 @@
 			path = UIElements;
 			sourceTree = "<group>";
 		};
+		EA8BC72E2B2E5C4E00046352 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EA8BC72F2B2E5D2200046352 /* JournalViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		EAC4C59D2B0D291C00930A14 = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +223,7 @@
 				EA72779C2B13A9500044F320 /* GoogleService-Info.plist */,
 				EAC4C5A92B0D291C00930A14 /* AppDelegate.swift */,
 				EAC4C5AB2B0D291C00930A14 /* SceneDelegate.swift */,
+				EA8BC72E2B2E5C4E00046352 /* ViewModels */,
 				EA50DA5C2B17F4DB003B50A5 /* Controllers */,
 				EA50DA5D2B17F4EE003B50A5 /* Views */,
 				EA50DA612B17FAB0003B50A5 /* Models */,
@@ -430,6 +441,7 @@
 				EAF71CC72B1D0ACF00217052 /* NewEntryView.swift in Sources */,
 				EA7277A42B13D4250044F320 /* AuthenticationService.swift in Sources */,
 				EA50DA602B17F676003B50A5 /* EntriesListCell.swift in Sources */,
+				EA8BC7302B2E5D2200046352 /* JournalViewModel.swift in Sources */,
 				EA1583DC2B1C6C66006A6242 /* CompositionalLayout.swift in Sources */,
 				EAC4C5AA2B0D291C00930A14 /* AppDelegate.swift in Sources */,
 				EA67B7DA2B20DD2D003DDBD7 /* DetailEntryCollectionView.swift in Sources */,

@@ -8,6 +8,8 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
+    
+    let viewModel = JournalViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +21,10 @@ class TabBarViewController: UITabBarController {
     
 
     private func setupTabs() {
-        let journal = self.createNav(with: "Journal", and: UIImage(systemName: "book"), mainTitle: "Life Moments Journal", selectedImage: UIImage(systemName: "book.fill"), vc: JournalViewController())
-        let createEntry = self.createNav(with: nil, and: UIImage(systemName: "plus.circle"), mainTitle: "Life Moments Journal", selectedImage: UIImage(systemName: "plus.circle.fill"), vc: JournalViewController())
+        let journal = createNav(with: "Journal", and: UIImage(systemName: "book"), mainTitle: "Life Moments Journal", selectedImage: UIImage(systemName: "book.fill"), vc: JournalViewController(viewModel: viewModel))
+        let backgroundViewController = UIViewController()
+        backgroundViewController.view.backgroundColor = .white
+        let createEntry = createNav(with: nil, and: UIImage(systemName: "plus.circle"), mainTitle: "Life Moments Journal", selectedImage: UIImage(systemName: "plus.circle.fill"), vc: backgroundViewController)
        
         self.setViewControllers([journal, createEntry], animated: true)
         
@@ -64,7 +68,7 @@ class TabBarViewController: UITabBarController {
 extension TabBarViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if self.selectedIndex == 1 {
-            let vc = UINavigationController(rootViewController: NewEntryViewController()) 
+            let vc = UINavigationController(rootViewController: NewEntryViewController(viewModel: viewModel)) 
             vc.modalPresentationStyle = .fullScreen
             
             present(vc, animated: true)
