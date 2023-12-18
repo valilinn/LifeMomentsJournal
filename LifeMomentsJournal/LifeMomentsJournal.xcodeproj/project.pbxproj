@@ -12,6 +12,7 @@
 		EA1583DE2B1C8172006A6242 /* NewEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1583DD2B1C8172006A6242 /* NewEntryViewController.swift */; };
 		EA1583E02B1C9141006A6242 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1583DF2B1C9141006A6242 /* TabBarViewController.swift */; };
 		EA1F432C2B1E83980033ED82 /* NewEntryImagesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F432B2B1E83980033ED82 /* NewEntryImagesViewCell.swift */; };
+		EA36776C2B3100B60018BDD8 /* CurrentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36776B2B3100B60018BDD8 /* CurrentDate.swift */; };
 		EA50DA5B2B17CE83003B50A5 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA5A2B17CE83003B50A5 /* JournalView.swift */; };
 		EA50DA602B17F676003B50A5 /* EntriesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */; };
 		EA50DA632B17FAD4003B50A5 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA622B17FAD4003B50A5 /* Entry.swift */; };
@@ -65,6 +66,7 @@
 		EA1583DD2B1C8172006A6242 /* NewEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryViewController.swift; sourceTree = "<group>"; };
 		EA1583DF2B1C9141006A6242 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		EA1F432B2B1E83980033ED82 /* NewEntryImagesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryImagesViewCell.swift; sourceTree = "<group>"; };
+		EA36776B2B3100B60018BDD8 /* CurrentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDate.swift; sourceTree = "<group>"; };
 		EA50DA5A2B17CE83003B50A5 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesListCell.swift; sourceTree = "<group>"; };
 		EA50DA622B17FAD4003B50A5 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
@@ -126,8 +128,16 @@
 			isa = PBXGroup;
 			children = (
 				EA7277A32B13D4250044F320 /* AuthenticationService.swift */,
+				EA36776B2B3100B60018BDD8 /* CurrentDate.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		EA36776A2B31008C0018BDD8 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		EA50DA5C2B17F4DB003B50A5 /* Controllers */ = {
@@ -220,6 +230,7 @@
 		EAC4C5A82B0D291C00930A14 /* LifeMomentsJournal */ = {
 			isa = PBXGroup;
 			children = (
+				EA36776A2B31008C0018BDD8 /* New Group */,
 				EA72779C2B13A9500044F320 /* GoogleService-Info.plist */,
 				EAC4C5A92B0D291C00930A14 /* AppDelegate.swift */,
 				EAC4C5AB2B0D291C00930A14 /* SceneDelegate.swift */,
@@ -445,6 +456,7 @@
 				EA1583DC2B1C6C66006A6242 /* CompositionalLayout.swift in Sources */,
 				EAC4C5AA2B0D291C00930A14 /* AppDelegate.swift in Sources */,
 				EA67B7DA2B20DD2D003DDBD7 /* DetailEntryCollectionView.swift in Sources */,
+				EA36776C2B3100B60018BDD8 /* CurrentDate.swift in Sources */,
 				EA50DA5B2B17CE83003B50A5 /* JournalView.swift in Sources */,
 				EAF7850C2B155F7000719089 /* JournalViewController.swift in Sources */,
 				EA67B7DC2B20DFBC003DDBD7 /* DetailEntryView.swift in Sources */,

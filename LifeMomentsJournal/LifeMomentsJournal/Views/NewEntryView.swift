@@ -15,7 +15,7 @@ class NewEntryView: UIView {
     private let topOptionsView = UIView()
     let imagesCollectionView = NewEntryCollectionView()
     
-    let doneButton = UIButton()
+//    let doneButton = UIButton()
     let dateLabel = UILabel()
     let changeDate = UIButton()
     let titleView = UITextField()
@@ -46,12 +46,11 @@ class NewEntryView: UIView {
         //        containerView.backgroundColor = .cyan
         containerView.backgroundColor = .white
         
-        //        doneButton.setImage(UIImage(systemName: "chevron.backward.circle"), for: .normal)
-        doneButton.setTitle("Done", for: .normal)
-        doneButton.tintColor = .white
-        doneButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
+//        doneButton.setTitle("Done", for: .normal)
+//        doneButton.tintColor = .white
+//        doneButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
         
-        dateLabel.text = "14 December 2023"
+        dateLabel.text = CurrentDate().date
         dateLabel.font = UIFont.systemFont(ofSize: 18)
         dateLabel.textColor = .gray
         
@@ -131,16 +130,10 @@ class NewEntryView: UIView {
             $0.trailing.equalTo(containerView.snp.trailing).offset(-16)
         }
         
-        containerView.addSubview(contentView)
-        
-        contentView.snp.makeConstraints {
-            $0.top.equalTo(titleView.snp.bottom).offset(28)
-            $0.leading.equalTo(containerView.snp.leading).offset(16)
-            $0.trailing.equalTo(containerView.snp.trailing).offset(-16)
-            $0.bottom.equalTo(containerView.snp.bottom)
-        }
         
         contentView.addSubview(addImagesButton)
+        contentView.addSubview(saveEntryButton)
+        containerView.addSubview(contentView)
         
         addImagesButton.snp.makeConstraints {
             $0.leading.equalTo(containerView.snp.leading).offset(32)
@@ -148,13 +141,17 @@ class NewEntryView: UIView {
             $0.width.equalTo(60)
         }
         
-        contentView.addSubview(saveEntryButton)
-        
         saveEntryButton.snp.makeConstraints {
             $0.trailing.equalTo(containerView.snp.trailing).offset(-32)
             $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
             $0.width.equalTo(130)
             $0.height.equalTo(40)
+        }
+        contentView.snp.makeConstraints {
+            $0.top.equalTo(titleView.snp.bottom).offset(28)
+            $0.leading.equalTo(containerView.snp.leading).offset(16)
+            $0.trailing.equalTo(containerView.snp.trailing).offset(-16)
+            $0.bottom.equalTo(containerView.snp.bottom)
         }
         
     }

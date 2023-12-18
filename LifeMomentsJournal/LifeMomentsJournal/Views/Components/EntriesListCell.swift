@@ -29,8 +29,9 @@ class EntriesListCell: UICollectionViewCell {
     }
     
     func configure(with item: Entry) {
-       titleLabel.text = item.title
-       contentLabel.text = "\(item.content)"
+        dateLabel.text = item.date
+        titleLabel.text = item.title
+        contentLabel.text = "\(item.content)"
         print("Cell is OK - \(item.title), \(item.content)")
     }
     
@@ -96,6 +97,6 @@ class EntriesListCell: UICollectionViewCell {
     
 }
 
-#Preview {
-    EntriesListCell()
-}
+//#Preview {
+//    EntriesListCell()
+//}

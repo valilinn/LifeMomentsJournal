@@ -14,7 +14,7 @@ class NewEntryViewController: UIViewController {
     private let viewModel: JournalViewModel
     private let newEntryImagesView = NewEntryCollectionView()
     private let imageView = UIImageView()
-    private let entries = Entry.getMockData()
+//    private let entries = Entry.getMockData()
     
     init(viewModel: JournalViewModel) {
         self.viewModel = viewModel
@@ -67,9 +67,10 @@ class NewEntryViewController: UIViewController {
         
     }
     
+    
     @objc
     private func saveEntryButtonTapped() {
-        let entry = Entry(date: "11.10.2023", title: newEntryView.titleView.text ?? "", content: newEntryView.contentView.text, images: ["morskieOko"])
+        let entry = Entry(date: newEntryView.dateLabel.text ?? "", title: newEntryView.titleView.text ?? "", content: newEntryView.contentView.text ?? "", images: ["morskieOko"])
         viewModel.createEntry(entry: entry)
         dismiss(animated: true)
         if let tabBarController = self.presentingViewController as? TabBarViewController {
@@ -99,15 +100,16 @@ class NewEntryViewController: UIViewController {
 extension NewEntryViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if entries.count <= 10 {
-            return entries.count
-        } else {
-            return 10
-        }
+//        if entries.count <= 10 {
+//            return entries.count
+//        } else {
+//            return 10
+//        }
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let currentEntry = entries[indexPath.item]
+//        let currentEntry = entries[indexPath.item]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewEntryImagesViewCell.reuseID, for: indexPath) as! NewEntryImagesViewCell
         
 //        cell.imageView.image = UIImage(named: currentEntry.image)

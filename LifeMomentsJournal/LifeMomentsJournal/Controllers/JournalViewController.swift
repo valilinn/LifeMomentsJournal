@@ -38,7 +38,21 @@ class JournalViewController: UIViewController {
         view = journalView
         journalView.collectionView.collectionViewLayout = createLayout()
         navigationController?.navigationBar.prefersLargeTitles = true
+        setButton()
         setBind()
+    }
+    
+    private func setButton() {
+        let addEntryButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addEntryButtonTapped))
+        addEntryButton.tintColor = .white
+        self.navigationItem.rightBarButtonItem = addEntryButton
+    }
+    
+    @objc
+    func addEntryButtonTapped() {
+        let vc = UINavigationController(rootViewController: NewEntryViewController(viewModel: viewModel))
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     private func setBind() {
