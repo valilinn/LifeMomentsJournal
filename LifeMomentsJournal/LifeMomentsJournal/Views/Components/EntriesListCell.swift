@@ -65,15 +65,6 @@ class EntriesListCell: UICollectionViewCell {
             $0.edges.equalToSuperview()
         }
         
-        
-//        containerView.addSubview(dateLabel)
-//        
-//        dateLabel.snp.makeConstraints {
-//            $0.leading.equalTo(containerView.snp.leading).offset(16)
-//            $0.centerY.equalTo(containerView.snp.centerY)
-//            $0.width.equalTo(45)
-//        }
-        
         let stack = UIStackView(arrangedSubviews: [titleLabel, contentLabel, dateLabel])
         stack.axis = .vertical
         stack.alignment = .leading
@@ -105,6 +96,6 @@ class EntriesListCell: UICollectionViewCell {
     
 }
 
-//#Preview {
-//    EntriesListCell()
-//}
+#Preview {
+    EntriesListCell()
+}
