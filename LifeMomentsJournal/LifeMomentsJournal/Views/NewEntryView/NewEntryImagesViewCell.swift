@@ -26,7 +26,7 @@ class NewEntryImagesViewCell: UICollectionViewCell {
     }
     
     private func setViews() {
-        imageView.image = UIImage(systemName: "photo.circle")
+        imageView.image = UIImage(named: "defaultImage")
         imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 8

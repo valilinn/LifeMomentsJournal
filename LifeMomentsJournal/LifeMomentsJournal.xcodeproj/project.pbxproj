@@ -31,7 +31,6 @@
 		EA7277942B1379D30044F320 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = EA7277932B1379D30044F320 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		EA7277962B1379D30044F320 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = EA7277952B1379D30044F320 /* FirebaseAppCheck */; };
 		EA7277982B137DE50044F320 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EA7277972B137DE50044F320 /* FirebaseAuth */; };
-		EA72779A2B13807C0044F320 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7277992B13807C0044F320 /* TextView.swift */; };
 		EA72779D2B13A9500044F320 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA72779C2B13A9500044F320 /* GoogleService-Info.plist */; };
 		EA7277A02B13D0840044F320 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = EA72779F2B13D0840044F320 /* GoogleSignIn */; };
 		EA7277A22B13D0840044F320 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EA7277A12B13D0840044F320 /* GoogleSignInSwift */; };
@@ -75,7 +74,6 @@
 		EA67B7DB2B20DFBC003DDBD7 /* DetailEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEntryView.swift; sourceTree = "<group>"; };
 		EA683EA42B263E6400CC1076 /* LifeMomentsJournalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifeMomentsJournalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA683EA62B263E6400CC1076 /* LifeMomentsJournalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeMomentsJournalTests.swift; sourceTree = "<group>"; };
-		EA7277992B13807C0044F320 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		EA72779C2B13A9500044F320 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EA7277A32B13D4250044F320 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		EA8BC72F2B2E5D2200046352 /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
@@ -155,24 +153,11 @@
 		EA50DA5D2B17F4EE003B50A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EA50DA5A2B17CE83003B50A5 /* JournalView.swift */,
-				EAF71CC62B1D0ACF00217052 /* NewEntryView.swift */,
-				EAEF22842B1FDD730080173C /* NewEntryCollectionView.swift */,
-				EA67B7DB2B20DFBC003DDBD7 /* DetailEntryView.swift */,
-				EA67B7D92B20DD2D003DDBD7 /* DetailEntryCollectionView.swift */,
-				EA50DA5E2B17F506003B50A5 /* Components */,
+				EAE0CFDD2B3213E200C670CA /* JournalView */,
+				EAE0CFDE2B3213FA00C670CA /* NewEntryView */,
+				EAE0CFDF2B32142500C670CA /* DetailView */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		EA50DA5E2B17F506003B50A5 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */,
-				EA1F432B2B1E83980033ED82 /* NewEntryImagesViewCell.swift */,
-				EA67B7D72B20DC7C003DDBD7 /* DetailEntryImagesViewCell.swift */,
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		EA50DA612B17FAB0003B50A5 /* Models */ = {
@@ -189,14 +174,6 @@
 				EA683EA62B263E6400CC1076 /* LifeMomentsJournalTests.swift */,
 			);
 			path = LifeMomentsJournalTests;
-			sourceTree = "<group>";
-		};
-		EA72779B2B1380800044F320 /* UIElements */ = {
-			isa = PBXGroup;
-			children = (
-				EA7277992B13807C0044F320 /* TextView.swift */,
-			);
-			path = UIElements;
 			sourceTree = "<group>";
 		};
 		EA8BC72E2B2E5C4E00046352 /* ViewModels */ = {
@@ -238,7 +215,6 @@
 				EA50DA5C2B17F4DB003B50A5 /* Controllers */,
 				EA50DA5D2B17F4EE003B50A5 /* Views */,
 				EA50DA612B17FAB0003B50A5 /* Models */,
-				EA72779B2B1380800044F320 /* UIElements */,
 				EA1583E12B1CD5C7006A6242 /* Services */,
 				EA1583DB2B1C6C66006A6242 /* CompositionalLayout.swift */,
 				EAC4C5B22B0D291F00930A14 /* Assets.xcassets */,
@@ -246,6 +222,35 @@
 				EAC4C5B72B0D291F00930A14 /* Info.plist */,
 			);
 			path = LifeMomentsJournal;
+			sourceTree = "<group>";
+		};
+		EAE0CFDD2B3213E200C670CA /* JournalView */ = {
+			isa = PBXGroup;
+			children = (
+				EA50DA5A2B17CE83003B50A5 /* JournalView.swift */,
+				EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */,
+			);
+			path = JournalView;
+			sourceTree = "<group>";
+		};
+		EAE0CFDE2B3213FA00C670CA /* NewEntryView */ = {
+			isa = PBXGroup;
+			children = (
+				EAF71CC62B1D0ACF00217052 /* NewEntryView.swift */,
+				EAEF22842B1FDD730080173C /* NewEntryCollectionView.swift */,
+				EA1F432B2B1E83980033ED82 /* NewEntryImagesViewCell.swift */,
+			);
+			path = NewEntryView;
+			sourceTree = "<group>";
+		};
+		EAE0CFDF2B32142500C670CA /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				EA67B7DB2B20DFBC003DDBD7 /* DetailEntryView.swift */,
+				EA67B7D92B20DD2D003DDBD7 /* DetailEntryCollectionView.swift */,
+				EA67B7D72B20DC7C003DDBD7 /* DetailEntryImagesViewCell.swift */,
+			);
+			path = DetailView;
 			sourceTree = "<group>";
 		};
 		F8B9C50402FA6C3B38DA3228 /* Pods */ = {
@@ -446,7 +451,6 @@
 				EA1583DE2B1C8172006A6242 /* NewEntryViewController.swift in Sources */,
 				EA50DA632B17FAD4003B50A5 /* Entry.swift in Sources */,
 				EA67B7D82B20DC7C003DDBD7 /* DetailEntryImagesViewCell.swift in Sources */,
-				EA72779A2B13807C0044F320 /* TextView.swift in Sources */,
 				EA1583E02B1C9141006A6242 /* TabBarViewController.swift in Sources */,
 				EA1F432C2B1E83980033ED82 /* NewEntryImagesViewCell.swift in Sources */,
 				EAF71CC72B1D0ACF00217052 /* NewEntryView.swift in Sources */,
@@ -655,6 +659,7 @@
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LifeMomentsJournal/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Let's take a picture!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -685,6 +690,7 @@
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LifeMomentsJournal/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Let's take a picture!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

@@ -10,12 +10,11 @@ import SnapKit
 
 class NewEntryView: UIView {
     
-    private let scrollView = UIScrollView()
+
     private let containerView = UIView()
-    private let topOptionsView = UIView()
     let imagesCollectionView = NewEntryCollectionView()
     
-//    let doneButton = UIButton()
+
     let dateLabel = UILabel()
     let changeDate = UIButton()
     let titleView = UITextField()
@@ -25,7 +24,7 @@ class NewEntryView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .gray
+        self.backgroundColor = .white
         setViews()
         setConstraints()
     }
@@ -41,14 +40,7 @@ class NewEntryView: UIView {
     }
     
     private func setViews() {
-        //        scrollView.backgroundColor = .orange
-        scrollView.backgroundColor = UIColor(named: "mainColor")
-        //        containerView.backgroundColor = .cyan
-        containerView.backgroundColor = .white
-        
-//        doneButton.setTitle("Done", for: .normal)
-//        doneButton.tintColor = .white
-//        doneButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
+//        containerView.backgroundColor = .green
         
         dateLabel.text = CurrentDate().date
         dateLabel.font = UIFont.systemFont(ofSize: 18)
@@ -66,7 +58,7 @@ class NewEntryView: UIView {
         contentView.isSelectable = true
         contentView.font = UIFont.systemFont(ofSize: 18)
         contentView.delegate = self
-        //        contentView.backgroundColor = .red
+//        contentView.backgroundColor = .red
         
         addImagesButton.setImage(UIImage(systemName: "camera.fill"), for: .normal)
         addImagesButton.imageView?.tintColor = .black
@@ -80,29 +72,16 @@ class NewEntryView: UIView {
     }
     
     private func setConstraints() {
-        addSubview(scrollView)
-        scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        
-        scrollView.addSubview(containerView)
-        
+        addSubview(containerView)
+
         containerView.snp.makeConstraints {
-            //            make.edges.equalTo(scrollView)
-            //            make.width.equalTo(scrollView)
-            $0.top.equalTo(scrollView.snp.top).offset(8)
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-//            &0.bottom.equalToSuperview()
-            $0.width.equalTo(scrollView)
-            $0.height.equalTo(scrollView)
+            $0.edges.equalToSuperview()
         }
         
         containerView.addSubview(imagesCollectionView)
         
         imagesCollectionView.snp.makeConstraints {
-//            $0.top.equalTo(doneButton.snp.bottom)
-            $0.top.equalTo(containerView.snp.top)
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top)
             $0.leading.equalTo(containerView.snp.leading)
             $0.trailing.equalTo(containerView.snp.trailing)
             $0.height.equalTo(170)
@@ -131,27 +110,27 @@ class NewEntryView: UIView {
         }
         
         
-        contentView.addSubview(addImagesButton)
-        contentView.addSubview(saveEntryButton)
-        containerView.addSubview(contentView)
-        
+        containerView.addSubview(addImagesButton)
         addImagesButton.snp.makeConstraints {
             $0.leading.equalTo(containerView.snp.leading).offset(32)
-            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
+            $0.bottom.equalTo(containerView.snp.bottom).offset(-32)
             $0.width.equalTo(60)
         }
         
+        containerView.addSubview(saveEntryButton)
         saveEntryButton.snp.makeConstraints {
             $0.trailing.equalTo(containerView.snp.trailing).offset(-32)
-            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
+            $0.bottom.equalTo(containerView.snp.bottom).offset(-32)
             $0.width.equalTo(130)
             $0.height.equalTo(40)
         }
+        
+        containerView.addSubview(contentView)
         contentView.snp.makeConstraints {
             $0.top.equalTo(titleView.snp.bottom).offset(28)
             $0.leading.equalTo(containerView.snp.leading).offset(16)
             $0.trailing.equalTo(containerView.snp.trailing).offset(-16)
-            $0.bottom.equalTo(containerView.snp.bottom)
+            $0.bottom.equalTo(addImagesButton.snp.top).offset(-8)
         }
         
     }

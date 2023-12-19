@@ -75,10 +75,6 @@ class NewEntryViewController: UIViewController {
         dismiss(animated: true)
         if let tabBarController = self.presentingViewController as? TabBarViewController {
             tabBarController.selectedIndex = 0
-            print("Button tapped")
-//            if let journalViewController = tabBarController.viewControllers?.first as? JournalViewController {
-//                journalViewController.viewModel.entries.onNext(journalViewController.viewModel.entriesArray)
-//            } // обновить collection?
         }
     }
     
