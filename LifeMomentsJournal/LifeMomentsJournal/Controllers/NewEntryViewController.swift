@@ -66,7 +66,7 @@ class NewEntryViewController: UIViewController {
             if await PhotosManager.hasPhotoLibraryPermission() {
                 showPhotoLibraryPicker()
             } else {
-                PhotosManager.openAppPrivacySettings()
+                showSettingsAlert()
             }
         }
     }
@@ -138,8 +138,25 @@ class NewEntryViewController: UIViewController {
             self?.viewModel.didSelectPhotoLibrary()
         }
         
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
         alert.addAction(cameraAction)
         alert.addAction(galleryAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true)
+    }
+    
+    private func showSettingsAlert() {
+        let alert = UIAlertController(title: "Open Settings", message: "You don't have access to your photo library, want to open settings?", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            PhotosManager.openAppPrivacySettings()
+        }
+       
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
         
         self.present(alert, animated: true)
     }
