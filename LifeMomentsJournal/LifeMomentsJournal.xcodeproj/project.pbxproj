@@ -35,12 +35,13 @@
 		EA7277A02B13D0840044F320 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = EA72779F2B13D0840044F320 /* GoogleSignIn */; };
 		EA7277A22B13D0840044F320 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EA7277A12B13D0840044F320 /* GoogleSignInSwift */; };
 		EA7277A42B13D4250044F320 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7277A32B13D4250044F320 /* AuthenticationService.swift */; };
-		EA8BC7302B2E5D2200046352 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8BC72F2B2E5D2200046352 /* JournalViewModel.swift */; };
+		EA8BC7302B2E5D2200046352 /* NewEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8BC72F2B2E5D2200046352 /* NewEntryViewModel.swift */; };
 		EAC4C5AA2B0D291C00930A14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4C5A92B0D291C00930A14 /* AppDelegate.swift */; };
 		EAC4C5AC2B0D291C00930A14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4C5AB2B0D291C00930A14 /* SceneDelegate.swift */; };
 		EAC4C5AE2B0D291C00930A14 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4C5AD2B0D291C00930A14 /* AuthenticationViewController.swift */; };
 		EAC4C5B32B0D291F00930A14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAC4C5B22B0D291F00930A14 /* Assets.xcassets */; };
 		EAC4C5B62B0D291F00930A14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC4C5B42B0D291F00930A14 /* LaunchScreen.storyboard */; };
+		EAE0CFE52B3238D900C670CA /* PhotosManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0CFE42B3238D900C670CA /* PhotosManager.swift */; };
 		EAEF22852B1FDD730080173C /* NewEntryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF22842B1FDD730080173C /* NewEntryCollectionView.swift */; };
 		EAF71CC72B1D0ACF00217052 /* NewEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF71CC62B1D0ACF00217052 /* NewEntryView.swift */; };
 		EAF71CC92B1D152600217052 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF71CC82B1D152600217052 /* TestViewController.swift */; };
@@ -76,7 +77,7 @@
 		EA683EA62B263E6400CC1076 /* LifeMomentsJournalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeMomentsJournalTests.swift; sourceTree = "<group>"; };
 		EA72779C2B13A9500044F320 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EA7277A32B13D4250044F320 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
-		EA8BC72F2B2E5D2200046352 /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
+		EA8BC72F2B2E5D2200046352 /* NewEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryViewModel.swift; sourceTree = "<group>"; };
 		EAC4C5A62B0D291C00930A14 /* LifeMomentsJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifeMomentsJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAC4C5A92B0D291C00930A14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAC4C5AB2B0D291C00930A14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		EAC4C5B22B0D291F00930A14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAC4C5B52B0D291F00930A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAC4C5B72B0D291F00930A14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAE0CFE42B3238D900C670CA /* PhotosManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosManager.swift; sourceTree = "<group>"; };
 		EAEF22842B1FDD730080173C /* NewEntryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryCollectionView.swift; sourceTree = "<group>"; };
 		EAF71CC62B1D0ACF00217052 /* NewEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryView.swift; sourceTree = "<group>"; };
 		EAF71CC82B1D152600217052 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				EA7277A32B13D4250044F320 /* AuthenticationService.swift */,
 				EA36776B2B3100B60018BDD8 /* CurrentDate.swift */,
+				EAE0CFE42B3238D900C670CA /* PhotosManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 		EA50DA5D2B17F4EE003B50A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EA1583DB2B1C6C66006A6242 /* CompositionalLayout.swift */,
 				EAE0CFDD2B3213E200C670CA /* JournalView */,
 				EAE0CFDE2B3213FA00C670CA /* NewEntryView */,
 				EAE0CFDF2B32142500C670CA /* DetailView */,
@@ -179,7 +183,7 @@
 		EA8BC72E2B2E5C4E00046352 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				EA8BC72F2B2E5D2200046352 /* JournalViewModel.swift */,
+				EA8BC72F2B2E5D2200046352 /* NewEntryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -216,7 +220,6 @@
 				EA50DA5D2B17F4EE003B50A5 /* Views */,
 				EA50DA612B17FAB0003B50A5 /* Models */,
 				EA1583E12B1CD5C7006A6242 /* Services */,
-				EA1583DB2B1C6C66006A6242 /* CompositionalLayout.swift */,
 				EAC4C5B22B0D291F00930A14 /* Assets.xcassets */,
 				EAC4C5B42B0D291F00930A14 /* LaunchScreen.storyboard */,
 				EAC4C5B72B0D291F00930A14 /* Info.plist */,
@@ -451,12 +454,13 @@
 				EA1583DE2B1C8172006A6242 /* NewEntryViewController.swift in Sources */,
 				EA50DA632B17FAD4003B50A5 /* Entry.swift in Sources */,
 				EA67B7D82B20DC7C003DDBD7 /* DetailEntryImagesViewCell.swift in Sources */,
+				EAE0CFE52B3238D900C670CA /* PhotosManager.swift in Sources */,
 				EA1583E02B1C9141006A6242 /* TabBarViewController.swift in Sources */,
 				EA1F432C2B1E83980033ED82 /* NewEntryImagesViewCell.swift in Sources */,
 				EAF71CC72B1D0ACF00217052 /* NewEntryView.swift in Sources */,
 				EA7277A42B13D4250044F320 /* AuthenticationService.swift in Sources */,
 				EA50DA602B17F676003B50A5 /* EntriesListCell.swift in Sources */,
-				EA8BC7302B2E5D2200046352 /* JournalViewModel.swift in Sources */,
+				EA8BC7302B2E5D2200046352 /* NewEntryViewModel.swift in Sources */,
 				EA1583DC2B1C6C66006A6242 /* CompositionalLayout.swift in Sources */,
 				EAC4C5AA2B0D291C00930A14 /* AppDelegate.swift in Sources */,
 				EA67B7DA2B20DD2D003DDBD7 /* DetailEntryCollectionView.swift in Sources */,
@@ -660,6 +664,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LifeMomentsJournal/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Let's take a picture!";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Show me your Gallery:)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -691,6 +696,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LifeMomentsJournal/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Let's take a picture!";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Show me your Gallery:)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

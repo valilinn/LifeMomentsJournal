@@ -17,14 +17,14 @@ import RxCocoa
 class JournalViewController: UIViewController {
     
     private let journalView = JournalView()
-    private let viewModel: JournalViewModel
+    private let viewModel: NewEntryViewModel
     private var bag = DisposeBag()
 //    private let entries = Entry.getMockData()
     private let containerView = UIView()
     private let signOutButton = UIButton()
     private let signOutButtonTitle = UILabel()
     
-    init(viewModel: JournalViewModel) {
+    init(viewModel: NewEntryViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

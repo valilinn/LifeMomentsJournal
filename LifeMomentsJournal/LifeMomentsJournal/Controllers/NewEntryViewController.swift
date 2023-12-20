@@ -7,16 +7,20 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
+import PhotosUI
+import MobileCoreServices
 
 class NewEntryViewController: UIViewController {
     
     private let newEntryView = NewEntryView()
-    private let viewModel: JournalViewModel
+    private let viewModel: NewEntryViewModel
+    private let bag = DisposeBag()
+    
     private let newEntryImagesView = NewEntryCollectionView()
     private let imageView = UIImageView()
-//    private let entries = Entry.getMockData()
     
-    init(viewModel: JournalViewModel) {
+    init(viewModel: NewEntryViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -34,7 +38,37 @@ class NewEntryViewController: UIViewController {
         newEntryView.imagesCollectionView.collectionView.collectionViewLayout = createLayout()
         //        newEntryView.doneButton.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
         setButtons()
+        setBind()
+    }
+    
+    private func setBind() {
+        viewModel.cameraSelected.subscribe(onNext: { [weak self] in
+            self?.checkCameraPermissionAndShowPicker()
+        })
+        .disposed(by: bag)
         
+        viewModel.photoLibrarySelected.subscribe(onNext: { [weak self] in
+            self?.checkPhotoLibraryPermissionAndShowPicker()
+        })
+        .disposed(by: bag)
+    }
+    
+    private func checkCameraPermissionAndShowPicker() {
+        Task {
+            if await PhotosManager.hasCameraPermission() {
+                showCameraPicker()
+            }
+        }
+    }
+    
+    private func checkPhotoLibraryPermissionAndShowPicker() {
+        Task {
+            if await PhotosManager.hasPhotoLibraryPermission() {
+                showPhotoLibraryPicker()
+            } else {
+                PhotosManager.openAppPrivacySettings()
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,39 +77,6 @@ class NewEntryViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-    }
-    
-    
-    
-    private func setButtons() {
-        let closeButton = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonTapped))
-        closeButton.tintColor = .white
-        self.navigationItem.rightBarButtonItem = closeButton
-        
-        newEntryView.saveEntryButton.addTarget(self, action: #selector(saveEntryButtonTapped), for: .touchUpInside)
-    }
-    
-    
-    
-
-    @objc
-    func closeButtonTapped() {
-        dismiss(animated: true)
-        if let tabBarController = self.presentingViewController as? TabBarViewController {
-            tabBarController.selectedIndex = 0
-        }
-        
-    }
-    
-    
-    @objc
-    private func saveEntryButtonTapped() {
-        let entry = Entry(date: newEntryView.dateLabel.text ?? "", title: newEntryView.titleView.text ?? "", content: newEntryView.contentView.text ?? "", images: ["morskieOko"])
-        viewModel.createEntry(entry: entry)
-        dismiss(animated: true)
-        if let tabBarController = self.presentingViewController as? TabBarViewController {
-            tabBarController.selectedIndex = 0
-        }
     }
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
@@ -90,10 +91,81 @@ class NewEntryViewController: UIViewController {
         }
     }
     
+    
+    private func setButtons() {
+        let closeButton = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonTapped))
+        closeButton.tintColor = .white
+        self.navigationItem.rightBarButtonItem = closeButton
+        
+        newEntryView.saveEntryButton.addTarget(self, action: #selector(saveEntryButtonTapped), for: .touchUpInside)
+        
+        newEntryView.addImagesButton.addTarget(self, action: #selector(showPickingAlertButtonTapped), for: .touchUpInside)
+    }
+    
 
+    @objc
+    func closeButtonTapped() {
+        dismiss(animated: true)
+        if let tabBarController = self.presentingViewController as? TabBarViewController {
+            tabBarController.selectedIndex = 0
+        }
+    }
+    
+    @objc 
+    private func showPickingAlertButtonTapped() {
+            showPickingAlert()
+        }
+    
+    
+    @objc
+    private func saveEntryButtonTapped() {
+        let entry = Entry(date: newEntryView.dateLabel.text ?? "", title: newEntryView.titleView.text ?? "", content: newEntryView.contentView.text ?? "", images: ["morskieOko"])
+        viewModel.createEntry(entry: entry)
+        dismiss(animated: true)
+        if let tabBarController = self.presentingViewController as? TabBarViewController {
+            tabBarController.selectedIndex = 0
+        }
+    }
+    
+    private func showPickingAlert() {
+        let alert = UIAlertController(title: "Add photo", message: "Choose app for adding photo", preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { [weak self] _ in
+            self?.viewModel.didSelectCamera()
+        }
+        
+        let galleryAction = UIAlertAction(title: "Photo Library", style: .default) { [weak self] _ in
+            self?.viewModel.didSelectPhotoLibrary()
+        }
+        
+        alert.addAction(cameraAction)
+        alert.addAction(galleryAction)
+        
+        self.present(alert, animated: true)
+    }
+    
+    private func showCameraPicker() {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = false
+        pickerController.mediaTypes = ["public.image"]
+        pickerController.sourceType = .camera
+        present(pickerController, animated: true)
+    }
+    
+    private func showPhotoLibraryPicker() {
+        var config = PHPickerConfiguration()
+        config.selectionLimit = 50
+        
+        let phPickerVC = PHPickerViewController(configuration: config)
+        phPickerVC.delegate = self
+        present(phPickerVC, animated: true)
+    }
+    
+    
 }
 
-extension NewEntryViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+extension NewEntryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //        if entries.count <= 10 {
@@ -114,6 +186,37 @@ extension NewEntryViewController : UICollectionViewDelegate, UICollectionViewDat
         return cell
     }
 }
+
+extension NewEntryViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate, PHPickerViewControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage else {
+            return
+        }
+        picker.dismiss(animated: true)
+        
+        // Обработка выбора изображения
+        // Вызов метода в ViewModel для сохранения изображения
+//        viewModel.saveImage(image)
+    }
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        dismiss(animated: true)
+        for result in results {
+            result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] object, error in
+                if let image = object as? UIImage {
+                    // Обработка выбора изображения
+                    // Вызов метода в ViewModel для сохранения изображения
+//                    self?.viewModel.saveImage(image)
+                }
+            }
+        }
+    }
+}
+
 
 //#Preview {
 //    NewEntryViewController()
