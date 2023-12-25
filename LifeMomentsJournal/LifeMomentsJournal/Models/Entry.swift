@@ -13,6 +13,6 @@ struct Entry: Identifiable {
     let date: String
     let title: String?
     let content: String?
-    let images: [String]? = nil
+    let images: [Data]?
     
 }

@@ -19,7 +19,6 @@ class NewEntryViewController: UIViewController {
     
     private let newEntryImagesView = NewEntryCollectionView()
     private let imageView = UIImageView()
-    private var images = [UIImage]()
     
     init(viewModel: NewEntryViewModel) {
         self.viewModel = viewModel
@@ -120,8 +119,7 @@ class NewEntryViewController: UIViewController {
     
     @objc
     private func saveEntryButtonTapped() {
-        let entry = Entry(userId: AuthenticationService.shared.userId ?? "", date: newEntryView.dateLabel.text ?? "", title: newEntryView.titleView.text ?? "", content: newEntryView.contentView.text ?? "")
-        FirestoreAndStorageService.shared.saveEntryToFirestore(entry: entry, images: images)
+        let entry = Entry(userId: AuthenticationService.shared.userId ?? "", date: newEntryView.dateLabel.text ?? "", title: newEntryView.titleView.text ?? "", content: newEntryView.contentView.text ?? "", images: viewModel.images)
         viewModel.createEntry(entry: entry)
         dismiss(animated: true)
         if let tabBarController = self.presentingViewController as? TabBarViewController {
@@ -227,11 +225,15 @@ extension NewEntryViewController: UIImagePickerControllerDelegate & UINavigation
         dismiss(animated: true)
         for result in results {
             result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] object, error in
-                if let image = object as? UIImage {
+                if let image = object as? UIImage, let imageData = image.jpegData(compressionQuality: 0.5) {
                     // Обработка выбора изображения
                     // Вызов метода в ViewModel для сохранения изображения
 //                    self?.viewModel.saveImage(image)
-                    self?.images.append(image)
+                    print("my url is \(imageData)")
+                    self?.viewModel.images.append(imageData)
+                   
+                } else {
+                    print("something is wrong with url")
                 }
             }
         }

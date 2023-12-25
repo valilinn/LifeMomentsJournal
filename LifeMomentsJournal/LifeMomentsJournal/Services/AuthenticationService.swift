@@ -28,13 +28,17 @@ class AuthenticationService {
     func saveToUserDefaults() {
         let defaults = UserDefaults.standard
         defaults.set(state.rawValue, forKey: stateKey)
+        defaults.set(userId, forKey: "userId")
     }
     
     func loadFromUserDefaults() {
         let defaults = UserDefaults.standard
-        if let stateRawValue = defaults.string(forKey: stateKey),
-           let stateType = SignInState(rawValue: stateRawValue) {
-            state = stateType
+//        if let stateRawValue = defaults.string(forKey: stateKey),
+//           let stateType = SignInState(rawValue: stateRawValue) {
+//            state = stateType
+//        }
+        if let userIdValue = defaults.string(forKey: "userId") {
+            userId = userIdValue
         }
     }
     
@@ -72,6 +76,7 @@ class AuthenticationService {
                     let firebaseUser = result?.user
                     let userID = firebaseUser?.uid //my id
                     self?.userId = userID //my id
+                    self?.saveToUserDefaults()
                     print("User\(firebaseUser?.uid) signed in with email \(firebaseUser?.email ?? "unknown")")
                     completion(true)
 

@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let defaults = UserDefaults.standard
         print(defaults.string(forKey: "authentication"))
         if let stateRawValue = defaults.string(forKey: "authentication"), stateRawValue == "signedIn" {
+            AuthenticationService.shared.loadFromUserDefaults()
             window.rootViewController = TabBarViewController()
             
         } else {

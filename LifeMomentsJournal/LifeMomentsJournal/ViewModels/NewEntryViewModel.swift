@@ -12,6 +12,7 @@ import RxCocoa
 class NewEntryViewModel {
     var entries = BehaviorSubject(value: [Entry]())
     var entriesArray = [Entry]()
+    var images = [Data]()
     
     private let cameraSelectedSubject = PublishSubject<Void>()
     var cameraSelected: Observable<Void> {
@@ -35,6 +36,7 @@ class NewEntryViewModel {
         entriesArray.insert(entry, at: 0)
         self.entries.onNext(entriesArray)
 //        print("My notes - \(try? entries.value())")
+        FirestoreAndStorageService.shared.saveEntry(entry: entry)
     }
    
 }
