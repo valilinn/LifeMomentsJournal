@@ -12,8 +12,11 @@ import GoogleSignIn
 
 class AuthenticationService {
     
+    static let shared = AuthenticationService()
+    private init() {}
    
     var state: SignInState = .signedOut
+    var userId: String?
     var stateKey = "authentication"
     
     enum SignInState: String {
@@ -57,6 +60,7 @@ class AuthenticationService {
               return
           }
 //            print(result?.user.userID)
+            
 
           let credential = GoogleAuthProvider.credential(withIDToken: idToken,
                                                          accessToken: user.accessToken.tokenString)
@@ -66,14 +70,11 @@ class AuthenticationService {
                     print(error.localizedDescription)
                 } else {
                     let firebaseUser = result?.user
+                    let userID = firebaseUser?.uid //my id
+                    self?.userId = userID //my id
                     print("User\(firebaseUser?.uid) signed in with email \(firebaseUser?.email ?? "unknown")")
-//                    self?.authModel.state = .authenticated
-//                    self?.authModel.saveToUserDefaults()
                     completion(true)
-//                    let newRootController = JournalViewController()
-//                    let navigationController = UINavigationController(rootViewController: newRootController)
-//                    navigationController.modalPresentationStyle = .fullScreen
-//                    self?.present(navigationController, animated: true)
+
                     
                     
                 }

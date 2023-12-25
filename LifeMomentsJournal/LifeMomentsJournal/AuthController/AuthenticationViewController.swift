@@ -14,7 +14,7 @@ import GoogleSignIn
 
 class AuthenticationViewController: UIViewController {
     
-    private let authModel = AuthenticationService()
+//    private let authModel = AuthenticationService()
     private var authStateHandler: AuthStateDidChangeListenerHandle?
     private let containerView = UIView()
     private let titleLabel = UILabel()
@@ -51,9 +51,9 @@ class AuthenticationViewController: UIViewController {
         if authStateHandler == nil {
           authStateHandler = Auth.auth().addStateDidChangeListener { auth, user in
 //            self.user = user
-              self.authModel.state = user == nil ? .signedOut : .signedIn
+              AuthenticationService.shared.state = user == nil ? .signedOut : .signedIn
               print(user?.email)
-              self.authModel.saveToUserDefaults()
+              AuthenticationService.shared.saveToUserDefaults()
             print("OK")
           }
         } else {
@@ -64,8 +64,15 @@ class AuthenticationViewController: UIViewController {
     
     @objc
     private func loginWithGoogle() {
-        authModel.signIn(vc: self) { [weak self] success in
-            self?.present(TabBarViewController(), animated: true)
+        AuthenticationService.shared.signIn(vc: self) { [weak self] success in
+            print(success)
+            var vc = TabBarViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self?.present(vc, animated: true)
+//            self?.dismiss(animated: true)
+//            if let tabBarController = self?.presentingViewController as? TabBarViewController {
+//                tabBarController.selectedIndex = 0
+//            }
         }
     }
     

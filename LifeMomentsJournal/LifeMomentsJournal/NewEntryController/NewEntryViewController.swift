@@ -19,6 +19,7 @@ class NewEntryViewController: UIViewController {
     
     private let newEntryImagesView = NewEntryCollectionView()
     private let imageView = UIImageView()
+    private var images = [UIImage]()
     
     init(viewModel: NewEntryViewModel) {
         self.viewModel = viewModel
@@ -119,7 +120,8 @@ class NewEntryViewController: UIViewController {
     
     @objc
     private func saveEntryButtonTapped() {
-        let entry = Entry(date: newEntryView.dateLabel.text ?? "", title: newEntryView.titleView.text ?? "", content: newEntryView.contentView.text ?? "", images: ["morskieOko"])
+        let entry = Entry(userId: AuthenticationService.shared.userId ?? "", date: newEntryView.dateLabel.text ?? "", title: newEntryView.titleView.text ?? "", content: newEntryView.contentView.text ?? "")
+        FirestoreAndStorageService.shared.saveEntryToFirestore(entry: entry, images: images)
         viewModel.createEntry(entry: entry)
         dismiss(animated: true)
         if let tabBarController = self.presentingViewController as? TabBarViewController {
@@ -218,6 +220,7 @@ extension NewEntryViewController: UIImagePickerControllerDelegate & UINavigation
         // Обработка выбора изображения
         // Вызов метода в ViewModel для сохранения изображения
 //        viewModel.saveImage(image)
+//        images.append(image)
     }
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
@@ -228,6 +231,7 @@ extension NewEntryViewController: UIImagePickerControllerDelegate & UINavigation
                     // Обработка выбора изображения
                     // Вызов метода в ViewModel для сохранения изображения
 //                    self?.viewModel.saveImage(image)
+                    self?.images.append(image)
                 }
             }
         }
