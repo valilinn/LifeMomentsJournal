@@ -19,12 +19,9 @@ class FirestoreAndStorageService {
     
     func saveEntry(entry: Entry) {
         let entriesRef = database.collection("entries")
-        
-        
         let newDocumentRef = entriesRef.document() // Create a reference to a new document
         let documentId = newDocumentRef.documentID  // Get the document ID
         print("document ID Firestore is \(documentId)")
-        
         
         newDocumentRef.setData([
             "id": entry.id,
@@ -34,13 +31,10 @@ class FirestoreAndStorageService {
             "content": entry.content ?? ""
         ]) { [weak self] error in
             if let error = error {
-                
                 print("Error addimg document \(error)")
             } else {
-                
                 print("Document added successfully")
             }
-            
             print("document ID Firestore is \(documentId)")
             
             if let imagesEnumerated = entry.images?.enumerated() {
@@ -54,7 +48,6 @@ class FirestoreAndStorageService {
     private func uploadImages(index: Int, image: Data, documentId: String) {
         let storage = Storage.storage()
         let storageRef = storage.reference().child("images/\(documentId)")
-        
         let imageRef = storageRef.child("image_\(index).jpg")
         
         imageRef.putData(image, metadata: nil) { (metadata, error) in
@@ -67,4 +60,35 @@ class FirestoreAndStorageService {
         }
         
     }
+    
+    func getEntries(for userId: String, completion: @escaping ([Entry]?, Error?) -> ())  {
+        let entriesRef = database.collection("entries")
+        var entries = [Entry]()
+        
+        entriesRef.whereField("userId", isEqualTo: userId).getDocuments { (snapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+                completion(nil, error)
+            } else {
+                for document in snapshot!.documents {
+                    let data = document.data()
+                    
+                    if let userId = data["userId"] as? String,
+                       let date = data["date"] as? String,
+                       let title = data["title"] as? String,
+                       let content = data["content"] as? String {
+                        // В этом примере Entry определяется с использованием опциональных свойств
+                        let entry = Entry(userId: userId, date: date, title: title, content: content, images: nil)
+                        entries.append(entry)
+                    }
+                }
+                print("OKKKK")
+                completion(entries, nil)
+                
+            }
+           
+        }
+       
+    }
+    
 }

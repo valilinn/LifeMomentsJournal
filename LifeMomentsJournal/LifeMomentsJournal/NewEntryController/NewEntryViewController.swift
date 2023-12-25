@@ -14,20 +14,20 @@ import MobileCoreServices
 class NewEntryViewController: UIViewController {
     
     private let newEntryView = NewEntryView()
-    private let viewModel: NewEntryViewModel
+    private let viewModel = NewEntryViewModel()
     private let bag = DisposeBag()
     
     private let newEntryImagesView = NewEntryCollectionView()
     private let imageView = UIImageView()
     
-    init(viewModel: NewEntryViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    init(viewModel: NewEntryViewModel) {
+//        self.viewModel = viewModel
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

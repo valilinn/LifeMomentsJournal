@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Entry: Identifiable {
+struct Entry: Identifiable, Codable {
     let id: String = UUID().uuidString
     let userId: String
     let date: String
@@ -15,4 +15,12 @@ struct Entry: Identifiable {
     let content: String?
     let images: [Data]?
     
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case userId  = "userId"
+        case date = "date"
+        case title = "title"
+        case content = "content"
+        case images = "images"
+    }
 }

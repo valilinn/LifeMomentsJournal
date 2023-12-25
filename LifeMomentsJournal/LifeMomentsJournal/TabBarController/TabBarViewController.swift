@@ -21,7 +21,7 @@ class TabBarViewController: UITabBarController {
     
 
     private func setupTabs() {
-        let journal = createNav(with: "Journal", and: UIImage(systemName: "book"), mainTitle: "Life Moments Journal", selectedImage: UIImage(systemName: "book.fill"), vc: JournalViewController(viewModel: viewModel))
+        let journal = createNav(with: "Journal", and: UIImage(systemName: "book"), mainTitle: "Life Moments Journal", selectedImage: UIImage(systemName: "book.fill"), vc: JournalViewController())
        
         self.setViewControllers([journal], animated: true)
         

@@ -17,21 +17,21 @@ import RxCocoa
 class JournalViewController: UIViewController {
     
     private let journalView = JournalView()
-    private let viewModel: NewEntryViewModel
+    private let viewModel = EntryListViewModel()
     private var bag = DisposeBag()
 //    private let entries = Entry.getMockData()
     private let containerView = UIView()
     private let signOutButton = UIButton()
     private let signOutButtonTitle = UILabel()
     
-    init(viewModel: NewEntryViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    init(viewModel: EntryListViewModel) {
+//        self.viewModel = viewModel
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,12 @@ class JournalViewController: UIViewController {
         journalView.collectionView.collectionViewLayout = createLayout()
         navigationController?.navigationBar.prefersLargeTitles = true
         setButton()
-        setBind()
+//        setBind()
+        getDocuments()
+    }
+    
+    private func getDocuments() {
+        viewModel.downloadEntries(userId: AuthenticationService.shared.userId ?? "")
     }
     
     private func setButton() {
@@ -50,22 +55,22 @@ class JournalViewController: UIViewController {
     
     @objc
     func addEntryButtonTapped() {
-        let vc = UINavigationController(rootViewController: NewEntryViewController(viewModel: viewModel))
+        let vc = UINavigationController(rootViewController: NewEntryViewController())
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }
     
-    private func setBind() {
-        journalView.collectionView.rx.setDelegate(self).disposed(by: bag)
-        viewModel.entries.bind(to: journalView.collectionView.rx.items(cellIdentifier: EntriesListCell.reuseID, cellType: EntriesListCell.self)) { (row, item, cell) in
-            print("OK")
-            DispatchQueue.main.async {
-                cell.configure(with: item)
-            }
-        }.disposed(by: bag)
-        
-        
-    }
+//    private func setBind() {
+//        journalView.collectionView.rx.setDelegate(self).disposed(by: bag)
+//        viewModel.entries.bind(to: journalView.collectionView.rx.items(cellIdentifier: EntriesListCell.reuseID, cellType: EntriesListCell.self)) { (row, item, cell) in
+//            print("OK")
+//            DispatchQueue.main.async {
+//                cell.configure(with: item)
+//            }
+//        }.disposed(by: bag)
+//        
+//        
+//    }
    
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
