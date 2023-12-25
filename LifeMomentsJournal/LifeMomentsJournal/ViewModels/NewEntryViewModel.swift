@@ -10,9 +10,11 @@ import RxSwift
 import RxCocoa
 
 class NewEntryViewModel {
-//    var entries = BehaviorSubject(value: [Entry]())
-//    var entriesArray = [Entry]()
-    var images = [Data]()
+    //    var entries = BehaviorSubject(value: [Entry]())
+    //    var entriesArray = [Entry]()
+    private let bag = DisposeBag()
+    let entry = BehaviorSubject<Entry>(value: Entry(userId: "", date: "", title: "", content: "", images: nil))
+    let images = BehaviorSubject<[Data]>(value: [])
     
     private let cameraSelectedSubject = PublishSubject<Void>()
     var cameraSelected: Observable<Void> {
@@ -32,11 +34,9 @@ class NewEntryViewModel {
         photoLibrarySelectedSubject.onNext(())
     }
     
-    func createEntry(entry: Entry) {
-//        entriesArray.insert(entry, at: 0)
-//        self.entries.onNext(entriesArray)
-//        print("My notes - \(try? entries.value())")
-        FirestoreAndStorageService.shared.saveEntry(entry: entry)
+    func createEntry() {
+        FirestoreAndStorageService.shared.saveEntry(entry: try! entry.value())
+        
     }
-   
+    
 }

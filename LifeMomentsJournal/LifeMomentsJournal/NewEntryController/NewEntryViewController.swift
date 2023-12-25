@@ -19,15 +19,6 @@ class NewEntryViewController: UIViewController {
     
     private let newEntryImagesView = NewEntryCollectionView()
     private let imageView = UIImageView()
-    
-//    init(viewModel: NewEntryViewModel) {
-//        self.viewModel = viewModel
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +27,6 @@ class NewEntryViewController: UIViewController {
         newEntryView.imagesCollectionView.collectionView.delegate = self
         newEntryView.imagesCollectionView.collectionView.dataSource = self
         newEntryView.imagesCollectionView.collectionView.collectionViewLayout = createLayout()
-        //        newEntryView.doneButton.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
         setButtons()
         setBind()
     }
@@ -51,6 +41,8 @@ class NewEntryViewController: UIViewController {
             self?.checkPhotoLibraryPermissionAndShowPicker()
         })
         .disposed(by: bag)
+        
+        
     }
     
     private func checkCameraPermissionAndShowPicker() {
@@ -113,14 +105,17 @@ class NewEntryViewController: UIViewController {
     
     @objc 
     private func showPickingAlertButtonTapped() {
-            showPickingAlert()
-        }
+        newEntryView.addImagesButton.rx.tap.subscribe(onNext: {[weak self] in
+            self?.showPickingAlert()
+        })
+        .disposed(by: bag)
+    }
     
     
     @objc
     private func saveEntryButtonTapped() {
-        let entry = Entry(userId: AuthenticationService.shared.userId ?? "", date: newEntryView.dateLabel.text ?? "", title: newEntryView.titleView.text ?? "", content: newEntryView.contentView.text ?? "", images: viewModel.images)
-        viewModel.createEntry(entry: entry)
+//        let entry = Entry(userId: viewModel.userId , date: newEntryView.dateLabel.text ?? "", title: newEntryView.titleView.text ?? "", content: newEntryView.contentView.text ?? "", images: viewModel.images.value)
+        viewModel.createEntry()
         dismiss(animated: true)
         if let tabBarController = self.presentingViewController as? TabBarViewController {
             tabBarController.selectedIndex = 0
@@ -224,18 +219,21 @@ extension NewEntryViewController: UIImagePickerControllerDelegate & UINavigation
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         dismiss(animated: true)
         for result in results {
+            var imagesArray = [Data]()
             result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] object, error in
                 if let image = object as? UIImage, let imageData = image.jpegData(compressionQuality: 0.5) {
                     // Обработка выбора изображения
                     // Вызов метода в ViewModel для сохранения изображения
 //                    self?.viewModel.saveImage(image)
                     print("my url is \(imageData)")
-                    self?.viewModel.images.append(imageData)
+                    imagesArray.append(imageData)
+//                    self?.viewModel.images.bind(onNext: imagesArray)
                    
                 } else {
                     print("something is wrong with url")
                 }
             }
+            self.viewModel.images.onNext(imagesArray)
         }
     }
 }

@@ -24,7 +24,7 @@ class FirestoreAndStorageService {
         print("document ID Firestore is \(documentId)")
         
         newDocumentRef.setData([
-            "id": entry.id,
+            //            "id": entry.id,
             "userId": entry.userId,
             "date": entry.date,
             "title": entry.title ?? "",
@@ -65,7 +65,7 @@ class FirestoreAndStorageService {
         let entriesRef = database.collection("entries")
         var entries = [Entry]()
         
-        entriesRef.whereField("userId", isEqualTo: userId).getDocuments { (snapshot, error) in
+        entriesRef.whereField("userId", isEqualTo: userId).getDocuments { [weak self] (snapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
                 completion(nil, error)
@@ -77,18 +77,69 @@ class FirestoreAndStorageService {
                        let date = data["date"] as? String,
                        let title = data["title"] as? String,
                        let content = data["content"] as? String {
+                        
+                        let documentId = document.documentID
                         // В этом примере Entry определяется с использованием опциональных свойств
-                        let entry = Entry(userId: userId, date: date, title: title, content: content, images: nil)
-                        entries.append(entry)
+                        var entry = Entry(userId: userId, date: date, title: title, content: content, images: nil)
+                        //                        entries.append(entry)
+                        self?.getImages(for: documentId) { images, error in
+                            if let error = error {
+                                print("Error getting images: \(error)")
+                                completion(nil, error)
+                            } else {
+                                entry.images = images
+                                entries.append(entry)
+                                
+                                if entries.count == snapshot!.documents.count {
+                                    completion(entries, nil)
+                                }
+                            }
+                            print("OKKKK")
+                            completion(entries, nil)
+                            
+                        }
+                        
                     }
+                    
                 }
-                print("OKKKK")
-                completion(entries, nil)
                 
             }
-           
+            
         }
-       
     }
-    
+    private func getImages(for documentId: String, completion: @escaping ([Data]?, Error?) -> ()) {
+        let storage = Storage.storage()
+        let storageRef = storage.reference().child("images/\(documentId)")
+        
+        // Список для хранения загруженных изображений
+        var images = [Data]()
+        
+        storageRef.listAll { [weak self] (result, error) in
+            if let error = error {
+                print("Error listing images: \(error)")
+                completion(nil, error)
+            } else {
+                let group = DispatchGroup()
+                
+                guard let items = result?.items else { return }
+                for item in items {
+                    group.enter()
+                    item.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+                        if let error = error {
+                            print("Error downloading image: \(error)")
+                        } else if let data = data {
+                            images.append(data)
+                        }
+                        
+                        group.leave()
+                    }
+                }
+                
+                group.notify(queue: .main) {
+                    completion(images, nil)
+                }
+            }
+        }
+        
+    }
 }

@@ -20,6 +20,7 @@ class EntryListViewModel {
             guard let entriesValues = entries else { return }
             self.entries = entriesValues
             print(entries)
+            
         }
 //        return self.entries.onNext(entriesValue)
         

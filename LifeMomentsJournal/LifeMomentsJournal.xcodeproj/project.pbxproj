@@ -224,8 +224,8 @@
 		EA8BC72E2B2E5C4E00046352 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				EA8BC72F2B2E5D2200046352 /* NewEntryViewModel.swift */,
 				EA42404E2B34DDF40036815E /* EntryListViewModel.swift */,
+				EA8BC72F2B2E5D2200046352 /* NewEntryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";

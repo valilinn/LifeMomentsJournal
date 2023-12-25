@@ -9,7 +9,7 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
     
-    let viewModel = NewEntryViewModel()
+//    let viewModel = NewEntryViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()

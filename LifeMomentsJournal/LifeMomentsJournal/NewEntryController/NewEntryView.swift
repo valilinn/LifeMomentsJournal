@@ -10,11 +10,9 @@ import SnapKit
 
 class NewEntryView: UIView {
     
-
     private let containerView = UIView()
     let imagesCollectionView = NewEntryCollectionView()
     
-
     let dateLabel = UILabel()
     let changeDate = UIButton()
     let titleView = UITextField()
@@ -27,6 +25,7 @@ class NewEntryView: UIView {
         self.backgroundColor = .white
         setViews()
         setConstraints()
+        
     }
     
     required init?(coder: NSCoder) {
