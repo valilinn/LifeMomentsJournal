@@ -10,15 +10,12 @@ import RxSwift
 import RxCocoa
 
 class NewEntryViewModel {
-    let date: BehaviorSubject<String>
+    let date = BehaviorSubject<String>(value: "")
     let title = BehaviorSubject<String>(value: "")
     let content = BehaviorSubject<String>(value: "")
     let images = BehaviorSubject<[Data]>(value: [])
 //    let saveEntryTapped = PublishSubject<Void>()
     
-    init(date: String) {
-            self.date = BehaviorSubject<String>(value: date)
-        }
     
     private let cameraSelectedSubject = PublishSubject<Void>()
     var cameraSelected: Observable<Void> {
@@ -36,6 +33,10 @@ class NewEntryViewModel {
     
     func didSelectPhotoLibrary() {
         photoLibrarySelectedSubject.onNext(())
+    }
+    func getCurrentDate() {
+        let currentDate = CurrentDate().date
+        date.onNext(currentDate)
     }
     
     func createEntry() {

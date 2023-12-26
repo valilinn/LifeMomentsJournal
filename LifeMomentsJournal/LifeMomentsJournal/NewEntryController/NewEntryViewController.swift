@@ -14,7 +14,7 @@ import MobileCoreServices
 class NewEntryViewController: UIViewController, UICollectionViewDelegate {
     
     private let newEntryView = NewEntryView()
-    private var viewModel: NewEntryViewModel!
+    private var viewModel = NewEntryViewModel()
     private let bag = DisposeBag()
     
     private let newEntryImagesView = NewEntryCollectionView()
@@ -23,13 +23,12 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let currentDate = CurrentDate().date
-        viewModel = NewEntryViewModel(date: currentDate)
         view = newEntryView
         title = "New Entry"
 //        newEntryView.imagesCollectionView.collectionView.delegate = self
 //        newEntryView.imagesCollectionView.collectionView.dataSource = self
         newEntryView.imagesCollectionView.collectionView.collectionViewLayout = createLayout()
+        viewModel.getCurrentDate()
         setButtons()
         setBind()
         
