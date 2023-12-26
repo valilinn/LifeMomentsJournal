@@ -19,6 +19,7 @@
 		EA50DA5B2B17CE83003B50A5 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA5A2B17CE83003B50A5 /* JournalView.swift */; };
 		EA50DA602B17F676003B50A5 /* EntriesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */; };
 		EA50DA632B17FAD4003B50A5 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA622B17FAD4003B50A5 /* Entry.swift */; };
+		EA50FF9D2B3B17FB00CA0CE9 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50FF9C2B3B17FB00CA0CE9 /* Test.swift */; };
 		EA66DF772B33965A00943B90 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EA66DF762B33965A00943B90 /* FirebaseFirestore */; };
 		EA66DF792B33969400943B90 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EA66DF782B33969400943B90 /* FirebaseFirestoreSwift */; };
 		EA67B7D82B20DC7C003DDBD7 /* DetailEntryImagesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67B7D72B20DC7C003DDBD7 /* DetailEntryImagesViewCell.swift */; };
@@ -76,6 +77,7 @@
 		EA50DA5A2B17CE83003B50A5 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesListCell.swift; sourceTree = "<group>"; };
 		EA50DA622B17FAD4003B50A5 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		EA50FF9C2B3B17FB00CA0CE9 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		EA67B7D72B20DC7C003DDBD7 /* DetailEntryImagesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEntryImagesViewCell.swift; sourceTree = "<group>"; };
 		EA67B7D92B20DD2D003DDBD7 /* DetailEntryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEntryCollectionView.swift; sourceTree = "<group>"; };
 		EA67B7DB2B20DFBC003DDBD7 /* DetailEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEntryView.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				EA36776B2B3100B60018BDD8 /* CurrentDate.swift */,
 				EAE0CFE42B3238D900C670CA /* PhotosManager.swift */,
 				EA42404A2B34DC480036815E /* FirestoreAndStorageService.swift */,
+				EA50FF9C2B3B17FB00CA0CE9 /* Test.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				EA50DA602B17F676003B50A5 /* EntriesListCell.swift in Sources */,
 				EA8BC7302B2E5D2200046352 /* NewEntryViewModel.swift in Sources */,
 				EA1583DC2B1C6C66006A6242 /* CompositionalLayout.swift in Sources */,
+				EA50FF9D2B3B17FB00CA0CE9 /* Test.swift in Sources */,
 				EAC4C5AA2B0D291C00930A14 /* AppDelegate.swift in Sources */,
 				EA67B7DA2B20DD2D003DDBD7 /* DetailEntryCollectionView.swift in Sources */,
 				EA36776C2B3100B60018BDD8 /* CurrentDate.swift in Sources */,

@@ -25,6 +25,7 @@ class NewEntryImagesViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     private func setViews() {
         imageView.image = UIImage(named: "defaultImage")
         imageView.tintColor = .gray

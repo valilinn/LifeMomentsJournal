@@ -19,19 +19,10 @@ class JournalViewController: UIViewController {
     private let journalView = JournalView()
     private let viewModel = EntryListViewModel()
     private var bag = DisposeBag()
-//    private let entries = Entry.getMockData()
     private let containerView = UIView()
     private let signOutButton = UIButton()
     private let signOutButtonTitle = UILabel()
     
-//    init(viewModel: EntryListViewModel) {
-//        self.viewModel = viewModel
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +31,15 @@ class JournalViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         setButton()
 //        setBind()
-        getDocuments()
+//        getDocuments()
+      
     }
     
-    private func getDocuments() {
-        viewModel.downloadEntries(userId: AuthenticationService.shared.userId ?? "")
-    }
+    
+    //тимчасово закоментувала бо прінтяться всі пости
+//    private func getDocuments() {
+//        viewModel.downloadEntries(userId: AuthenticationService.shared.userId ?? "")
+//    }
     
     private func setButton() {
         let addEntryButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addEntryButtonTapped))

@@ -11,24 +11,28 @@ import RxCocoa
 import PhotosUI
 import MobileCoreServices
 
-class NewEntryViewController: UIViewController {
+class NewEntryViewController: UIViewController, UICollectionViewDelegate {
     
     private let newEntryView = NewEntryView()
-    private let viewModel = NewEntryViewModel()
+    private var viewModel: NewEntryViewModel!
     private let bag = DisposeBag()
     
     private let newEntryImagesView = NewEntryCollectionView()
     private let imageView = UIImageView()
+    var allSelectedImages = [Data]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let currentDate = CurrentDate().date
+        viewModel = NewEntryViewModel(date: currentDate)
         view = newEntryView
         title = "New Entry"
-        newEntryView.imagesCollectionView.collectionView.delegate = self
-        newEntryView.imagesCollectionView.collectionView.dataSource = self
+//        newEntryView.imagesCollectionView.collectionView.delegate = self
+//        newEntryView.imagesCollectionView.collectionView.dataSource = self
         newEntryView.imagesCollectionView.collectionView.collectionViewLayout = createLayout()
         setButtons()
         setBind()
+        
     }
     
     private func setBind() {
@@ -42,6 +46,32 @@ class NewEntryViewController: UIViewController {
         })
         .disposed(by: bag)
         
+        viewModel.date.bind(to: newEntryView.dateLabel.rx.text).disposed(by: bag)
+        
+        newEntryView.titleView.rx.text.orEmpty
+            .bind(to: viewModel.title)
+            .disposed(by: bag)
+        
+        newEntryView.contentView.rx.text.orEmpty
+            .bind(to: viewModel.content)
+            .disposed(by: bag)
+        
+        //??
+//        newEntryView.addImagesButton.rx.tap
+//            .subscribe(onNext: { [weak self] _ in
+//                self?.showPickingAlert()
+//            })
+//            .disposed(by: bag)
+        
+        viewModel.images
+            .observe(on: MainScheduler.instance)
+            .bind(to: newEntryView.imagesCollectionView.collectionView.rx.items(cellIdentifier: NewEntryImagesViewCell.reuseID, cellType: NewEntryImagesViewCell.self)) { index, imageData, cell in
+                if let image = UIImage(data: imageData) {
+                    cell.imageView.image = image
+                }
+            }
+            .disposed(by: bag)
+
         
     }
     
@@ -105,10 +135,7 @@ class NewEntryViewController: UIViewController {
     
     @objc 
     private func showPickingAlertButtonTapped() {
-        newEntryView.addImagesButton.rx.tap.subscribe(onNext: {[weak self] in
-            self?.showPickingAlert()
-        })
-        .disposed(by: bag)
+        showPickingAlert()
     }
     
     
@@ -177,63 +204,68 @@ class NewEntryViewController: UIViewController {
     
 }
 
-extension NewEntryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if entries.count <= 10 {
-//            return entries.count
-//        } else {
-//            return 10
-//        }
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let currentEntry = entries[indexPath.item]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewEntryImagesViewCell.reuseID, for: indexPath) as! NewEntryImagesViewCell
-        
-//        cell.imageView.image = UIImage(named: currentEntry.image)
-        
-        
-        return cell
-    }
-}
+//extension NewEntryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+//    
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+////        if entries.count <= 10 {
+////            return entries.count
+////        } else {
+////            return 10
+////        }
+//        return try! viewModel.images.value().count
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+////        let currentEntry = entries[indexPath.item]
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewEntryImagesViewCell.reuseID, for: indexPath) as! NewEntryImagesViewCell
+//        
+//        //        cell.imageView.image = UIImage(named: currentEntry.image)
+//        let imageData = try! viewModel.images.value()[indexPath.item]
+//        let image = UIImage(data: imageData)
+//        
+//        cell.imageView.image = image
+//        
+//        return cell
+//    }
+//}
 
 extension NewEntryViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate, PHPickerViewControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.originalImage] as? UIImage else {
-            return
-        }
-        picker.dismiss(animated: true)
-        
-        // Обработка выбора изображения
-        // Вызов метода в ViewModel для сохранения изображения
-//        viewModel.saveImage(image)
-//        images.append(image)
-    }
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        guard let image = info[.originalImage] as? UIImage else {
+//            return
+//        }
+//        picker.dismiss(animated: true)
+//        
+//        // Обработка выбора изображения
+//        // Вызов метода в ViewModel для сохранения изображения
+////        viewModel.saveImage(image)
+////        images.append(image)
+//    }
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         dismiss(animated: true)
+        let dispatchGroup = DispatchGroup()
+        
         for result in results {
-            var imagesArray = [Data]()
+            dispatchGroup.enter()
             result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] object, error in
+                defer {
+                    dispatchGroup.leave()
+                }
                 if let image = object as? UIImage, let imageData = image.jpegData(compressionQuality: 0.5) {
-                    // Обработка выбора изображения
-                    // Вызов метода в ViewModel для сохранения изображения
-//                    self?.viewModel.saveImage(image)
-                    print("my url is \(imageData)")
-                    imagesArray.append(imageData)
-//                    self?.viewModel.images.bind(onNext: imagesArray)
-                   
+                    self?.allSelectedImages.append(imageData)
                 } else {
-                    print("something is wrong with url")
+                    print("something is wrong with data")
                 }
             }
-            self.viewModel.images.onNext(imagesArray)
+        }
+        dispatchGroup.notify(queue: .main) {
+            // when all images will loaded
+            self.viewModel.didSelectImages(self.allSelectedImages)
         }
     }
 }

@@ -10,11 +10,15 @@ import RxSwift
 import RxCocoa
 
 class NewEntryViewModel {
-    //    var entries = BehaviorSubject(value: [Entry]())
-    //    var entriesArray = [Entry]()
-    private let bag = DisposeBag()
-    let entry = BehaviorSubject<Entry>(value: Entry(userId: "", date: "", title: "", content: "", images: nil))
+    let date: BehaviorSubject<String>
+    let title = BehaviorSubject<String>(value: "")
+    let content = BehaviorSubject<String>(value: "")
     let images = BehaviorSubject<[Data]>(value: [])
+//    let saveEntryTapped = PublishSubject<Void>()
+    
+    init(date: String) {
+            self.date = BehaviorSubject<String>(value: date)
+        }
     
     private let cameraSelectedSubject = PublishSubject<Void>()
     var cameraSelected: Observable<Void> {
@@ -35,8 +39,24 @@ class NewEntryViewModel {
     }
     
     func createEntry() {
-        FirestoreAndStorageService.shared.saveEntry(entry: try! entry.value())
-        
+        guard let userId = AuthenticationService.shared.userId else { return }
+        let entry = Entry(userId: userId, date: try! date.value(), title: try! title.value(), content: try! content.value(), images: try! images.value() )
+        FirestoreAndStorageService.shared.saveEntry(entry: entry)
     }
+    
+    func updateEntry(newEntry: Entry) {
+//        let updatedEntry = Entry(userId: newEntry.userId, date: newEntry.date, title: newEntry.title, content: newEntry.content, images: newEntry.images)
+//        entry.onNext(updatedEntry)
+//        date.onNext(newEntry.date)
+        title.onNext(newEntry.title ?? "")
+        content.onNext(newEntry.content ?? "")
+        images.onNext(newEntry.images ?? [])
+    }
+    
+    func didSelectImages(_ selectedImages: [Data]) {
+            images.onNext(selectedImages)
+        }
+    
+    
     
 }
