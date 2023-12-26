@@ -30,16 +30,16 @@ class JournalViewController: UIViewController {
         journalView.collectionView.collectionViewLayout = createLayout()
         navigationController?.navigationBar.prefersLargeTitles = true
         setButton()
-//        setBind()
-//        getDocuments()
-      
+        setBind()
+        viewModel.fetchEntries()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+            viewModel.fetchEntries()
+    }
     
-    //тимчасово закоментувала бо прінтяться всі пости
-//    private func getDocuments() {
-//        viewModel.downloadEntries(userId: AuthenticationService.shared.userId ?? "")
-//    }
+
     
     private func setButton() {
         let addEntryButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addEntryButtonTapped))
@@ -54,7 +54,7 @@ class JournalViewController: UIViewController {
         present(vc, animated: true)
     }
     
-//    private func setBind() {
+    private func setBind() {
 //        journalView.collectionView.rx.setDelegate(self).disposed(by: bag)
 //        viewModel.entries.bind(to: journalView.collectionView.rx.items(cellIdentifier: EntriesListCell.reuseID, cellType: EntriesListCell.self)) { (row, item, cell) in
 //            print("OK")
@@ -62,10 +62,36 @@ class JournalViewController: UIViewController {
 //                cell.configure(with: item)
 //            }
 //        }.disposed(by: bag)
-//        
-//        
-//    }
-   
+        
+        viewModel.entries
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.journalView.collectionView.reloadData()
+            })
+            .disposed(by: bag)
+        
+        
+        viewModel.entries
+            .observe(on: MainScheduler.instance)
+            .bind(to: journalView.collectionView.rx.items(cellIdentifier: EntriesListCell.reuseID, cellType: EntriesListCell.self)) { index, entry, cell in
+                DispatchQueue.main.async {
+                    cell.dateLabel.text = entry.date
+                    cell.titleLabel.text = entry.title
+                    cell.contentLabel.text = entry.content
+                    
+                    if let imageData = entry.images?.first, let image = UIImage(data: imageData) {
+                        cell.entryImageView.image = image
+                    } else {
+                        cell.entryImageView.image = nil
+                        // или
+                        // cell.entryImageView.isHidden = true
+                    }
+                }
+            }
+            .disposed(by: bag)
+        
+    }
+    
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnvironment in
@@ -83,8 +109,6 @@ class JournalViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         containerView.backgroundColor = UIColor(named: "mainColor")
-        
-        
     }
     
     

@@ -28,12 +28,12 @@ class EntriesListCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with item: Entry) {
-        dateLabel.text = item.date
-        titleLabel.text = item.title
-        contentLabel.text = "\(item.content)"
-        print("Cell is OK - \(item.title), \(item.content)")
-    }
+//    func configure(with item: Entry) {
+//        dateLabel.text = item.date
+//        titleLabel.text = item.title
+//        contentLabel.text = "\(item.content)"
+//        print("Cell is OK - \(item.title), \(item.content)")
+//    }
     
     private func setViews() {
         dateLabel.text = "14 February 2023"
