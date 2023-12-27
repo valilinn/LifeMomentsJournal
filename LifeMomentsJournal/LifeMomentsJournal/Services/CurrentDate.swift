@@ -9,11 +9,20 @@ import Foundation
 
 struct CurrentDate {
     var date: String = {
-        let currentDate = Date()
+//        let currentDate = Date()
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd MMMM yyyy"
+//        let formattedDate = dateFormatter.string(from: currentDate)
+//        print(formattedDate)
+//        return formattedDate
+        let timestamp = Date().timeIntervalSince1970
+        let date = Date(timeIntervalSince1970: timestamp)
+
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMMM yyyy"
-        let formattedDate = dateFormatter.string(from: currentDate)
-        print(formattedDate)
-        return formattedDate
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = TimeZone.current
+        let formattedDateString = dateFormatter.string(from: date)
+        print("my date is - \(formattedDateString)")
+        return formattedDateString
     }()
 }

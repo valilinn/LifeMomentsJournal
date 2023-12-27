@@ -61,16 +61,17 @@ class FirestoreAndStorageService {
         
     }
     
-    func getEntries(for userId: String, completion: @escaping ([Entry]?, Error?) -> ())  {
+    func listenForEntries(for userId: String, completion: @escaping ([Entry]?, Error?) -> ())  {
         let entriesRef = database.collection("entries")
         var entries = [Entry]()
         
-        entriesRef.whereField("userId", isEqualTo: userId).getDocuments { [weak self] (snapshot, error) in
+        entriesRef.whereField("userId", isEqualTo: userId).addSnapshotListener { [weak self] (snapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
                 completion(nil, error)
             } else {
-                for document in snapshot!.documents {
+                for change in snapshot!.documentChanges {
+                    let document = change.document
                     let data = document.data()
                     
                     if let userId = data["userId"] as? String,
@@ -79,9 +80,7 @@ class FirestoreAndStorageService {
                        let content = data["content"] as? String {
                         
                         let documentId = document.documentID
-                        // В этом примере Entry определяется с использованием опциональных свойств
                         var entry = Entry(userId: userId, date: date, title: title, content: content, images: nil)
-                        //                        entries.append(entry)
                         self?.getImages(for: documentId) { images, error in
                             if let error = error {
                                 print("Error getting images: \(error)")
@@ -90,9 +89,9 @@ class FirestoreAndStorageService {
                                 entry.images = images
                                 entries.append(entry)
                                 
-                                if entries.count == snapshot!.documents.count {
-                                    completion(entries, nil)
-                                }
+//                                if entries.count == snapshot!.documentChanges.count {
+//                                    completion(entries, nil)
+//                                }
                             }
                             print("OKKKK")
                             completion(entries, nil)
@@ -110,8 +109,7 @@ class FirestoreAndStorageService {
     private func getImages(for documentId: String, completion: @escaping ([Data]?, Error?) -> ()) {
         let storage = Storage.storage()
         let storageRef = storage.reference().child("images/\(documentId)")
-        
-        // Список для хранения загруженных изображений
+
         var images = [Data]()
         
         storageRef.listAll { [weak self] (result, error) in

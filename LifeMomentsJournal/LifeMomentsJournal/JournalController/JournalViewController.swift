@@ -34,13 +34,6 @@ class JournalViewController: UIViewController {
         viewModel.fetchEntries()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-            viewModel.fetchEntries()
-    }
-    
-
-    
     private func setButton() {
         let addEntryButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addEntryButtonTapped))
         addEntryButton.tintColor = .white
@@ -55,14 +48,6 @@ class JournalViewController: UIViewController {
     }
     
     private func setBind() {
-//        journalView.collectionView.rx.setDelegate(self).disposed(by: bag)
-//        viewModel.entries.bind(to: journalView.collectionView.rx.items(cellIdentifier: EntriesListCell.reuseID, cellType: EntriesListCell.self)) { (row, item, cell) in
-//            print("OK")
-//            DispatchQueue.main.async {
-//                cell.configure(with: item)
-//            }
-//        }.disposed(by: bag)
-        
         viewModel.entries
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
@@ -70,10 +55,10 @@ class JournalViewController: UIViewController {
             })
             .disposed(by: bag)
         
-        
         viewModel.entries
             .observe(on: MainScheduler.instance)
             .bind(to: journalView.collectionView.rx.items(cellIdentifier: EntriesListCell.reuseID, cellType: EntriesListCell.self)) { index, entry, cell in
+                
                 DispatchQueue.main.async {
                     cell.dateLabel.text = entry.date
                     cell.titleLabel.text = entry.title
@@ -89,7 +74,6 @@ class JournalViewController: UIViewController {
                 }
             }
             .disposed(by: bag)
-        
     }
     
     
