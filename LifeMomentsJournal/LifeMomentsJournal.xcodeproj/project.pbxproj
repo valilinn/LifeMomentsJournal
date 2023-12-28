@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C24A022297B1E26EB6D10BE0 /* Pods_LifeMomentsJournal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF7EA8CCA9A6CD5ABFBCB20 /* Pods_LifeMomentsJournal.framework */; };
+		EA0C5F2E2B3CC7B600AC56F9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EA0C5F2D2B3CC7B600AC56F9 /* Kingfisher */; };
 		EA1583DC2B1C6C66006A6242 /* CompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1583DB2B1C6C66006A6242 /* CompositionalLayout.swift */; };
 		EA1583DE2B1C8172006A6242 /* NewEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1583DD2B1C8172006A6242 /* NewEntryViewController.swift */; };
 		EA1583E02B1C9141006A6242 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1583DF2B1C9141006A6242 /* TabBarViewController.swift */; };
@@ -115,6 +116,7 @@
 				EA66DF772B33965A00943B90 /* FirebaseFirestore in Frameworks */,
 				EA7277922B1379D30044F320 /* FirebaseAnalyticsSwift in Frameworks */,
 				EA66DF792B33969400943B90 /* FirebaseFirestoreSwift in Frameworks */,
+				EA0C5F2E2B3CC7B600AC56F9 /* Kingfisher in Frameworks */,
 				EA683EB12B263F9700CC1076 /* RxCocoa in Frameworks */,
 				EA7277A02B13D0840044F320 /* GoogleSignIn in Frameworks */,
 				EA7277942B1379D30044F320 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
@@ -345,6 +347,7 @@
 				EA66DF762B33965A00943B90 /* FirebaseFirestore */,
 				EA66DF782B33969400943B90 /* FirebaseFirestoreSwift */,
 				EA42404C2B34DC910036815E /* FirebaseStorage */,
+				EA0C5F2D2B3CC7B600AC56F9 /* Kingfisher */,
 			);
 			productName = LifeMomentsJournal;
 			productReference = EAC4C5A62B0D291C00930A14 /* LifeMomentsJournal.app */;
@@ -382,6 +385,7 @@
 				EA72778C2B1379D30044F320 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				EA72779E2B13D0840044F320 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				EA683EAD2B263F9700CC1076 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				EA0C5F2C2B3CC7B600AC56F9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = EAC4C5A72B0D291C00930A14 /* Products */;
 			projectDirPath = "";
@@ -769,6 +773,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		EA0C5F2C2B3CC7B600AC56F9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.10.1;
+			};
+		};
 		EA683EAD2B263F9700CC1076 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -796,6 +808,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EA0C5F2D2B3CC7B600AC56F9 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EA0C5F2C2B3CC7B600AC56F9 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		EA42404C2B34DC910036815E /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EA72778C2B1379D30044F320 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

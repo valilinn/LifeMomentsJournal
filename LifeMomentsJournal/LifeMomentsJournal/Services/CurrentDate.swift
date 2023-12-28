@@ -9,12 +9,6 @@ import Foundation
 
 struct CurrentDate {
     var date: String = {
-//        let currentDate = Date()
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "dd MMMM yyyy"
-//        let formattedDate = dateFormatter.string(from: currentDate)
-//        print(formattedDate)
-//        return formattedDate
         let timestamp = Date().timeIntervalSince1970
         let date = Date(timeIntervalSince1970: timestamp)
 

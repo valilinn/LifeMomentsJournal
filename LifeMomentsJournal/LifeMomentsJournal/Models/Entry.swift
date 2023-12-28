@@ -12,5 +12,6 @@ struct Entry {
     var date: String
     var title: String?
     var content: String?
-    var images: [Data]?
+    var imagesData: [Data]?
+    var imagesURL: [String]?
 }

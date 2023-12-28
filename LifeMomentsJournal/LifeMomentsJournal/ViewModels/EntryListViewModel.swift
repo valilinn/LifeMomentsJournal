@@ -37,7 +37,7 @@ class EntryListViewModel {
                     return date1 > date2
                 }
                 self?.entries.onNext(sortedEntries)
-                print("Sorted entries by date: \(sortedEntries)")
+//                print("Sorted entries by date: \(sortedEntries)")
             }
         }
     }

@@ -60,17 +60,7 @@ class JournalViewController: UIViewController {
             .bind(to: journalView.collectionView.rx.items(cellIdentifier: EntriesListCell.reuseID, cellType: EntriesListCell.self)) { index, entry, cell in
                 
                 DispatchQueue.main.async {
-                    cell.dateLabel.text = entry.date
-                    cell.titleLabel.text = entry.title
-                    cell.contentLabel.text = entry.content
-                    
-                    if let imageData = entry.images?.first, let image = UIImage(data: imageData) {
-                        cell.entryImageView.image = image
-                    } else {
-                        cell.entryImageView.image = nil
-                        // или
-                        // cell.entryImageView.isHidden = true
-                    }
+                    cell.configure(with: entry)
                 }
             }
             .disposed(by: bag)

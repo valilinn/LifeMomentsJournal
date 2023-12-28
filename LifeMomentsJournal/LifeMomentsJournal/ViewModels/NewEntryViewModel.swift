@@ -14,6 +14,7 @@ class NewEntryViewModel {
     let title = BehaviorSubject<String>(value: "")
     let content = BehaviorSubject<String>(value: "")
     let images = BehaviorSubject<[Data]>(value: [])
+    let imagesURL = BehaviorSubject<[String]>(value: [])
 //    let saveEntryTapped = PublishSubject<Void>()
     
     
@@ -41,7 +42,7 @@ class NewEntryViewModel {
     
     func createEntry() {
         guard let userId = AuthenticationService.shared.userId else { return }
-        let entry = Entry(userId: userId, date: try! date.value(), title: try! title.value(), content: try! content.value(), images: try! images.value() )
+        let entry = Entry(userId: userId, date: try! date.value(), title: try! title.value(), content: try! content.value(), imagesData: try! images.value() )
         FirestoreAndStorageService.shared.saveEntry(entry: entry)
     }
     
@@ -51,7 +52,7 @@ class NewEntryViewModel {
 //        date.onNext(newEntry.date)
         title.onNext(newEntry.title ?? "")
         content.onNext(newEntry.content ?? "")
-        images.onNext(newEntry.images ?? [])
+        images.onNext(newEntry.imagesData ?? [])
     }
     
     func didSelectImages(_ selectedImages: [Data]) {

@@ -54,7 +54,7 @@ class AuthenticationViewController: UIViewController {
               AuthenticationService.shared.state = user == nil ? .signedOut : .signedIn
               print(user?.email)
               AuthenticationService.shared.saveToUserDefaults()
-            print("OK")
+            print("Auth is OK")
           }
         } else {
             print("NOT NIL")
@@ -65,7 +65,7 @@ class AuthenticationViewController: UIViewController {
     @objc
     private func loginWithGoogle() {
         AuthenticationService.shared.signIn(vc: self) { [weak self] success in
-            print(success)
+//            print(success)
             var vc = TabBarViewController()
             vc.modalPresentationStyle = .fullScreen
             self?.present(vc, animated: true)

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class EntriesListCell: UICollectionViewCell {
     
@@ -28,12 +29,20 @@ class EntriesListCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    func configure(with item: Entry) {
-//        dateLabel.text = item.date
-//        titleLabel.text = item.title
-//        contentLabel.text = "\(item.content)"
+    func configure(with item: Entry) {
+        dateLabel.text = item.date
+        titleLabel.text = item.title
+        guard let content = item.content else { return }
+        contentLabel.text = content
+        guard let imageURL = item.imagesURL?.first else {
+            entryImageView.image = nil
+//            entryImageView.image = UIImage(named: "defaultImage")
+            return
+        }
+        let url = URL(string: imageURL)
+        entryImageView.kf.setImage(with: url)
 //        print("Cell is OK - \(item.title), \(item.content)")
-//    }
+    }
     
     private func setViews() {
         dateLabel.text = "14 February 2023"
@@ -52,7 +61,7 @@ class EntriesListCell: UICollectionViewCell {
         contentLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)
         
         contentLabel.numberOfLines = 5
-        entryImageView.image = UIImage(named: "morskieOko")
+//        entryImageView.image = UIImage(named: "morskieOko")
         entryImageView.contentMode = .scaleToFill
         entryImageView.layer.cornerRadius = 8 
         entryImageView.layer.masksToBounds = true
