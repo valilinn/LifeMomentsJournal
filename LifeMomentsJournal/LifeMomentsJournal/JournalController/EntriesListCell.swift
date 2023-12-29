@@ -62,9 +62,10 @@ class EntriesListCell: UICollectionViewCell {
         
         contentLabel.numberOfLines = 5
 //        entryImageView.image = UIImage(named: "morskieOko")
-        entryImageView.contentMode = .scaleToFill
-        entryImageView.layer.cornerRadius = 8 
+        entryImageView.contentMode = .scaleAspectFill
+        entryImageView.layer.cornerRadius = 8
         entryImageView.layer.masksToBounds = true
+        
         
     }
     
@@ -75,16 +76,23 @@ class EntriesListCell: UICollectionViewCell {
             $0.edges.equalToSuperview()
         }
         
-        let stack = UIStackView(arrangedSubviews: [titleLabel, contentLabel, dateLabel])
+        let stack = UIStackView(arrangedSubviews: [titleLabel, contentLabel])
         stack.axis = .vertical
         stack.alignment = .leading
         
         containerView.addSubview(stack)
+        containerView.addSubview(dateLabel)
         containerView.addSubview(entryImageView)
         
-        stack.snp.makeConstraints {
-            $0.leading.equalTo(containerView.snp.leading).offset(16)
+        entryImageView.snp.makeConstraints {
+            $0.trailing.equalTo(containerView.snp.trailing).offset(-8)
             $0.centerY.equalTo(containerView.snp.centerY)
+            $0.width.height.equalTo(130)
+        }
+        
+        stack.snp.makeConstraints {
+            $0.top.equalTo(entryImageView.snp.top).offset(8)
+            $0.leading.equalTo(containerView.snp.leading).offset(16)
             $0.trailing.equalTo(entryImageView.snp.leading).offset(-16)
         }
         
@@ -93,14 +101,9 @@ class EntriesListCell: UICollectionViewCell {
         }
         
         
-        entryImageView.snp.makeConstraints {
-            $0.trailing.equalTo(containerView.snp.trailing).offset(-16)
-            $0.centerY.equalTo(stack.snp.centerY)
-            $0.width.height.equalTo(130)
-        }
-        
         dateLabel.snp.makeConstraints {
-            $0.top.equalTo(contentLabel.snp.bottom).offset(16)
+            $0.top.equalTo(entryImageView.snp.bottom).offset(-16)
+            $0.leading.equalTo(stack.snp.leading)
         }
     }
     

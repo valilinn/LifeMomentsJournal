@@ -70,8 +70,8 @@ class JournalViewController: UIViewController {
     private func createLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnvironment in
             guard let self = self else { return nil }
-                let item = CompositionalLayout.createItem(width: .fractionalWidth(1), height: .fractionalHeight(0.4), spacing: 3)
-            let group = CompositionalLayout.createGroup(alignment: .vertical, width: .fractionalWidth(1), height: .fractionalHeight(0.3), item: item, count: 1)
+                let item = CompositionalLayout.createItem(width: .fractionalWidth(1), height: .fractionalHeight(1), spacingTopBottom: 5, spacingLeadingTrailing: 12)
+            let group = CompositionalLayout.createGroup(alignment: .vertical, width: .fractionalWidth(1), height: .fractionalHeight(0.25), item: item, count: 1)
                 let section = NSCollectionLayoutSection(group: group)
                 return section
         }
@@ -84,9 +84,6 @@ class JournalViewController: UIViewController {
         }
         containerView.backgroundColor = UIColor(named: "mainColor")
     }
-    
-    
-
 }
 
 
@@ -94,24 +91,3 @@ class JournalViewController: UIViewController {
 
 extension JournalViewController: UICollectionViewDelegate {}
 
-//extension JournalViewController : UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        entries.count
-//    }
-    
-    
-    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let currentEntry = entries[indexPath.item]
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EntriesListCell.reuseID, for: indexPath) as! EntriesListCell
-//        
-//        cell.dateLabel.text = "\(currentEntry.date)"
-//        cell.titleLabel.text = "\(currentEntry.title)"
-//        cell.contentLabel.text = "\(currentEntry.content)"
-//        cell.entryImageView.image = UIImage(named: currentEntry.image)
-//        
-//        return cell
-//    }
-    
-    
-//}

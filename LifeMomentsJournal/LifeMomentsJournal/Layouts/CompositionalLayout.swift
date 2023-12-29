@@ -18,11 +18,12 @@ struct CompositionalLayout {
     
     static func createItem(width: NSCollectionLayoutDimension,
                            height: NSCollectionLayoutDimension,
-                           spacing: CGFloat
+                           spacingTopBottom: CGFloat,
+                           spacingLeadingTrailing: CGFloat
     ) -> NSCollectionLayoutItem {
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: width, heightDimension: height))
         //paddings between items
-        item.contentInsets = NSDirectionalEdgeInsets(top: spacing, leading: spacing, bottom: spacing, trailing: spacing)
+        item.contentInsets = NSDirectionalEdgeInsets(top: spacingTopBottom, leading: spacingLeadingTrailing, bottom: spacingTopBottom, trailing: spacingLeadingTrailing)
         
         return item
     }

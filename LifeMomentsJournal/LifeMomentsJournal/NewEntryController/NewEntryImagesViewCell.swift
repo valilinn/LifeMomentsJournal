@@ -10,6 +10,8 @@ import SnapKit
 
 class NewEntryImagesViewCell: UICollectionViewCell {
     
+    let deleteButton = UIButton()
+    
     static let reuseID = "ImageCell"
     
     private let containerView = UIView()
@@ -32,6 +34,9 @@ class NewEntryImagesViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 8
         imageView.layer.masksToBounds = true
+        
+        deleteButton.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+        deleteButton.tintColor = .white
     }
     
     private func setConstraints() {
@@ -48,9 +53,15 @@ class NewEntryImagesViewCell: UICollectionViewCell {
         imageView.snp.makeConstraints {
             $0.centerX.equalTo(containerView.snp.centerX)
             $0.centerY.equalTo(containerView.snp.centerY)
-//            $0.height.equalTo(300)
-            $0.width.equalTo(200)
-            $0.height.equalTo(200)
+            $0.width.equalTo(150)
+            $0.height.equalTo(150)
+        }
+        
+        containerView.addSubview(deleteButton)
+        
+        deleteButton.snp.makeConstraints {
+            $0.top.equalTo(containerView.snp.top).offset(4)
+            $0.trailing.equalTo(containerView.snp.trailing).offset(-4)
         }
     }
 }

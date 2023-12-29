@@ -80,10 +80,10 @@ class NewEntryView: UIView {
         containerView.addSubview(imagesCollectionView)
         
         imagesCollectionView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide.snp.top)
+            $0.top.equalTo(safeAreaLayoutGuide.snp.topMargin)
             $0.leading.equalTo(containerView.snp.leading)
             $0.trailing.equalTo(containerView.snp.trailing)
-            $0.height.equalTo(170)
+            $0.height.equalTo(154)
         }
         
         containerView.addSubview(dateLabel)

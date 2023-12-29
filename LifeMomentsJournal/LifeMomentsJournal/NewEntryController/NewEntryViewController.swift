@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import PhotosUI
 import MobileCoreServices
+import SnapKit
 
 class NewEntryViewController: UIViewController, UICollectionViewDelegate {
     
@@ -25,8 +26,6 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
         super.viewDidLoad()
         view = newEntryView
         title = "New Entry"
-//        newEntryView.imagesCollectionView.collectionView.delegate = self
-//        newEntryView.imagesCollectionView.collectionView.dataSource = self
         newEntryView.imagesCollectionView.collectionView.collectionViewLayout = createLayout()
         viewModel.getCurrentDate()
         setButtons()
@@ -54,13 +53,6 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
         newEntryView.contentView.rx.text.orEmpty
             .bind(to: viewModel.content)
             .disposed(by: bag)
-        
-        //??
-//        newEntryView.addImagesButton.rx.tap
-//            .subscribe(onNext: { [weak self] _ in
-//                self?.showPickingAlert()
-//            })
-//            .disposed(by: bag)
         
         viewModel.images
             .observe(on: MainScheduler.instance)
@@ -103,7 +95,7 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
     private func createLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnvironment in
             guard let self = self else { return nil }
-            let item = CompositionalLayout.createItem(width: .fractionalWidth(1), height: .fractionalHeight(1), spacing: 1)
+            let item = CompositionalLayout.createItem(width: .fractionalWidth(1), height: .fractionalHeight(1), spacingTopBottom: 1, spacingLeadingTrailing: 1)
             let group = CompositionalLayout.createGroup(alignment: .horizontal, width: .fractionalWidth(0.4), height: .fractionalHeight(1), items: [item])
             let section = NSCollectionLayoutSection(group: group)
             section.orthogonalScrollingBehavior = .continuous
@@ -140,7 +132,6 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
     
     @objc
     private func saveEntryButtonTapped() {
-//        let entry = Entry(userId: viewModel.userId , date: newEntryView.dateLabel.text ?? "", title: newEntryView.titleView.text ?? "", content: newEntryView.contentView.text ?? "", images: viewModel.images.value)
         viewModel.createEntry()
         dismiss(animated: true)
         if let tabBarController = self.presentingViewController as? TabBarViewController {
@@ -200,50 +191,12 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
         present(phPickerVC, animated: true)
     }
     
-    
 }
-
-//extension NewEntryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-//    
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-////        if entries.count <= 10 {
-////            return entries.count
-////        } else {
-////            return 10
-////        }
-//        return try! viewModel.images.value().count
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-////        let currentEntry = entries[indexPath.item]
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewEntryImagesViewCell.reuseID, for: indexPath) as! NewEntryImagesViewCell
-//        
-//        //        cell.imageView.image = UIImage(named: currentEntry.image)
-//        let imageData = try! viewModel.images.value()[indexPath.item]
-//        let image = UIImage(data: imageData)
-//        
-//        cell.imageView.image = image
-//        
-//        return cell
-//    }
-//}
 
 extension NewEntryViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate, PHPickerViewControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
-    
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        guard let image = info[.originalImage] as? UIImage else {
-//            return
-//        }
-//        picker.dismiss(animated: true)
-//        
-//        // Обработка выбора изображения
-//        // Вызов метода в ViewModel для сохранения изображения
-////        viewModel.saveImage(image)
-////        images.append(image)
-//    }
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         dismiss(animated: true)
@@ -263,7 +216,6 @@ extension NewEntryViewController: UIImagePickerControllerDelegate & UINavigation
             }
         }
         dispatchGroup.notify(queue: .main) {
-            // when all images will loaded
             self.viewModel.didSelectImages(self.allSelectedImages)
         }
     }
