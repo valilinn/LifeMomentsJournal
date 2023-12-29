@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 
 class NewEntryViewModel {
+//    let documentId = BehaviorSubject<String>(value: "")
     let date = BehaviorSubject<String>(value: "")
     let title = BehaviorSubject<String>(value: "")
     let content = BehaviorSubject<String>(value: "")

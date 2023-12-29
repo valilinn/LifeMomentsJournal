@@ -42,6 +42,7 @@ class FirestoreAndStorageService {
             group.notify(queue: .main) {
                 newDocumentRef.setData([
                     "userId": entry.userId,
+                    "documentId": documentId,
                     "date": entry.date,
                     "title": entry.title ?? "",
                     "content": entry.content ?? "",
@@ -97,15 +98,15 @@ class FirestoreAndStorageService {
                     let data = document.data()
                     
                     if let userId = data["userId"] as? String,
+                       let documentId = data["documentId"] as? String,
                        let date = data["date"] as? String,
                        let title = data["title"] as? String,
                        let content = data["content"] as? String,
                        let imagesURL = data["imagesURL"] as? [String] {
-                        print("Can i have an entry? - listenForEntries")
                         let documentId = document.documentID
-                        let entry = Entry(userId: userId, date: date, title: title, content: content, imagesData: nil, imagesURL: imagesURL)
+                        let entry = Entry(userId: userId, documentId: documentId, date: date, title: title, content: content, imagesData: nil, imagesURL: imagesURL)
                         entries.append(entry)
-                        print("Entries append")
+                        print("Entries downloaded")
                         completion(entries, nil)
                     }
                     

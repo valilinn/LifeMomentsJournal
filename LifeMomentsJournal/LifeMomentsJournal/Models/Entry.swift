@@ -9,6 +9,7 @@ import Foundation
 
 struct Entry {
     var userId: String
+    var documentId: String?
     var date: String
     var title: String?
     var content: String?
