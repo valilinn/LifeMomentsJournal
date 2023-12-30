@@ -28,7 +28,7 @@ class DetailEntryCollectionView: UIView {
         addSubview(collectionView)
         
         collectionView.register(DetailEntryImagesViewCell.self, forCellWithReuseIdentifier: DetailEntryImagesViewCell.reuseID)
-        collectionView.backgroundColor = UIColor.brown
+        collectionView.backgroundColor = UIColor.white
         
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

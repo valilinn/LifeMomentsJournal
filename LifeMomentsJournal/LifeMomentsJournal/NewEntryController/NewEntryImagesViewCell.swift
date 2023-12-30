@@ -53,8 +53,8 @@ class NewEntryImagesViewCell: UICollectionViewCell {
         imageView.snp.makeConstraints {
             $0.centerX.equalTo(containerView.snp.centerX)
             $0.centerY.equalTo(containerView.snp.centerY)
-            $0.width.equalTo(150)
-            $0.height.equalTo(150)
+            $0.width.equalTo(containerView)
+            $0.height.equalTo(containerView)
         }
         
         containerView.addSubview(deleteButton)

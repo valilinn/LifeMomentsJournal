@@ -56,7 +56,7 @@ class ImagesViewCell: UICollectionViewCell {
         imageView.snp.makeConstraints {
             $0.centerX.equalTo(containerView.snp.centerX)
             $0.centerY.equalTo(containerView.snp.centerY)
-            $0.width.height.equalTo(200)
+            $0.width.height.equalTo(containerView)
         }
         
        

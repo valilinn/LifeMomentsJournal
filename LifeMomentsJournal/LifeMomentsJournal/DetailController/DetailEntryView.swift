@@ -38,8 +38,8 @@ class DetailEntryView: UIView {
     
     private func setViews() {
         scrollView.backgroundColor = .orange
-        containerView.backgroundColor = .cyan
-        contentView.backgroundColor = .green
+        containerView.backgroundColor = .white
+        contentView.backgroundColor = .white
         
         dateLabel.text = "2023-12-21 12:56"
         dateLabel.font = UIFont.systemFont(ofSize: 18)
