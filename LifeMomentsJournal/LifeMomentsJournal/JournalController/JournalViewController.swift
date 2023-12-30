@@ -19,7 +19,7 @@ class JournalViewController: UIViewController {
     private let journalView = JournalView()
     private let viewModel = EntryListViewModel()
     private var bag = DisposeBag()
-    private let containerView = UIView()
+//    private let containerView = UIView()
     private let signOutButton = UIButton()
     private let signOutButtonTitle = UILabel()
     
@@ -28,6 +28,7 @@ class JournalViewController: UIViewController {
         super.viewDidLoad()
         view = journalView
         journalView.collectionView.collectionViewLayout = createLayout()
+//        journalView.collectionView.isEditing = true
         navigationController?.navigationBar.prefersLargeTitles = true
         setButton()
         setBind()
@@ -64,12 +65,32 @@ class JournalViewController: UIViewController {
                 }
             }
             .disposed(by: bag)
+        
+        journalView.collectionView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
+            print(indexPath.row)
+            guard var entries = try? self?.viewModel.entries.value() else { return }
+            let selectedEntry = entries[indexPath.row]
+            print("selected entry is \(selectedEntry)")
+            let detailViewModel = DetailEntryViewModel()
+            detailViewModel.entry.onNext(selectedEntry)
+            let vc = DetailEntryViewController()
+            vc.viewModel = detailViewModel
+//            vc.entryIndex = indexPath.row
+            vc.hidesBottomBarWhenPushed = true
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }).disposed(by: bag)
+        
+//        journalView.collectionView.rx.itemDeleted.subscribe(onNext: { [weak self] indexPath in
+//            guard let self = self else { return }
+//            self.viewModel.deleteEntry(index: indexPath.row)
+//            print("Deleted item - \(indexPath.row)")
+//        }).disposed(by: bag)
     }
     
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
-        UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnvironment in
-            guard let self = self else { return nil }
+        UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
+//            guard let self = self else { return nil }
                 let item = CompositionalLayout.createItem(width: .fractionalWidth(1), height: .fractionalHeight(1), spacingTopBottom: 5, spacingLeadingTrailing: 12)
             let group = CompositionalLayout.createGroup(alignment: .vertical, width: .fractionalWidth(1), height: .fractionalHeight(0.25), item: item, count: 1)
                 let section = NSCollectionLayoutSection(group: group)
@@ -77,13 +98,13 @@ class JournalViewController: UIViewController {
         }
     }
     
-    private func configureUIElements() {
-        view.addSubview(containerView)
-        containerView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        containerView.backgroundColor = UIColor(named: "mainColor")
-    }
+//    private func configureUIElements() {
+//        view.addSubview(containerView)
+//        containerView.snp.makeConstraints { make in
+//            make.edges.equalToSuperview()
+//        }
+//        containerView.backgroundColor = UIColor(named: "mainColor")
+//    }
 }
 
 

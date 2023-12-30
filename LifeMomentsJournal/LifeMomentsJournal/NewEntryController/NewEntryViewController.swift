@@ -18,8 +18,8 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
     private var viewModel = NewEntryViewModel()
     private let bag = DisposeBag()
     
-    private let newEntryImagesView = NewEntryCollectionView()
-    private let imageView = UIImageView()
+//    private let newEntryImagesView = NewEntryCollectionView()
+//    private let imageView = UIImageView()
     var allSelectedImages = [Data]()
 
     override func viewDidLoad() {
@@ -56,7 +56,8 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
         
         viewModel.images
             .observe(on: MainScheduler.instance)
-            .bind(to: newEntryView.imagesCollectionView.collectionView.rx.items(cellIdentifier: NewEntryImagesViewCell.reuseID, cellType: NewEntryImagesViewCell.self)) { index, imageData, cell in
+            .bind(to: newEntryView.imagesCollectionView.collectionView.rx
+                .items(cellIdentifier: NewEntryImagesViewCell.reuseID, cellType: NewEntryImagesViewCell.self)) { index, imageData, cell in
                 if let image = UIImage(data: imageData) {
                     cell.imageView.image = image
                 }

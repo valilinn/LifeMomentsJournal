@@ -41,12 +41,19 @@
 		EA7277A02B13D0840044F320 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = EA72779F2B13D0840044F320 /* GoogleSignIn */; };
 		EA7277A22B13D0840044F320 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EA7277A12B13D0840044F320 /* GoogleSignInSwift */; };
 		EA7277A42B13D4250044F320 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7277A32B13D4250044F320 /* AuthenticationService.swift */; };
+		EA7AD33B2B3F5FE4002E8D54 /* DetailEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AD33A2B3F5FE4002E8D54 /* DetailEntryViewController.swift */; };
+		EA7AD33D2B3F7575002E8D54 /* DetailEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AD33C2B3F7575002E8D54 /* DetailEntryViewModel.swift */; };
 		EA8BC7302B2E5D2200046352 /* NewEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8BC72F2B2E5D2200046352 /* NewEntryViewModel.swift */; };
 		EAC4C5AA2B0D291C00930A14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4C5A92B0D291C00930A14 /* AppDelegate.swift */; };
 		EAC4C5AC2B0D291C00930A14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4C5AB2B0D291C00930A14 /* SceneDelegate.swift */; };
 		EAC4C5AE2B0D291C00930A14 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4C5AD2B0D291C00930A14 /* AuthenticationViewController.swift */; };
 		EAC4C5B32B0D291F00930A14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAC4C5B22B0D291F00930A14 /* Assets.xcassets */; };
 		EAC4C5B62B0D291F00930A14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC4C5B42B0D291F00930A14 /* LaunchScreen.storyboard */; };
+		EADC21272B401BDF007FBF6C /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADC21262B401BDF007FBF6C /* ImagesViewController.swift */; };
+		EADC212A2B401C66007FBF6C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADC21292B401C66007FBF6C /* SettingsViewController.swift */; };
+		EADC212C2B401F85007FBF6C /* ImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADC212B2B401F85007FBF6C /* ImagesView.swift */; };
+		EADC212E2B402021007FBF6C /* ImagesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADC212D2B402021007FBF6C /* ImagesViewCell.swift */; };
+		EADC21302B402514007FBF6C /* ImagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADC212F2B402514007FBF6C /* ImagesViewModel.swift */; };
 		EAE0CFE52B3238D900C670CA /* PhotosManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0CFE42B3238D900C670CA /* PhotosManager.swift */; };
 		EAEF22852B1FDD730080173C /* NewEntryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF22842B1FDD730080173C /* NewEntryCollectionView.swift */; };
 		EAF71CC72B1D0ACF00217052 /* NewEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF71CC62B1D0ACF00217052 /* NewEntryView.swift */; };
@@ -84,6 +91,8 @@
 		EA683EA62B263E6400CC1076 /* LifeMomentsJournalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeMomentsJournalTests.swift; sourceTree = "<group>"; };
 		EA72779C2B13A9500044F320 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EA7277A32B13D4250044F320 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		EA7AD33A2B3F5FE4002E8D54 /* DetailEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEntryViewController.swift; sourceTree = "<group>"; };
+		EA7AD33C2B3F7575002E8D54 /* DetailEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEntryViewModel.swift; sourceTree = "<group>"; };
 		EA8BC72F2B2E5D2200046352 /* NewEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryViewModel.swift; sourceTree = "<group>"; };
 		EAC4C5A62B0D291C00930A14 /* LifeMomentsJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifeMomentsJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAC4C5A92B0D291C00930A14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +101,11 @@
 		EAC4C5B22B0D291F00930A14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAC4C5B52B0D291F00930A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAC4C5B72B0D291F00930A14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EADC21262B401BDF007FBF6C /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
+		EADC21292B401C66007FBF6C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		EADC212B2B401F85007FBF6C /* ImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesView.swift; sourceTree = "<group>"; };
+		EADC212D2B402021007FBF6C /* ImagesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewCell.swift; sourceTree = "<group>"; };
+		EADC212F2B402514007FBF6C /* ImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewModel.swift; sourceTree = "<group>"; };
 		EAE0CFE42B3238D900C670CA /* PhotosManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosManager.swift; sourceTree = "<group>"; };
 		EAEF22842B1FDD730080173C /* NewEntryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryCollectionView.swift; sourceTree = "<group>"; };
 		EAF71CC62B1D0ACF00217052 /* NewEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryView.swift; sourceTree = "<group>"; };
@@ -208,6 +222,7 @@
 		EA66DF752B336C4D00943B90 /* DetailController */ = {
 			isa = PBXGroup;
 			children = (
+				EA7AD33A2B3F5FE4002E8D54 /* DetailEntryViewController.swift */,
 				EA67B7DB2B20DFBC003DDBD7 /* DetailEntryView.swift */,
 				EA67B7D92B20DD2D003DDBD7 /* DetailEntryCollectionView.swift */,
 				EA67B7D72B20DC7C003DDBD7 /* DetailEntryImagesViewCell.swift */,
@@ -228,6 +243,8 @@
 			children = (
 				EA42404E2B34DDF40036815E /* EntryListViewModel.swift */,
 				EA8BC72F2B2E5D2200046352 /* NewEntryViewModel.swift */,
+				EA7AD33C2B3F7575002E8D54 /* DetailEntryViewModel.swift */,
+				EADC212F2B402514007FBF6C /* ImagesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -265,6 +282,8 @@
 				EA66DF722B336BA000943B90 /* JournalController */,
 				EA66DF742B336C0300943B90 /* NewEntryController */,
 				EA66DF752B336C4D00943B90 /* DetailController */,
+				EADC21252B401BAF007FBF6C /* ImagesController */,
+				EADC21282B401C48007FBF6C /* SettingsController */,
 				EA50DA5D2B17F4EE003B50A5 /* Layouts */,
 				EA50DA612B17FAB0003B50A5 /* Models */,
 				EA1583E12B1CD5C7006A6242 /* Services */,
@@ -273,6 +292,24 @@
 				EAC4C5B72B0D291F00930A14 /* Info.plist */,
 			);
 			path = LifeMomentsJournal;
+			sourceTree = "<group>";
+		};
+		EADC21252B401BAF007FBF6C /* ImagesController */ = {
+			isa = PBXGroup;
+			children = (
+				EADC21262B401BDF007FBF6C /* ImagesViewController.swift */,
+				EADC212B2B401F85007FBF6C /* ImagesView.swift */,
+				EADC212D2B402021007FBF6C /* ImagesViewCell.swift */,
+			);
+			path = ImagesController;
+			sourceTree = "<group>";
+		};
+		EADC21282B401C48007FBF6C /* SettingsController */ = {
+			isa = PBXGroup;
+			children = (
+				EADC21292B401C66007FBF6C /* SettingsViewController.swift */,
+			);
+			path = SettingsController;
 			sourceTree = "<group>";
 		};
 		F8B9C50402FA6C3B38DA3228 /* Pods */ = {
@@ -473,17 +510,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAEF22852B1FDD730080173C /* NewEntryCollectionView.swift in Sources */,
+				EADC21302B402514007FBF6C /* ImagesViewModel.swift in Sources */,
 				EAC4C5AE2B0D291C00930A14 /* AuthenticationViewController.swift in Sources */,
+				EADC212C2B401F85007FBF6C /* ImagesView.swift in Sources */,
 				EA1583DE2B1C8172006A6242 /* NewEntryViewController.swift in Sources */,
+				EADC212E2B402021007FBF6C /* ImagesViewCell.swift in Sources */,
 				EA42404F2B34DDF40036815E /* EntryListViewModel.swift in Sources */,
 				EA50DA632B17FAD4003B50A5 /* Entry.swift in Sources */,
+				EADC21272B401BDF007FBF6C /* ImagesViewController.swift in Sources */,
 				EA67B7D82B20DC7C003DDBD7 /* DetailEntryImagesViewCell.swift in Sources */,
+				EA7AD33D2B3F7575002E8D54 /* DetailEntryViewModel.swift in Sources */,
 				EA42404B2B34DC480036815E /* FirestoreAndStorageService.swift in Sources */,
 				EAE0CFE52B3238D900C670CA /* PhotosManager.swift in Sources */,
 				EA1583E02B1C9141006A6242 /* TabBarViewController.swift in Sources */,
 				EA1F432C2B1E83980033ED82 /* NewEntryImagesViewCell.swift in Sources */,
 				EAF71CC72B1D0ACF00217052 /* NewEntryView.swift in Sources */,
 				EA7277A42B13D4250044F320 /* AuthenticationService.swift in Sources */,
+				EA7AD33B2B3F5FE4002E8D54 /* DetailEntryViewController.swift in Sources */,
 				EA50DA602B17F676003B50A5 /* EntriesListCell.swift in Sources */,
 				EA8BC7302B2E5D2200046352 /* NewEntryViewModel.swift in Sources */,
 				EA1583DC2B1C6C66006A6242 /* CompositionalLayout.swift in Sources */,
@@ -492,6 +535,7 @@
 				EA36776C2B3100B60018BDD8 /* CurrentDate.swift in Sources */,
 				EA50DA5B2B17CE83003B50A5 /* JournalView.swift in Sources */,
 				EAF7850C2B155F7000719089 /* JournalViewController.swift in Sources */,
+				EADC212A2B401C66007FBF6C /* SettingsViewController.swift in Sources */,
 				EA67B7DC2B20DFBC003DDBD7 /* DetailEntryView.swift in Sources */,
 				EAC4C5AC2B0D291C00930A14 /* SceneDelegate.swift in Sources */,
 			);

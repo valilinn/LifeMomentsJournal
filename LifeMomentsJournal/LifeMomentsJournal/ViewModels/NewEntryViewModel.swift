@@ -43,7 +43,11 @@ class NewEntryViewModel {
     
     func createEntry() {
         guard let userId = AuthenticationService.shared.userId else { return }
-        let entry = Entry(userId: userId, date: try! date.value(), title: try! title.value(), content: try! content.value(), imagesData: try! images.value() )
+        guard let date = try? date.value() else { return }
+        guard let title = try? title.value() else { return }
+        guard let content = try? content.value() else { return }
+        guard let images = try? images.value() else { return }
+        let entry = Entry(userId: userId, date: date, title: title, content: content, imagesData: images)
         FirestoreAndStorageService.shared.saveEntry(entry: entry)
     }
     

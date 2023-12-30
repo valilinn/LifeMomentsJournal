@@ -8,8 +8,6 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
-    
-//    let viewModel = NewEntryViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +20,10 @@ class TabBarViewController: UITabBarController {
 
     private func setupTabs() {
         let journal = createNav(with: "Journal", and: UIImage(systemName: "book"), mainTitle: "Life Moments Journal", selectedImage: UIImage(systemName: "book.fill"), vc: JournalViewController())
+        let photos = createNav(with: "Photos", and: UIImage(systemName: "photo.on.rectangle"), mainTitle: "My Photos", selectedImage: UIImage(systemName: "photo.fill.on.rectangle.fill"), vc: ImagesViewController())
+        let settings = createNav(with: "Settings", and: UIImage(systemName: "gearshape"), mainTitle: "Settings", selectedImage: UIImage(systemName: "gearshape.fill"), vc: SettingsViewController())
        
-        self.setViewControllers([journal], animated: true)
+        self.setViewControllers([journal, photos, settings], animated: true)
         
     }
 
@@ -62,15 +62,3 @@ class TabBarViewController: UITabBarController {
 
 }
 
-//extension TabBarViewController: UITabBarControllerDelegate {
-//    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-//        if self.selectedIndex == 1 {
-//            let vc = UINavigationController(rootViewController: NewEntryViewController(viewModel: viewModel)) 
-//            vc.modalPresentationStyle = .fullScreen
-//            
-//            present(vc, animated: true)
-//        }
-//    }
-//    
-//    
-//}

@@ -1,8 +1,8 @@
 //
-//  EntryListViewModel.swift
+//  ImagesViewModel.swift
 //  LifeMomentsJournal
 //
-//  Created by Валентина Лінчук on 21/12/2023.
+//  Created by Валентина Лінчук on 30/12/2023.
 //
 
 import Foundation
@@ -10,20 +10,19 @@ import FirebaseFirestore
 import RxSwift
 import RxCocoa
 
-class EntryListViewModel {
+class ImagesViewModel {
     
-    var entries = BehaviorSubject(value: [Entry]())
+    let imagesURL = BehaviorSubject<[String]>(value: [])
     private var entriesListener: ListenerRegistration?
-
-    func fetchEntries() {
+    
+    func fetchImages () {
         guard let userId = AuthenticationService.shared.userId else { return }
         
-        // Remove existing listener if any
         entriesListener?.remove()
         
         FirestoreAndStorageService.shared.listenForEntries(for: userId) { [weak self] entries, error in
             if let error = error {
-                print("Error fetching entries: \(error)")
+                print("Error fetching images: \(error)")
                 // Handle error appropriately
             } else if let entries = entries {
                 let dateFormatter = DateFormatter()
@@ -36,25 +35,16 @@ class EntryListViewModel {
                     }
                     return date1 > date2
                 }
-                self?.entries.onNext(sortedEntries)
+                let allImagesSorted = entries.compactMap { $0.imagesURL }.flatMap { $0 }
+                print("sorted images \(allImagesSorted)")
+                self?.imagesURL.onNext(allImagesSorted)
 //                print("Sorted entries by date: \(sortedEntries)")
             }
         }
+        
     }
-    
     deinit {
             // Remove the listener when the ViewModel is deallocated
             entriesListener?.remove()
         }
-    
-    func deleteEntry(index: Int) {
-        guard var currentEntries = try? entries.value() else { return }
-        guard index >= 0, index < currentEntries.count else { return } //if index in range
-        
-        let entryToDelete = currentEntries[index]
-//        FirestoreAndStorageService.shared.deleteEntry(entry: entryToDelete)
-        
-        currentEntries.remove(at: index)
-        entries.onNext(currentEntries)
-    }
 }

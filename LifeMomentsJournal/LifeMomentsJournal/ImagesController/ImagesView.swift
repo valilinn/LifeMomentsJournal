@@ -1,23 +1,24 @@
 //
-//  DetailEntryCollectionView.swift
+//  ImagesView.swift
 //  LifeMomentsJournal
 //
-//  Created by Валентина Лінчук on 06/12/2023.
+//  Created by Валентина Лінчук on 30/12/2023.
 //
 
-import Foundation
+import UIKit
 import SnapKit
 
-class DetailEntryCollectionView: UIView {
+class ImagesView: UIView {
     
     var collectionView: UICollectionView!
     
     init() {
         super.init(frame: .zero)
-        backgroundColor = UIColor.red
+//        backgroundColor = UIColor(named: "mainColor")
+        backgroundColor = .white
         setupCollectionView()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -27,13 +28,11 @@ class DetailEntryCollectionView: UIView {
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         addSubview(collectionView)
         
-        collectionView.register(DetailEntryImagesViewCell.self, forCellWithReuseIdentifier: DetailEntryImagesViewCell.reuseID)
-        collectionView.backgroundColor = UIColor.brown
+        collectionView.register(ImagesViewCell.self, forCellWithReuseIdentifier: ImagesViewCell.reuseID)
+        collectionView.backgroundColor = .white
         
         collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(safeAreaLayoutGuide.snp.edges)
         }
     }
-    
 }
-
