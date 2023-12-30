@@ -27,10 +27,12 @@ class ImagesViewController: UIViewController {
     private func setBind() {
         
         viewModel.imagesURL
-                .subscribe(onNext: { imageURLs in
-                    print("Received images: \(imageURLs)")
-                })
-                .disposed(by: bag)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] imageURLs in
+                print("Received images")
+                self?.imagesView.collectionView.reloadData()
+            })
+            .disposed(by: bag)
         
         viewModel.imagesURL
             .bind(to: imagesView.collectionView.rx.items(cellIdentifier: ImagesViewCell.reuseID, cellType: ImagesViewCell.self)) { index, imageURL, cell in

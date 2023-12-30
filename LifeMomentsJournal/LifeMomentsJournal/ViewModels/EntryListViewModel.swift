@@ -52,9 +52,15 @@ class EntryListViewModel {
         guard index >= 0, index < currentEntries.count else { return } //if index in range
         
         let entryToDelete = currentEntries[index]
-//        FirestoreAndStorageService.shared.deleteEntry(entry: entryToDelete)
-        
-        currentEntries.remove(at: index)
-        entries.onNext(currentEntries)
+        guard let documentId = entryToDelete.documentId else { return }
+        FirestoreAndStorageService.shared.deleteEntry(documentId: documentId) { success, error in
+            if let error = error {
+                print("Error when deleting an entry: \(error)")
+            } else {
+                currentEntries.remove(at: index)
+                self.entries.onNext(currentEntries)
+                print("Entry deleted successfully")
+            }
+        }
     }
 }

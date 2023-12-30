@@ -45,9 +45,19 @@ class NewEntryViewModel {
         guard let userId = AuthenticationService.shared.userId else { return }
         guard let date = try? date.value() else { return }
         guard let title = try? title.value() else { return }
-        guard let content = try? content.value() else { return }
+        var currentContent: String
+        do {
+            currentContent = try content.value()
+            if currentContent == "Write something..." {
+                // Если content равно "Write something...", устанавливаем defaultContent
+                currentContent = ""
+            }
+        } catch {
+            // Если произошла ошибка при получении значения content, устанавливаем defaultContent
+            currentContent = ""
+        }
         guard let images = try? images.value() else { return }
-        let entry = Entry(userId: userId, date: date, title: title, content: content, imagesData: images)
+        let entry = Entry(userId: userId, date: date, title: title, content: currentContent, imagesData: images)
         FirestoreAndStorageService.shared.saveEntry(entry: entry)
     }
     

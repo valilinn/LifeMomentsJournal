@@ -8,8 +8,10 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import RxSwift
+import RxCocoa
 
-class EntriesListCell: UICollectionViewCell {
+class EntriesListCell: UITableViewCell {
     
     static let reuseID = "EntriesCell" //переиспользуемый идентификатор
     
@@ -19,11 +21,13 @@ class EntriesListCell: UICollectionViewCell {
     let contentLabel = UILabel()
     let entryImageView = UIImageView()
     
-    override init(frame: CGRect) { //must be frame, because will not work without it
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+            super.init(style: style, reuseIdentifier: reuseIdentifier)
         setViews()
         setConstraints()
     }
+    
+   
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -51,7 +55,7 @@ class EntriesListCell: UICollectionViewCell {
         dateLabel.textAlignment = .center
         
         containerView.backgroundColor = .white
-        containerView.layer.cornerRadius = 15
+//        containerView.layer.cornerRadius = 15
         
         titleLabel.text = "Name of Entry"
         titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)

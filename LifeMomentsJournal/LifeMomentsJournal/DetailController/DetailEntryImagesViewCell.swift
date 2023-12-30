@@ -47,7 +47,7 @@ class DetailEntryImagesViewCell: UICollectionViewCell {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        containerView.backgroundColor = .green
+//        containerView.backgroundColor = .green
         
         containerView.addSubview(imageView)
         

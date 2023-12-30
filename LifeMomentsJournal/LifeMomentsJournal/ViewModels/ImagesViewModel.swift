@@ -35,14 +35,14 @@ class ImagesViewModel {
                     }
                     return date1 > date2
                 }
-                let allImagesSorted = entries.compactMap { $0.imagesURL }.flatMap { $0 }
+                let allImagesSorted = sortedEntries.compactMap { $0.imagesURL }.flatMap { $0 }
                 print("sorted images \(allImagesSorted)")
                 self?.imagesURL.onNext(allImagesSorted)
-//                print("Sorted entries by date: \(sortedEntries)")
             }
         }
         
     }
+    
     deinit {
             // Remove the listener when the ViewModel is deallocated
             entriesListener?.remove()

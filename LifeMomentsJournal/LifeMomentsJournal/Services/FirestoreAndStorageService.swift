@@ -116,4 +116,55 @@ class FirestoreAndStorageService {
             
         }
     }
+    
+    func deleteEntry(documentId: String, completion: @escaping (Bool, Error?) -> ()) {
+        let entriesRef = database.collection("entries").document(documentId)
+        entriesRef.delete { [weak self] error in
+            if let error = error {
+                print("Error deleting document \(error)")
+                completion(false, error)
+            } else {
+                self?.deleteFilesFromStorage(documentId: documentId) { storageError in
+                    if let storageError = storageError {
+                        print("Error when deleting files from Storage: \(storageError)")
+                        completion(false, storageError)
+                    } else {
+                        print("Document deleted from Storage")
+                        completion(true, nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func deleteFilesFromStorage(documentId: String, completion: @escaping (Error?) -> Void) {
+        let storage = Storage.storage()
+        let storageRef = storage.reference().child("images/\(documentId)")
+        
+        // Delete all files
+        storageRef.listAll { result, error in
+            if let error = error {
+                print("Error when listing files in storage: \(error)")
+                completion(error)
+            } else {
+                let group = DispatchGroup()
+                
+                guard let items = result?.items else { return }
+                
+                for item in items {
+                    group.enter()
+                    item.delete { error in
+                        if let error = error {
+                            print("Error when deleting a file from Storage: \(error)")
+                        }
+                        group.leave()
+                    }
+                }
+                
+                group.notify(queue: .main) {
+                    completion(nil)
+                }
+            }
+        }
+    }
 }

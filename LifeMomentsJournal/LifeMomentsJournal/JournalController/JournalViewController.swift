@@ -27,7 +27,9 @@ class JournalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = journalView
-        journalView.collectionView.collectionViewLayout = createLayout()
+//        journalView.collectionView.collectionViewLayout = createLayout()
+        journalView.collectionView.delegate = self
+//        journalView.collectionView.dataSource = self
 //        journalView.collectionView.isEditing = true
         navigationController?.navigationBar.prefersLargeTitles = true
         setButton()
@@ -80,23 +82,24 @@ class JournalViewController: UIViewController {
             self?.navigationController?.pushViewController(vc, animated: true)
         }).disposed(by: bag)
         
-//        journalView.collectionView.rx.itemDeleted.subscribe(onNext: { [weak self] indexPath in
-//            guard let self = self else { return }
-//            self.viewModel.deleteEntry(index: indexPath.row)
-//            print("Deleted item - \(indexPath.row)")
-//        }).disposed(by: bag)
+        
+        journalView.collectionView.rx.itemDeleted.subscribe(onNext: { [weak self] indexPath in
+            guard let self = self else { return }
+            self.viewModel.deleteEntry(index: indexPath.row)
+            print("Deleted item - \(indexPath.row)")
+        }).disposed(by: bag)
     }
     
     
-    private func createLayout() -> UICollectionViewCompositionalLayout {
-        UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
-//            guard let self = self else { return nil }
-                let item = CompositionalLayout.createItem(width: .fractionalWidth(1), height: .fractionalHeight(1), spacingTopBottom: 5, spacingLeadingTrailing: 12)
-            let group = CompositionalLayout.createGroup(alignment: .vertical, width: .fractionalWidth(1), height: .fractionalHeight(0.25), item: item, count: 1)
-                let section = NSCollectionLayoutSection(group: group)
-                return section
-        }
-    }
+//    private func createLayout() -> UICollectionViewCompositionalLayout {
+//        UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
+////            guard let self = self else { return nil }
+//                let item = CompositionalLayout.createItem(width: .fractionalWidth(1), height: .fractionalHeight(1), spacingTopBottom: 5, spacingLeadingTrailing: 12)
+//            let group = CompositionalLayout.createGroup(alignment: .vertical, width: .fractionalWidth(1), height: .fractionalHeight(0.25), item: item, count: 1)
+//                let section = NSCollectionLayoutSection(group: group)
+//                return section
+//        }
+//    }
     
 //    private func configureUIElements() {
 //        view.addSubview(containerView)
@@ -110,5 +113,24 @@ class JournalViewController: UIViewController {
 
 
 
-extension JournalViewController: UICollectionViewDelegate {}
+extension JournalViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // Верните высоту ячейки для конкретного индекса
+        return 150 // Например, высота 100 точек
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let inset = UIEdgeInsets(top: 0, left: 16, bottom: 8, right: 16) // Устанавливайте отступы
+        cell.contentView.frame = cell.contentView.frame.inset(by: inset)
+        cell.contentView.layer.masksToBounds = true
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Ваши действия в ответ на выбор ячейки
+
+        // Отмена подсветки
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
 
