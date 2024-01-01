@@ -64,7 +64,7 @@ class EntriesListCell: UITableViewCell {
         contentLabel.text = "Lorem Ipsum Loremmm Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum and typesetting industry. Lorem Ipsum is simply dummy text."
         contentLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)
         
-        contentLabel.numberOfLines = 5
+        contentLabel.numberOfLines = 4
 //        entryImageView.image = UIImage(named: "morskieOko")
         entryImageView.contentMode = .scaleAspectFill
         entryImageView.layer.cornerRadius = 8

@@ -21,10 +21,22 @@ class ImagesViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         imagesView.collectionView.collectionViewLayout = createLayout()
         setBind()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         viewModel.fetchImages()
     }
     
     private func setBind() {
+        
+//        viewModel.entries
+//            .observe(on: MainScheduler.instance)
+//            .subscribe(onNext: { [weak self] _ in
+////                self?.imagesView.collectionView.reloadData()
+//            })
+//            .disposed(by: bag)
         
         viewModel.imagesURL
             .observe(on: MainScheduler.instance)

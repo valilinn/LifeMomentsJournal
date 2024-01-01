@@ -21,6 +21,9 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
 //    private let newEntryImagesView = NewEntryCollectionView()
 //    private let imageView = UIImageView()
     var allSelectedImages = [Data]()
+    let bottomConstraintConstant: CGFloat = 200
+    var keyboardHeight: CGFloat = 0
+  
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +33,13 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
         viewModel.getCurrentDate()
         setButtons()
         setBind()
-        
+        registerKeyboardNotifications()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
+    
+    
+
     
     private func setBind() {
         viewModel.cameraSelected.subscribe(onNext: { [weak self] in
@@ -86,11 +94,45 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        newEntryView.contentView.becomeFirstResponder()
+//        newEntryView.contentView.becomeFirstResponder()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    func registerKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    @objc
+    func keyboardWillShow(_ notification: Foundation.Notification) {
+        guard let userInfo = notification.userInfo else {
+            return
+        }
+        keyboardHeight = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue.size.height
+        
+//        if newEntryView.contentView.isFirstResponder {
+            newEntryView.collectionViewHeightConstraint?.update(offset: 0)
+            newEntryView.contentViewBottomConstraint?.update(offset: -keyboardHeight + 30)
+//        }
+        view.layoutIfNeeded()
+    }
+    
+    @objc
+    func keyboardWillHide(_ notification: Foundation.Notification) {
+        
+//        if newEntryView.contentView.isFirstResponder {
+            newEntryView.collectionViewHeightConstraint?.update(offset: 154)
+            newEntryView.contentViewBottomConstraint?.update(offset: -8)
+//        }
+        view.layoutIfNeeded()
+    }
+    
+    @objc
+    func hideKeyboard() {
+        view.endEditing(true)
     }
     
     private func createLayout() -> UICollectionViewCompositionalLayout {

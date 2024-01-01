@@ -24,8 +24,6 @@ class DetailEntryViewController: UIViewController {
         backButton.title = "Back"
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationItem.titleView = nil
-        title = nil
         detailEntryView.imagesCollectionView.collectionView.collectionViewLayout = createLayout()
         setBind()
     }

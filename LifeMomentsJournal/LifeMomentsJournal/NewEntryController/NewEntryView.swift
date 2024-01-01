@@ -20,6 +20,12 @@ class NewEntryView: UIView {
     let addImagesButton = UIButton()
     let saveEntryButton = UIButton()
     
+    var collectionViewHeightConstraint: Constraint?
+    var dateTopConstraint: Constraint?
+    var titleTopConstraint: Constraint?
+    var contentViewBottomConstraint: Constraint?
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
@@ -83,27 +89,27 @@ class NewEntryView: UIView {
             $0.top.equalTo(safeAreaLayoutGuide.snp.topMargin)
             $0.leading.equalTo(containerView.snp.leading)
             $0.trailing.equalTo(containerView.snp.trailing)
-            $0.height.equalTo(154)
+            collectionViewHeightConstraint = $0.height.equalTo(154).constraint
         }
         
         containerView.addSubview(dateLabel)
         
         dateLabel.snp.makeConstraints {
-            $0.top.equalTo(imagesCollectionView.snp.bottom).offset(16)
+            dateTopConstraint = $0.top.equalTo(imagesCollectionView.snp.bottom).offset(16).constraint
             $0.leading.equalTo(containerView.snp.leading).offset(16)
         }
         
-        containerView.addSubview(changeDate)
-        
-        changeDate.snp.makeConstraints {
-            $0.centerY.equalTo(dateLabel.snp.centerY)
-            $0.leading.equalTo(dateLabel.snp.trailing).offset(8)
-        }
+//        containerView.addSubview(changeDate)
+//        
+//        changeDate.snp.makeConstraints {
+//            $0.centerY.equalTo(dateLabel.snp.centerY)
+//            $0.leading.equalTo(dateLabel.snp.trailing).offset(8)
+//        }
         
         containerView.addSubview(titleView)
         
         titleView.snp.makeConstraints {
-            $0.top.equalTo(dateLabel.snp.bottom).offset(32)
+            titleTopConstraint = $0.top.equalTo(dateLabel.snp.bottom).offset(32).constraint
             $0.leading.equalTo(containerView.snp.leading).offset(16)
             $0.trailing.equalTo(containerView.snp.trailing).offset(-16)
         }
@@ -129,7 +135,8 @@ class NewEntryView: UIView {
             $0.top.equalTo(titleView.snp.bottom).offset(28)
             $0.leading.equalTo(containerView.snp.leading).offset(16)
             $0.trailing.equalTo(containerView.snp.trailing).offset(-16)
-            $0.bottom.equalTo(addImagesButton.snp.top).offset(-8)
+//            $0.bottom.equalTo(addImagesButton.snp.top).offset(-8)
+            contentViewBottomConstraint = $0.bottom.equalTo(addImagesButton.snp.top).offset(-8).constraint
         }
         
     }

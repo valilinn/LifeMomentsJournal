@@ -53,12 +53,13 @@ class EntryListViewModel {
         
         let entryToDelete = currentEntries[index]
         guard let documentId = entryToDelete.documentId else { return }
-        FirestoreAndStorageService.shared.deleteEntry(documentId: documentId) { success, error in
+        FirestoreAndStorageService.shared.deleteEntry(documentId: documentId) { [weak self] success, error in
             if let error = error {
                 print("Error when deleting an entry: \(error)")
             } else {
                 currentEntries.remove(at: index)
-                self.entries.onNext(currentEntries)
+                self?.entries.onNext(currentEntries)
+                //                self?.fetchEntries()
                 print("Entry deleted successfully")
             }
         }

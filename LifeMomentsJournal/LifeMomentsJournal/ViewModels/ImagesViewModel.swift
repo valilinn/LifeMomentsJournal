@@ -13,12 +13,12 @@ import RxCocoa
 class ImagesViewModel {
     
     let imagesURL = BehaviorSubject<[String]>(value: [])
-    private var entriesListener: ListenerRegistration?
+    private var imagesListener: ListenerRegistration?
     
-    func fetchImages () {
+    func fetchImages() {
         guard let userId = AuthenticationService.shared.userId else { return }
         
-        entriesListener?.remove()
+        imagesListener?.remove()
         
         FirestoreAndStorageService.shared.listenForEntries(for: userId) { [weak self] entries, error in
             if let error = error {
@@ -44,7 +44,7 @@ class ImagesViewModel {
     }
     
     deinit {
-            // Remove the listener when the ViewModel is deallocated
-            entriesListener?.remove()
-        }
+        // Remove the listener when the ViewModel is deallocated
+        imagesListener?.remove()
+    }
 }

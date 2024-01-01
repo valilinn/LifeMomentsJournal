@@ -28,12 +28,18 @@ class JournalViewController: UIViewController {
         super.viewDidLoad()
         view = journalView
 //        journalView.collectionView.collectionViewLayout = createLayout()
-        journalView.collectionView.delegate = self
+        journalView.tableView.delegate = self
 //        journalView.collectionView.dataSource = self
 //        journalView.collectionView.isEditing = true
-        navigationController?.navigationBar.prefersLargeTitles = true
+//        navigationController?.navigationBar.prefersLargeTitles = true
         setButton()
         setBind()
+        viewModel.fetchEntries()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.navigationBar.prefersLargeTitles = true
         viewModel.fetchEntries()
     }
     
@@ -54,13 +60,13 @@ class JournalViewController: UIViewController {
         viewModel.entries
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
-                self?.journalView.collectionView.reloadData()
+                self?.journalView.tableView.reloadData()
             })
             .disposed(by: bag)
         
         viewModel.entries
             .observe(on: MainScheduler.instance)
-            .bind(to: journalView.collectionView.rx.items(cellIdentifier: EntriesListCell.reuseID, cellType: EntriesListCell.self)) { index, entry, cell in
+            .bind(to: journalView.tableView.rx.items(cellIdentifier: EntriesListCell.reuseID, cellType: EntriesListCell.self)) { index, entry, cell in
                 
                 DispatchQueue.main.async {
                     cell.configure(with: entry)
@@ -68,7 +74,7 @@ class JournalViewController: UIViewController {
             }
             .disposed(by: bag)
         
-        journalView.collectionView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
+        journalView.tableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
             print(indexPath.row)
             guard var entries = try? self?.viewModel.entries.value() else { return }
             let selectedEntry = entries[indexPath.row]
@@ -83,7 +89,7 @@ class JournalViewController: UIViewController {
         }).disposed(by: bag)
         
         
-        journalView.collectionView.rx.itemDeleted.subscribe(onNext: { [weak self] indexPath in
+        journalView.tableView.rx.itemDeleted.subscribe(onNext: { [weak self] indexPath in
             guard let self = self else { return }
             self.viewModel.deleteEntry(index: indexPath.row)
             print("Deleted item - \(indexPath.row)")
@@ -116,20 +122,18 @@ class JournalViewController: UIViewController {
 extension JournalViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        // Верните высоту ячейки для конкретного индекса
-        return 150 // Например, высота 100 точек
+    
+        return 150
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let inset = UIEdgeInsets(top: 0, left: 16, bottom: 8, right: 16) // Устанавливайте отступы
+        let inset = UIEdgeInsets(top: 0, left: 16, bottom: 8, right: 16) 
         cell.contentView.frame = cell.contentView.frame.inset(by: inset)
         cell.contentView.layer.masksToBounds = true
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Ваши действия в ответ на выбор ячейки
-
-        // Отмена подсветки
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

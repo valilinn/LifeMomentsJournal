@@ -137,7 +137,7 @@ class FirestoreAndStorageService {
         }
     }
     
-    private func deleteFilesFromStorage(documentId: String, completion: @escaping (Error?) -> Void) {
+    private func deleteFilesFromStorage(documentId: String, completion: @escaping (Error?) -> ()) {
         let storage = Storage.storage()
         let storageRef = storage.reference().child("images/\(documentId)")
         
