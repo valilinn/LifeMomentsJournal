@@ -13,6 +13,8 @@ import RxCocoa
 class EntryListViewModel {
     
     var entries = BehaviorSubject(value: [Entry]())
+    var quote = BehaviorRelay<String>(value: "")
+    let defaultQuote = "The foolish man seeks happiness in the distance, the wise grows it under his feet. \n \n - James Oppenheim"
     private var entriesListener: ListenerRegistration?
 
     func fetchEntries() {
@@ -60,7 +62,20 @@ class EntryListViewModel {
                 currentEntries.remove(at: index)
                 self?.entries.onNext(currentEntries)
                 //                self?.fetchEntries()
-                print("Entry deleted successfully")
+                print("Entry deleted successfully, current entries - \(currentEntries)")
+            }
+        }
+    }
+    
+    func getQuote() {
+        QuoteApiWorker().getQuote { [weak self] quote in
+            guard let self = self else { return }
+            
+            if let quote = quote { 
+                let quoteHeader = "\(quote.quoteText) \n \n - \(quote.quoteAuthor)"
+                self.quote.accept(quoteHeader)
+            } else {
+                self.quote.accept(self.defaultQuote)
             }
         }
     }

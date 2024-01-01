@@ -2,7 +2,7 @@
 //  JournalView.swift
 //  LifeMomentsJournal
 //
-//  Created by Валентина Лінчук on 29/11/2023.
+//  Created by Валентина Лінчук on 01/01/2024.
 //
 
 import UIKit

@@ -77,6 +77,7 @@ class AuthenticationService {
                     let userID = firebaseUser?.uid //my id
                     self?.userId = userID //my id
                     self?.saveToUserDefaults()
+                    print("My name is -\(firebaseUser?.displayName)")
                     print("User\(firebaseUser?.uid) signed in with email \(firebaseUser?.email ?? "unknown")")
                     completion(true)
 

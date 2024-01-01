@@ -22,6 +22,7 @@ class JournalViewController: UIViewController {
 //    private let containerView = UIView()
     private let signOutButton = UIButton()
     private let signOutButtonTitle = UILabel()
+//    private var previousOffset: CGFloat = 0
     
     
     override func viewDidLoad() {
@@ -33,14 +34,19 @@ class JournalViewController: UIViewController {
 //        journalView.collectionView.isEditing = true
 //        navigationController?.navigationBar.prefersLargeTitles = true
         setButton()
-        setBind()
+        bindTableView()
         viewModel.fetchEntries()
+        viewModel.getQuote()
+        journalView.tableView.tableHeaderView = createHeaderView()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.navigationBar.prefersLargeTitles = true
         viewModel.fetchEntries()
+        viewModel.getQuote()
+        journalView.tableView.tableHeaderView = createHeaderView()
     }
     
     private func setButton() {
@@ -56,7 +62,7 @@ class JournalViewController: UIViewController {
         present(vc, animated: true)
     }
     
-    private func setBind() {
+    private func bindTableView() {
         viewModel.entries
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
@@ -96,6 +102,42 @@ class JournalViewController: UIViewController {
         }).disposed(by: bag)
     }
     
+    private func createHeaderView() -> UIView {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor(named: "mainColor")
+       
+        
+        let headerLabel = UILabel()
+    
+        
+        headerLabel.textColor = .white
+        headerLabel.font = .italicSystemFont(ofSize: 14)
+        headerLabel.lineBreakMode = .byWordWrapping
+        headerLabel.numberOfLines = 0
+        
+        
+        viewModel.quote
+            .subscribe(onNext: { quote in
+                headerLabel.text = quote
+            })
+            .disposed(by: bag)
+        
+        headerView.addSubview(headerLabel)
+        headerLabel.preferredMaxLayoutWidth = UIScreen.main.bounds.width - 32
+        headerLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(16)
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().offset(-35)
+            
+        }
+        
+        // Устанавливаем высоту заголовка (важно для поддержки Auto Layout)
+        headerView.snp.makeConstraints {
+            $0.height.equalTo(120)
+        }
+        
+        return headerView
+    }
     
 //    private func createLayout() -> UICollectionViewCompositionalLayout {
 //        UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
@@ -126,6 +168,43 @@ extension JournalViewController: UITableViewDelegate {
         return 150
     }
     
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = UIView()
+//        headerView.backgroundColor = UIColor(named: "mainColor") // Цвет вашего заголовка
+//        // Добавьте ваши элементы заголовка (например, название секции) в headerView
+//        // Добавьте UILabel для отображения текста заголовка
+//        let headerLabel = UILabel()
+//        
+//        viewModel.quote
+//            .subscribe(onNext: {  quote in
+//                headerLabel.text = quote
+//            })
+//            .disposed(by: bag)
+//        
+////        headerLabel.text = "Header"
+//        headerLabel.textColor = .white // Установите желаемый цвет текста
+//        headerLabel.font = .italicSystemFont(ofSize: 14)
+//        headerLabel.numberOfLines = 0// Установите желаемый шрифт
+//        
+//        // Добавьте headerLabel в headerView и установите ограничения
+//        headerView.addSubview(headerLabel)
+//        headerLabel.snp.makeConstraints {
+//            $0.leading.equalToSuperview().offset(16)
+//            $0.centerY.equalToSuperview()
+//            $0.trailing.equalToSuperview().offset(-35)
+//        }
+//        return headerView
+//    }
+    
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 120 // Высота вашего заголовка
+//    }
+    
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        // Возвращаете заголовок для секции
+//        return "Your Section Title"
+//    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let inset = UIEdgeInsets(top: 0, left: 16, bottom: 8, right: 16) 
         cell.contentView.frame = cell.contentView.frame.inset(by: inset)
@@ -138,3 +217,24 @@ extension JournalViewController: UITableViewDelegate {
     }
 }
 
+//extension JournalViewController: UIScrollViewDelegate {
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let offsetY = scrollView.contentOffset.y
+//        
+//        // Проверяем направление скролла
+//        if offsetY > previousOffset {
+//            print(offsetY)
+//            // Скролл вниз, прячем заголовок
+//            UIView.animate(withDuration: 0.3) {
+//                self.journalView.tableView.tableHeaderView?.alpha = 0
+//            }
+//        } else if offsetY < previousOffset {
+//            // Скролл вверх, показываем заголовок
+//            UIView.animate(withDuration: 0.3) {
+//                self.journalView.tableView.tableHeaderView?.alpha = 1
+//            }
+//        }
+//        
+//        previousOffset = offsetY
+//    }
+//}

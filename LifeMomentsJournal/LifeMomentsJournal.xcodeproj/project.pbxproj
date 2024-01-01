@@ -17,7 +17,13 @@
 		EA42404B2B34DC480036815E /* FirestoreAndStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA42404A2B34DC480036815E /* FirestoreAndStorageService.swift */; };
 		EA42404D2B34DC910036815E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EA42404C2B34DC910036815E /* FirebaseStorage */; };
 		EA42404F2B34DDF40036815E /* EntryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA42404E2B34DDF40036815E /* EntryListViewModel.swift */; };
-		EA50DA5B2B17CE83003B50A5 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA5A2B17CE83003B50A5 /* JournalView.swift */; };
+		EA45248F2B433CB8006F4926 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = EA45248E2B433CB8006F4926 /* Differentiator */; };
+		EA4524912B433CB8006F4926 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = EA4524902B433CB8006F4926 /* RxDataSources */; };
+		EA4524932B4342D4006F4926 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4524922B4342D4006F4926 /* Quote.swift */; };
+		EA4524952B4345BC006F4926 /* QuoteApiWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4524942B4345BC006F4926 /* QuoteApiWorker.swift */; };
+		EA4524982B4345F7006F4926 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = EA4524972B4345F7006F4926 /* Alamofire */; };
+		EA45249A2B434C3E006F4926 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4524992B434C3E006F4926 /* JournalView.swift */; };
+		EA50DA5B2B17CE83003B50A5 /* JournalTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA5A2B17CE83003B50A5 /* JournalTableView.swift */; };
 		EA50DA602B17F676003B50A5 /* EntriesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */; };
 		EA50DA632B17FAD4003B50A5 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA622B17FAD4003B50A5 /* Entry.swift */; };
 		EA66DF772B33965A00943B90 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EA66DF762B33965A00943B90 /* FirebaseFirestore */; };
@@ -81,7 +87,10 @@
 		EA36776B2B3100B60018BDD8 /* CurrentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDate.swift; sourceTree = "<group>"; };
 		EA42404A2B34DC480036815E /* FirestoreAndStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreAndStorageService.swift; sourceTree = "<group>"; };
 		EA42404E2B34DDF40036815E /* EntryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListViewModel.swift; sourceTree = "<group>"; };
-		EA50DA5A2B17CE83003B50A5 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
+		EA4524922B4342D4006F4926 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		EA4524942B4345BC006F4926 /* QuoteApiWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteApiWorker.swift; sourceTree = "<group>"; };
+		EA4524992B434C3E006F4926 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
+		EA50DA5A2B17CE83003B50A5 /* JournalTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalTableView.swift; sourceTree = "<group>"; };
 		EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesListCell.swift; sourceTree = "<group>"; };
 		EA50DA622B17FAD4003B50A5 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		EA67B7D72B20DC7C003DDBD7 /* DetailEntryImagesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEntryImagesViewCell.swift; sourceTree = "<group>"; };
@@ -128,6 +137,8 @@
 			files = (
 				EA7277A22B13D0840044F320 /* GoogleSignInSwift in Frameworks */,
 				EA66DF772B33965A00943B90 /* FirebaseFirestore in Frameworks */,
+				EA45248F2B433CB8006F4926 /* Differentiator in Frameworks */,
+				EA4524982B4345F7006F4926 /* Alamofire in Frameworks */,
 				EA7277922B1379D30044F320 /* FirebaseAnalyticsSwift in Frameworks */,
 				EA66DF792B33969400943B90 /* FirebaseFirestoreSwift in Frameworks */,
 				EA0C5F2E2B3CC7B600AC56F9 /* Kingfisher in Frameworks */,
@@ -140,6 +151,7 @@
 				EA7277902B1379D30044F320 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				EA7277962B1379D30044F320 /* FirebaseAppCheck in Frameworks */,
 				EA7277982B137DE50044F320 /* FirebaseAuth in Frameworks */,
+				EA4524912B433CB8006F4926 /* RxDataSources in Frameworks */,
 				C24A022297B1E26EB6D10BE0 /* Pods_LifeMomentsJournal.framework in Frameworks */,
 				EA683EB32B263F9700CC1076 /* RxRelay in Frameworks */,
 			);
@@ -155,6 +167,7 @@
 				EA36776B2B3100B60018BDD8 /* CurrentDate.swift */,
 				EAE0CFE42B3238D900C670CA /* PhotosManager.swift */,
 				EA42404A2B34DC480036815E /* FirestoreAndStorageService.swift */,
+				EA4524942B4345BC006F4926 /* QuoteApiWorker.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -186,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				EA50DA622B17FAD4003B50A5 /* Entry.swift */,
+				EA4524922B4342D4006F4926 /* Quote.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -194,7 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				EAF7850B2B155F7000719089 /* JournalViewController.swift */,
-				EA50DA5A2B17CE83003B50A5 /* JournalView.swift */,
+				EA4524992B434C3E006F4926 /* JournalView.swift */,
+				EA50DA5A2B17CE83003B50A5 /* JournalTableView.swift */,
 				EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */,
 			);
 			path = JournalController;
@@ -385,6 +400,9 @@
 				EA66DF782B33969400943B90 /* FirebaseFirestoreSwift */,
 				EA42404C2B34DC910036815E /* FirebaseStorage */,
 				EA0C5F2D2B3CC7B600AC56F9 /* Kingfisher */,
+				EA45248E2B433CB8006F4926 /* Differentiator */,
+				EA4524902B433CB8006F4926 /* RxDataSources */,
+				EA4524972B4345F7006F4926 /* Alamofire */,
 			);
 			productName = LifeMomentsJournal;
 			productReference = EAC4C5A62B0D291C00930A14 /* LifeMomentsJournal.app */;
@@ -423,6 +441,8 @@
 				EA72779E2B13D0840044F320 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				EA683EAD2B263F9700CC1076 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				EA0C5F2C2B3CC7B600AC56F9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				EA45248D2B433CB8006F4926 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				EA4524962B4345F7006F4926 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = EAC4C5A72B0D291C00930A14 /* Products */;
 			projectDirPath = "";
@@ -511,6 +531,7 @@
 			files = (
 				EAEF22852B1FDD730080173C /* NewEntryCollectionView.swift in Sources */,
 				EADC21302B402514007FBF6C /* ImagesViewModel.swift in Sources */,
+				EA45249A2B434C3E006F4926 /* JournalView.swift in Sources */,
 				EAC4C5AE2B0D291C00930A14 /* AuthenticationViewController.swift in Sources */,
 				EADC212C2B401F85007FBF6C /* ImagesView.swift in Sources */,
 				EA1583DE2B1C8172006A6242 /* NewEntryViewController.swift in Sources */,
@@ -528,15 +549,17 @@
 				EA7277A42B13D4250044F320 /* AuthenticationService.swift in Sources */,
 				EA7AD33B2B3F5FE4002E8D54 /* DetailEntryViewController.swift in Sources */,
 				EA50DA602B17F676003B50A5 /* EntriesListCell.swift in Sources */,
+				EA4524952B4345BC006F4926 /* QuoteApiWorker.swift in Sources */,
 				EA8BC7302B2E5D2200046352 /* NewEntryViewModel.swift in Sources */,
 				EA1583DC2B1C6C66006A6242 /* CompositionalLayout.swift in Sources */,
 				EAC4C5AA2B0D291C00930A14 /* AppDelegate.swift in Sources */,
 				EA67B7DA2B20DD2D003DDBD7 /* DetailEntryCollectionView.swift in Sources */,
 				EA36776C2B3100B60018BDD8 /* CurrentDate.swift in Sources */,
-				EA50DA5B2B17CE83003B50A5 /* JournalView.swift in Sources */,
+				EA50DA5B2B17CE83003B50A5 /* JournalTableView.swift in Sources */,
 				EAF7850C2B155F7000719089 /* JournalViewController.swift in Sources */,
 				EADC212A2B401C66007FBF6C /* SettingsViewController.swift in Sources */,
 				EA67B7DC2B20DFBC003DDBD7 /* DetailEntryView.swift in Sources */,
+				EA4524932B4342D4006F4926 /* Quote.swift in Sources */,
 				EAC4C5AC2B0D291C00930A14 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -825,6 +848,22 @@
 				minimumVersion = 7.10.1;
 			};
 		};
+		EA45248D2B433CB8006F4926 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
+		EA4524962B4345F7006F4926 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
 		EA683EAD2B263F9700CC1076 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -861,6 +900,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EA72778C2B1379D30044F320 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		EA45248E2B433CB8006F4926 /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EA45248D2B433CB8006F4926 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		EA4524902B433CB8006F4926 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EA45248D2B433CB8006F4926 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
+		EA4524972B4345F7006F4926 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EA4524962B4345F7006F4926 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		EA66DF762B33965A00943B90 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;

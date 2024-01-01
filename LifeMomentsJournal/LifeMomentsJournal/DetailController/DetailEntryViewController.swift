@@ -42,7 +42,6 @@ class DetailEntryViewController: UIViewController {
             .compactMap { $0 } //filter out nil values of Entry
             .flatMap { Observable.just($0.imagesURL ?? [])} //transform Entry to its imageURL array
             .bind(to: detailEntryView.imagesCollectionView.collectionView.rx.items(cellIdentifier: DetailEntryImagesViewCell.reuseID, cellType: DetailEntryImagesViewCell.self)) { index, imageURL, cell in
-    
                 DispatchQueue.main.async {
                     cell.configure(with: imageURL)
                 }
