@@ -17,6 +17,8 @@ class AuthenticationService {
    
     var state: SignInState = .signedOut
     var userId: String?
+    var userName: String?
+    var userPhoto: String?
     var stateKey = "authentication"
     
     enum SignInState: String {
@@ -29,6 +31,8 @@ class AuthenticationService {
         let defaults = UserDefaults.standard
         defaults.set(state.rawValue, forKey: stateKey)
         defaults.set(userId, forKey: "userId")
+        defaults.set(userName, forKey: "userName")
+        defaults.set(userPhoto, forKey: "userPhoto")
     }
     
     func loadFromUserDefaults() {
@@ -39,6 +43,12 @@ class AuthenticationService {
 //        }
         if let userIdValue = defaults.string(forKey: "userId") {
             userId = userIdValue
+        }
+        if let userNameValue = defaults.string(forKey: "userName") {
+            userName = userNameValue
+        }
+        if let userPhotoValue = defaults.string(forKey: "userPhoto") {
+            userPhoto = userPhotoValue
         }
     }
     
@@ -76,6 +86,10 @@ class AuthenticationService {
                     let firebaseUser = result?.user
                     let userID = firebaseUser?.uid //my id
                     self?.userId = userID //my id
+                    let userName = firebaseUser?.displayName
+                    self?.userName = userName
+                    let userPhoto = firebaseUser?.photoURL
+                    self?.userPhoto = userPhoto?.absoluteString
                     self?.saveToUserDefaults()
                     print("My name is -\(firebaseUser?.displayName)")
                     print("User\(firebaseUser?.uid) signed in with email \(firebaseUser?.email ?? "unknown")")

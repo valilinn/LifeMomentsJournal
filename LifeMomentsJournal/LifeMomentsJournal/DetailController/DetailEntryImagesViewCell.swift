@@ -27,8 +27,8 @@ class DetailEntryImagesViewCell: UICollectionViewCell {
     }
     
     func configure(with imageURL: String?) {
-        guard let imageURL = imageURL else {
-            imageView.image = nil
+        guard let imageURL = imageURL, !imageURL.isEmpty else {
+            imageView.image = UIImage(named: "defaultImage")
             return
         }
         let url = URL(string: imageURL)
@@ -37,7 +37,7 @@ class DetailEntryImagesViewCell: UICollectionViewCell {
     }
     
     private func setViews() {
-        imageView.image = UIImage(named: "morskieOko")
+        imageView.image = UIImage(named: "defaultImage")
         imageView.contentMode = .scaleAspectFill
     }
     

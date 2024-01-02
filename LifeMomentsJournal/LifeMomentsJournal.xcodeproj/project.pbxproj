@@ -23,7 +23,11 @@
 		EA4524952B4345BC006F4926 /* QuoteApiWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4524942B4345BC006F4926 /* QuoteApiWorker.swift */; };
 		EA4524982B4345F7006F4926 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = EA4524972B4345F7006F4926 /* Alamofire */; };
 		EA45249A2B434C3E006F4926 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4524992B434C3E006F4926 /* JournalView.swift */; };
-		EA50DA5B2B17CE83003B50A5 /* JournalTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA5A2B17CE83003B50A5 /* JournalTableView.swift */; };
+		EA45249C2B438EA6006F4926 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA45249B2B438EA6006F4926 /* SettingsView.swift */; };
+		EA45249E2B438FC6006F4926 /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA45249D2B438FC6006F4926 /* SettingsTableView.swift */; };
+		EA4524A02B439042006F4926 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA45249F2B439042006F4926 /* SettingsViewCell.swift */; };
+		EA4524A22B448140006F4926 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4524A12B448140006F4926 /* Settings.swift */; };
+		EA4524A42B448488006F4926 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4524A32B448488006F4926 /* SettingsViewModel.swift */; };
 		EA50DA602B17F676003B50A5 /* EntriesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */; };
 		EA50DA632B17FAD4003B50A5 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50DA622B17FAD4003B50A5 /* Entry.swift */; };
 		EA66DF772B33965A00943B90 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EA66DF762B33965A00943B90 /* FirebaseFirestore */; };
@@ -90,7 +94,11 @@
 		EA4524922B4342D4006F4926 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		EA4524942B4345BC006F4926 /* QuoteApiWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteApiWorker.swift; sourceTree = "<group>"; };
 		EA4524992B434C3E006F4926 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
-		EA50DA5A2B17CE83003B50A5 /* JournalTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalTableView.swift; sourceTree = "<group>"; };
+		EA45249B2B438EA6006F4926 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		EA45249D2B438FC6006F4926 /* SettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
+		EA45249F2B439042006F4926 /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
+		EA4524A12B448140006F4926 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		EA4524A32B448488006F4926 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesListCell.swift; sourceTree = "<group>"; };
 		EA50DA622B17FAD4003B50A5 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		EA67B7D72B20DC7C003DDBD7 /* DetailEntryImagesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEntryImagesViewCell.swift; sourceTree = "<group>"; };
@@ -200,6 +208,7 @@
 			children = (
 				EA50DA622B17FAD4003B50A5 /* Entry.swift */,
 				EA4524922B4342D4006F4926 /* Quote.swift */,
+				EA4524A12B448140006F4926 /* Settings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -209,7 +218,6 @@
 			children = (
 				EAF7850B2B155F7000719089 /* JournalViewController.swift */,
 				EA4524992B434C3E006F4926 /* JournalView.swift */,
-				EA50DA5A2B17CE83003B50A5 /* JournalTableView.swift */,
 				EA50DA5F2B17F676003B50A5 /* EntriesListCell.swift */,
 			);
 			path = JournalController;
@@ -260,6 +268,7 @@
 				EA8BC72F2B2E5D2200046352 /* NewEntryViewModel.swift */,
 				EA7AD33C2B3F7575002E8D54 /* DetailEntryViewModel.swift */,
 				EADC212F2B402514007FBF6C /* ImagesViewModel.swift */,
+				EA4524A32B448488006F4926 /* SettingsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -323,6 +332,9 @@
 			isa = PBXGroup;
 			children = (
 				EADC21292B401C66007FBF6C /* SettingsViewController.swift */,
+				EA45249B2B438EA6006F4926 /* SettingsView.swift */,
+				EA45249D2B438FC6006F4926 /* SettingsTableView.swift */,
+				EA45249F2B439042006F4926 /* SettingsViewCell.swift */,
 			);
 			path = SettingsController;
 			sourceTree = "<group>";
@@ -533,6 +545,7 @@
 				EADC21302B402514007FBF6C /* ImagesViewModel.swift in Sources */,
 				EA45249A2B434C3E006F4926 /* JournalView.swift in Sources */,
 				EAC4C5AE2B0D291C00930A14 /* AuthenticationViewController.swift in Sources */,
+				EA4524A22B448140006F4926 /* Settings.swift in Sources */,
 				EADC212C2B401F85007FBF6C /* ImagesView.swift in Sources */,
 				EA1583DE2B1C8172006A6242 /* NewEntryViewController.swift in Sources */,
 				EADC212E2B402021007FBF6C /* ImagesViewCell.swift in Sources */,
@@ -542,6 +555,7 @@
 				EA67B7D82B20DC7C003DDBD7 /* DetailEntryImagesViewCell.swift in Sources */,
 				EA7AD33D2B3F7575002E8D54 /* DetailEntryViewModel.swift in Sources */,
 				EA42404B2B34DC480036815E /* FirestoreAndStorageService.swift in Sources */,
+				EA4524A02B439042006F4926 /* SettingsViewCell.swift in Sources */,
 				EAE0CFE52B3238D900C670CA /* PhotosManager.swift in Sources */,
 				EA1583E02B1C9141006A6242 /* TabBarViewController.swift in Sources */,
 				EA1F432C2B1E83980033ED82 /* NewEntryImagesViewCell.swift in Sources */,
@@ -551,16 +565,18 @@
 				EA50DA602B17F676003B50A5 /* EntriesListCell.swift in Sources */,
 				EA4524952B4345BC006F4926 /* QuoteApiWorker.swift in Sources */,
 				EA8BC7302B2E5D2200046352 /* NewEntryViewModel.swift in Sources */,
+				EA45249E2B438FC6006F4926 /* SettingsTableView.swift in Sources */,
 				EA1583DC2B1C6C66006A6242 /* CompositionalLayout.swift in Sources */,
 				EAC4C5AA2B0D291C00930A14 /* AppDelegate.swift in Sources */,
 				EA67B7DA2B20DD2D003DDBD7 /* DetailEntryCollectionView.swift in Sources */,
+				EA45249C2B438EA6006F4926 /* SettingsView.swift in Sources */,
 				EA36776C2B3100B60018BDD8 /* CurrentDate.swift in Sources */,
-				EA50DA5B2B17CE83003B50A5 /* JournalTableView.swift in Sources */,
 				EAF7850C2B155F7000719089 /* JournalViewController.swift in Sources */,
 				EADC212A2B401C66007FBF6C /* SettingsViewController.swift in Sources */,
 				EA67B7DC2B20DFBC003DDBD7 /* DetailEntryView.swift in Sources */,
 				EA4524932B4342D4006F4926 /* Quote.swift in Sources */,
 				EAC4C5AC2B0D291C00930A14 /* SceneDelegate.swift in Sources */,
+				EA4524A42B448488006F4926 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

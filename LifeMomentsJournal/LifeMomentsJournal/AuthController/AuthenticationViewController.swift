@@ -54,7 +54,6 @@ class AuthenticationViewController: UIViewController {
               AuthenticationService.shared.state = user == nil ? .signedOut : .signedIn
               print(user?.email)
               AuthenticationService.shared.saveToUserDefaults()
-            print("Auth is OK")
           }
         } else {
             print("NOT NIL")

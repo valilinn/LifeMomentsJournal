@@ -1,23 +1,23 @@
 //
-//  JournalView.swift
+//  SettingsTableView.swift
 //  LifeMomentsJournal
 //
-//  Created by Валентина Лінчук on 01/01/2024.
+//  Created by Валентина Лінчук on 02/01/2024.
 //
 
-import UIKit
+import Foundation
 import SnapKit
 
-class JournalView: UIView {
+class SettingsTableView: UIView {
     
     var tableView: UITableView!
     
     init() {
         super.init(frame: .zero)
-        backgroundColor = UIColor(named: "mainColor")
+        backgroundColor = UIColor.red
         setupTableView()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -26,17 +26,12 @@ class JournalView: UIView {
         self.tableView = UITableView(frame: .zero)
         addSubview(tableView)
         
-        tableView.register(EntriesListCell.self, forCellReuseIdentifier: EntriesListCell.reuseID)
-        tableView.backgroundColor = .white
+        tableView.register(SettingsViewCell.self, forCellReuseIdentifier: SettingsViewCell.reuseID)
+//        tableView.backgroundColor = UIColor.brown
+        tableView.isScrollEnabled = false
         
         tableView.snp.makeConstraints { make in
-            make.edges.equalTo(safeAreaLayoutGuide.snp.edges)
+            make.edges.equalToSuperview()
         }
     }
-    
-    
 }
-
-//#Preview {
-//    JournalViewController()
-//}

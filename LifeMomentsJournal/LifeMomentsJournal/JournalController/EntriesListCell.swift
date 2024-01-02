@@ -38,14 +38,22 @@ class EntriesListCell: UITableViewCell {
         titleLabel.text = item.title
         guard let content = item.content else { return }
         contentLabel.text = content
-        guard let imageURL = item.imagesURL?.first else {
-            entryImageView.image = nil
+//        guard let imageURL = item.imagesURL?.first, imageURL != "" else {
+////            entryImageView.image = nil
 //            entryImageView.image = UIImage(named: "defaultImage")
-            return
+//            return
+//        }
+//        let url = URL(string: imageURL)
+//        entryImageView.kf.setImage(with: url)
+        if let imageURL = item.imagesURL?.first, !imageURL.isEmpty {
+            let url = URL(string: imageURL)
+            entryImageView.kf.setImage(with: url)
+        } else {
+            // Если imageURL пустой, устанавливаем defaultImage и очищаем предыдущее изображение
+            entryImageView.image = UIImage(named: "defaultImage")
+            entryImageView.kf.cancelDownloadTask() // Очистить предыдущее изображение
         }
-        let url = URL(string: imageURL)
-        entryImageView.kf.setImage(with: url)
-//        print("Cell is OK - \(item.title), \(item.content)")
+        //        print("Cell is OK - \(item.title), \(item.content)")
     }
     
     private func setViews() {
