@@ -72,6 +72,16 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
             }
             .disposed(by: bag)
 
+        //to hide collectionView if there is no images yet
+        viewModel.images
+            .subscribe(onNext: { [weak self] image in
+                
+                let collectionViewHeight = image.isEmpty == true ? 0 : 154
+                self?.newEntryView.collectionViewHeightConstraint?.update(offset: collectionViewHeight)
+                
+                self?.newEntryView.imagesCollectionView.collectionView.reloadData()
+            })
+            .disposed(by: bag)
         
     }
     
@@ -113,20 +123,25 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
         }
         keyboardHeight = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue.size.height
         
-//        if newEntryView.contentView.isFirstResponder {
             newEntryView.collectionViewHeightConstraint?.update(offset: 0)
             newEntryView.contentViewBottomConstraint?.update(offset: -keyboardHeight + 30)
-//        }
+
         view.layoutIfNeeded()
     }
     
     @objc
     func keyboardWillHide(_ notification: Foundation.Notification) {
-        
-//        if newEntryView.contentView.isFirstResponder {
+        guard let images = try? viewModel.images.value() else { return }
+        if !images.isEmpty {
             newEntryView.collectionViewHeightConstraint?.update(offset: 154)
             newEntryView.contentViewBottomConstraint?.update(offset: -8)
-//        }
+        } else {
+            newEntryView.collectionViewHeightConstraint?.update(offset: 0)
+            newEntryView.contentViewBottomConstraint?.update(offset: -8)
+        }
+        
+            
+
         view.layoutIfNeeded()
     }
     
@@ -146,6 +161,7 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
             
         }
     }
+    
     
     
     private func setButtons() {
