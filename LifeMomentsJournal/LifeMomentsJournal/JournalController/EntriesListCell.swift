@@ -21,6 +21,8 @@ class EntriesListCell: UITableViewCell {
     let contentLabel = UILabel()
     let entryImageView = UIImageView()
     
+    var imageViewWidthHeightConstraint: Constraint?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
             super.init(style: style, reuseIdentifier: reuseIdentifier)
         setViews()
@@ -38,20 +40,16 @@ class EntriesListCell: UITableViewCell {
         titleLabel.text = item.title
         guard let content = item.content else { return }
         contentLabel.text = content
-//        guard let imageURL = item.imagesURL?.first, imageURL != "" else {
-////            entryImageView.image = nil
-//            entryImageView.image = UIImage(named: "defaultImage")
-//            return
-//        }
-//        let url = URL(string: imageURL)
-//        entryImageView.kf.setImage(with: url)
+
         if let imageURL = item.imagesURL?.first, !imageURL.isEmpty {
             let url = URL(string: imageURL)
             entryImageView.kf.setImage(with: url)
+            imageViewWidthHeightConstraint?.update(offset: 130)
         } else {
             // Если imageURL пустой, устанавливаем defaultImage и очищаем предыдущее изображение
-            entryImageView.image = UIImage(named: "defaultImage")
-            entryImageView.kf.cancelDownloadTask() // Очистить предыдущее изображение
+            entryImageView.image = nil //UIImage(named: "defaultImage")
+//            entryImageView.kf.cancelDownloadTask() // Очистить предыдущее изображение
+            imageViewWidthHeightConstraint?.update(offset: 0)
         }
         //        print("Cell is OK - \(item.title), \(item.content)")
     }
@@ -99,11 +97,12 @@ class EntriesListCell: UITableViewCell {
         entryImageView.snp.makeConstraints {
             $0.trailing.equalTo(containerView.snp.trailing).offset(-8)
             $0.centerY.equalTo(containerView.snp.centerY)
-            $0.width.height.equalTo(130)
+            imageViewWidthHeightConstraint = $0.width.height.equalTo(130).constraint
+            
         }
         
         stack.snp.makeConstraints {
-            $0.top.equalTo(entryImageView.snp.top).offset(8)
+            $0.top.equalTo(containerView.snp.top).offset(16)
             $0.leading.equalTo(containerView.snp.leading).offset(16)
             $0.trailing.equalTo(entryImageView.snp.leading).offset(-16)
         }
@@ -114,7 +113,7 @@ class EntriesListCell: UITableViewCell {
         
         
         dateLabel.snp.makeConstraints {
-            $0.top.equalTo(entryImageView.snp.bottom).offset(-16)
+            $0.bottom.equalTo(containerView.snp.bottom).offset(-16)
             $0.leading.equalTo(stack.snp.leading)
         }
     }

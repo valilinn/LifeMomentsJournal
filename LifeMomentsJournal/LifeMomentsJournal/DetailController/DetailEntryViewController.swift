@@ -33,6 +33,10 @@ class DetailEntryViewController: UIViewController {
             .subscribe(onNext: { [weak self] entry in
                 guard let entry = entry else { return }
                 self?.detailEntryView.configureDetailView(entry: entry)
+                
+                let collectionViewHeight = entry.imagesURL?.isEmpty == true ? 0 : 300
+                self?.detailEntryView.collectionViewHeightConstraint?.update(offset: collectionViewHeight)
+                
                 self?.detailEntryView.imagesCollectionView.collectionView.reloadData()
             })
             .disposed(by: bag)
@@ -47,6 +51,8 @@ class DetailEntryViewController: UIViewController {
                 }
             }
             .disposed(by: bag)
+        
+        
     }
     
     private func createLayout() -> UICollectionViewCompositionalLayout {

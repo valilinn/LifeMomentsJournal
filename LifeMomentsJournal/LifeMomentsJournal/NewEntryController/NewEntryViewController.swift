@@ -160,7 +160,7 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
     
 
     @objc
-    func closeButtonTapped() {
+    private func closeButtonTapped() {
         dismiss(animated: true)
         if let tabBarController = self.presentingViewController as? TabBarViewController {
             tabBarController.selectedIndex = 0

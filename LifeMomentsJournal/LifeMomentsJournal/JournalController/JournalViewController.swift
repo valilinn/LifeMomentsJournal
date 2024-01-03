@@ -29,18 +29,22 @@ class JournalViewController: UIViewController {
         journalView.tableView.delegate = self
         setButton()
         bindTableView()
-        viewModel.fetchEntries()
-        viewModel.getQuote()
-        journalView.tableView.tableHeaderView = createHeaderView()
+        
+        DispatchQueue.main.async {
+            self.journalView.tableView.tableHeaderView = self.createHeaderView()
+        }
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.navigationBar.prefersLargeTitles = true
-        viewModel.fetchEntries()
-        viewModel.getQuote()
-        journalView.tableView.tableHeaderView = createHeaderView()
+        DispatchQueue.main.async {
+            self.viewModel.fetchEntries()
+            self.viewModel.getQuote()
+//            self.journalView.tableView.tableHeaderView = self.createHeaderView()
+        }
+//        journalView.tableView.tableHeaderView = createHeaderView()
     }
     
     private func setButton() {
@@ -84,7 +88,7 @@ class JournalViewController: UIViewController {
             let vc = DetailEntryViewController()
             vc.viewModel = detailViewModel
             vc.hidesBottomBarWhenPushed = true
-            self?.navigationController?.pushViewController(vc, animated: true)
+            self?.navigationController?.pushViewController(vc, animated: false)
         }).disposed(by: bag)
         
         
@@ -98,35 +102,36 @@ class JournalViewController: UIViewController {
     private func createHeaderView() -> UIView {
         let headerView = UIView()
         headerView.backgroundColor = UIColor(named: "mainColor")
-       
         
         let headerLabel = UILabel()
     
         
         headerLabel.textColor = .white
         headerLabel.font = .italicSystemFont(ofSize: 14)
-        headerLabel.lineBreakMode = .byWordWrapping
+//        headerLabel.lineBreakMode = .byWordWrapping
         headerLabel.numberOfLines = 0
         
         
         viewModel.quote
             .subscribe(onNext: { quote in
                 headerLabel.text = quote
+                    headerView.layoutIfNeeded()
             })
             .disposed(by: bag)
         
         headerView.addSubview(headerLabel)
-        headerLabel.preferredMaxLayoutWidth = UIScreen.main.bounds.width - 32
+        
         headerLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(16)
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-16)
             
         }
-        
+        headerLabel.preferredMaxLayoutWidth = UIScreen.main.bounds.width - 32
         // Устанавливаем высоту заголовка (важно для поддержки Auto Layout)
         headerView.snp.makeConstraints {
             $0.height.equalTo(120)
+            $0.width.equalTo(UIScreen.main.bounds.width)
         }
         
         return headerView

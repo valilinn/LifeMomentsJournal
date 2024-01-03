@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import MessageUI
 
 class SettingsViewController: UIViewController {
     
@@ -56,8 +57,11 @@ class SettingsViewController: UIViewController {
             switch indexPath.row {
             case 0:
                 print("Row - 0")
+                self?.openEmail()
             case 1:
-                print("Row - 1")
+                let vc = AboutDevViewController()
+                vc.modalPresentationStyle = .pageSheet
+                self?.present(vc, animated: true)
             case 2:
                 AuthenticationService.shared.signOut()
                 let vc = AuthenticationViewController()
@@ -67,16 +71,6 @@ class SettingsViewController: UIViewController {
             default:
                 return
             }
-//            print(indexPath.row)
-//            guard var entries = try? self?.viewModel.entries.value() else { return }
-//            let selectedEntry = entries[indexPath.row]
-//            print("selected entry is \(selectedEntry)")
-//            let detailViewModel = DetailEntryViewModel()
-//            detailViewModel.entry.onNext(selectedEntry)
-//            let vc = DetailEntryViewController()
-//            vc.viewModel = detailViewModel
-//            vc.hidesBottomBarWhenPushed = true
-//            self?.navigationController?.pushViewController(vc, animated: true)
         }).disposed(by: bag)
     }
     
@@ -106,4 +100,25 @@ extension SettingsViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
+}
+
+extension SettingsViewController: MFMailComposeViewControllerDelegate {
+    
+    func openEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["test.lmj.app@gmail.com"])
+            mail.setSubject("Subject")
+            mail.setMessageBody("<p>Write something...</p>", isHTML: true)
+            present(mail, animated: true)
+        } else {
+            print("Can't open email")
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+            //... handle email screen actions
+            controller.dismiss(animated: true)
+        }
 }

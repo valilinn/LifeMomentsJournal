@@ -13,6 +13,7 @@
 		EA1583DE2B1C8172006A6242 /* NewEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1583DD2B1C8172006A6242 /* NewEntryViewController.swift */; };
 		EA1583E02B1C9141006A6242 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1583DF2B1C9141006A6242 /* TabBarViewController.swift */; };
 		EA1F432C2B1E83980033ED82 /* NewEntryImagesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F432B2B1E83980033ED82 /* NewEntryImagesViewCell.swift */; };
+		EA21B8B52B45CEAF0017A9F3 /* AboutDevViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA21B8B42B45CEAF0017A9F3 /* AboutDevViewController.swift */; };
 		EA36776C2B3100B60018BDD8 /* CurrentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36776B2B3100B60018BDD8 /* CurrentDate.swift */; };
 		EA42404B2B34DC480036815E /* FirestoreAndStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA42404A2B34DC480036815E /* FirestoreAndStorageService.swift */; };
 		EA42404D2B34DC910036815E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EA42404C2B34DC910036815E /* FirebaseStorage */; };
@@ -88,6 +89,7 @@
 		EA1583DD2B1C8172006A6242 /* NewEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryViewController.swift; sourceTree = "<group>"; };
 		EA1583DF2B1C9141006A6242 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		EA1F432B2B1E83980033ED82 /* NewEntryImagesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryImagesViewCell.swift; sourceTree = "<group>"; };
+		EA21B8B42B45CEAF0017A9F3 /* AboutDevViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDevViewController.swift; sourceTree = "<group>"; };
 		EA36776B2B3100B60018BDD8 /* CurrentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDate.swift; sourceTree = "<group>"; };
 		EA42404A2B34DC480036815E /* FirestoreAndStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreAndStorageService.swift; sourceTree = "<group>"; };
 		EA42404E2B34DDF40036815E /* EntryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListViewModel.swift; sourceTree = "<group>"; };
@@ -178,6 +180,14 @@
 				EA4524942B4345BC006F4926 /* QuoteApiWorker.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		EA21B8B32B45CE520017A9F3 /* AboutDevController */ = {
+			isa = PBXGroup;
+			children = (
+				EA21B8B42B45CEAF0017A9F3 /* AboutDevViewController.swift */,
+			);
+			path = AboutDevController;
 			sourceTree = "<group>";
 		};
 		EA36776A2B31008C0018BDD8 /* New Group */ = {
@@ -308,6 +318,7 @@
 				EA66DF752B336C4D00943B90 /* DetailController */,
 				EADC21252B401BAF007FBF6C /* ImagesController */,
 				EADC21282B401C48007FBF6C /* SettingsController */,
+				EA21B8B32B45CE520017A9F3 /* AboutDevController */,
 				EA50DA5D2B17F4EE003B50A5 /* Layouts */,
 				EA50DA612B17FAB0003B50A5 /* Models */,
 				EA1583E12B1CD5C7006A6242 /* Services */,
@@ -547,6 +558,7 @@
 				EAC4C5AE2B0D291C00930A14 /* AuthenticationViewController.swift in Sources */,
 				EA4524A22B448140006F4926 /* Settings.swift in Sources */,
 				EADC212C2B401F85007FBF6C /* ImagesView.swift in Sources */,
+				EA21B8B52B45CEAF0017A9F3 /* AboutDevViewController.swift in Sources */,
 				EA1583DE2B1C8172006A6242 /* NewEntryViewController.swift in Sources */,
 				EADC212E2B402021007FBF6C /* ImagesViewCell.swift in Sources */,
 				EA42404F2B34DDF40036815E /* EntryListViewModel.swift in Sources */,

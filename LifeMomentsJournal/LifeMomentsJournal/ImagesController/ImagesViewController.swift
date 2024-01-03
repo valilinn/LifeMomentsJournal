@@ -26,7 +26,9 @@ class ImagesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        viewModel.fetchImages()
+        DispatchQueue.main.async { [weak self] in
+            self?.viewModel.fetchImages()
+        }
     }
     
     private func setBind() {
