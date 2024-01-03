@@ -14,8 +14,8 @@ class ImagesView: UIView {
     
     init() {
         super.init(frame: .zero)
-//        backgroundColor = UIColor(named: "mainColor")
-        backgroundColor = .white
+        backgroundColor = UIColor(named: "mainColor")
+//        backgroundColor = .white
         setupCollectionView()
     }
 

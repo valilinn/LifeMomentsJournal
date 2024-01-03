@@ -23,7 +23,7 @@ class DetailEntryView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .gray
+        self.backgroundColor = .white
         setViews()
         setConstraints()
     }
@@ -39,7 +39,9 @@ class DetailEntryView: UIView {
     }
     
     private func setViews() {
-        scrollView.backgroundColor = .orange
+//        scrollView.backgroundColor = .orange
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
         containerView.backgroundColor = .white
         contentView.backgroundColor = .white
         
@@ -54,7 +56,10 @@ class DetailEntryView: UIView {
         contentView.textColor = .black
         contentView.isEditable = false
         contentView.font = UIFont.systemFont(ofSize: 18)
-//        contentView.isScrollEnabled = false
+        contentView.isScrollEnabled = false
+        // Скрытие индикаторов прокрутки
+        contentView.showsVerticalScrollIndicator = false
+        contentView.showsHorizontalScrollIndicator = false
     }
     
     private func setConstraints() {
@@ -65,9 +70,9 @@ class DetailEntryView: UIView {
         
         scrollView.addSubview(containerView)
         containerView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide.snp.top)
+            $0.top.equalTo(scrollView.snp.top)
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.width.height.equalTo(scrollView)
+            $0.width.equalTo(scrollView)
             
         }
         
