@@ -31,7 +31,6 @@ class AboutDevViewController: UIViewController {
     }
     
     private func fillViews() {
-        containerView.backgroundColor = UIColor(named: "mainColor")
         
         imageContainerView.backgroundColor = .white
         imageContainerView.layer.cornerRadius = 60
@@ -64,6 +63,7 @@ class AboutDevViewController: UIViewController {
     }
     
     private func setViews() {
+        containerView.backgroundColor = UIColor(named: "mainColor")
         closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         telegramButton.addTarget(self, action: #selector(openTelegram), for: .touchUpInside)
         emailButton.addTarget(self, action: #selector(openEmailApp), for: .touchUpInside)

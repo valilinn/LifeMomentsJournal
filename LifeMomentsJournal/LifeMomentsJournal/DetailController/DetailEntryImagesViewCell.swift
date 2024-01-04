@@ -39,6 +39,7 @@ class DetailEntryImagesViewCell: UICollectionViewCell {
     private func setViews() {
         imageView.image = UIImage(named: "defaultImage")
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
     }
     
     private func setConstraints() {

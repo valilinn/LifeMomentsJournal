@@ -72,7 +72,7 @@ class EntryListViewModel {
             guard let self = self else { return }
             
             if let quote = quote { 
-                let quoteHeader = "\(quote.quoteText) \n \n - \(quote.quoteAuthor)"
+                let quoteHeader = "\(quote.quoteText) \n \n \(quote.quoteAuthor)"
                 self.quote.accept(quoteHeader)
             } else {
                 self.quote.accept(self.defaultQuote)

@@ -64,7 +64,7 @@ class SettingsViewController: UIViewController {
                 self?.present(vc, animated: true)
             case 2:
                 AuthenticationService.shared.signOut()
-                let vc = AuthenticationViewController()
+                let vc = WelcomeViewController()
                 vc.modalPresentationStyle = .fullScreen
                 self?.present(vc, animated: true)
                 print("User sign out")

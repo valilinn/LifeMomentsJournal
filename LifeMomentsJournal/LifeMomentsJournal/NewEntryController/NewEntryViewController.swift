@@ -273,7 +273,6 @@ extension NewEntryViewController: UIImagePickerControllerDelegate & UINavigation
            picker.dismiss(animated: true)
 
            if let image = info[.originalImage] as? UIImage {
-               // Обрабатывайте изображение, например, преобразовывайте его в Data и добавляйте в массив
                if let imageData = image.jpegData(compressionQuality: 0.5) {
                    allSelectedImages.append(imageData)
                    viewModel.didSelectImages(allSelectedImages)
@@ -300,7 +299,7 @@ extension NewEntryViewController: UIImagePickerControllerDelegate & UINavigation
                 if let image = object as? UIImage, let imageData = image.jpegData(compressionQuality: 0.5) {
                     self?.allSelectedImages.append(imageData)
                 } else {
-                    print("something is wrong with data")
+                    print("Something is wrong with data")
                 }
             }
         }

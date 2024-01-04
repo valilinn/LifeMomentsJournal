@@ -26,8 +26,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.rootViewController = TabBarViewController()
             
         } else {
-            let authenticatedViewController = AuthenticationViewController()
-            window.rootViewController = authenticatedViewController
+            let welcomeViewController = WelcomeViewController()
+            window.rootViewController = welcomeViewController
         }
         self.window = window
         window.makeKeyAndVisible()

@@ -80,7 +80,7 @@ class JournalViewController: UIViewController {
         
         journalView.tableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
             print(indexPath.row)
-            guard var entries = try? self?.viewModel.entries.value() else { return }
+            guard let entries = try? self?.viewModel.entries.value() else { return }
             let selectedEntry = entries[indexPath.row]
             print("selected entry is \(selectedEntry)")
             let detailViewModel = DetailEntryViewModel()
@@ -88,7 +88,7 @@ class JournalViewController: UIViewController {
             let vc = DetailEntryViewController()
             vc.viewModel = detailViewModel
             vc.hidesBottomBarWhenPushed = true
-            self?.navigationController?.pushViewController(vc, animated: false)
+            self?.navigationController?.pushViewController(vc, animated: true)
         }).disposed(by: bag)
         
         
