@@ -7,10 +7,14 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class NewEntryImagesViewCell: UICollectionViewCell {
     
-    let deleteButton = UIButton()
+    let deleteImageButton = UIButton()
+    let deleteButtonTappedSubject = PublishSubject<Void>()
+    var bag = DisposeBag()
     
     static let reuseID = "ImageCell"
     
@@ -27,6 +31,15 @@ class NewEntryImagesViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        bag = DisposeBag() // Сбросить disposeBag при повторном использовании ячейки
+    }
+    
+    @objc
+    func deleteButtonTapped() {
+        deleteButtonTappedSubject.onNext(())
+      }
     
     private func setViews() {
         imageView.image = UIImage(named: "defaultImage")
@@ -35,8 +48,10 @@ class NewEntryImagesViewCell: UICollectionViewCell {
         imageView.layer.cornerRadius = 8
         imageView.layer.masksToBounds = true
         
-        deleteButton.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
-        deleteButton.tintColor = .white
+        deleteImageButton.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+        deleteImageButton.tintColor = .white
+        
+        deleteImageButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
     }
     
     private func setConstraints() {
@@ -57,14 +72,16 @@ class NewEntryImagesViewCell: UICollectionViewCell {
             $0.height.equalTo(containerView)
         }
         
-        containerView.addSubview(deleteButton)
+        containerView.addSubview(deleteImageButton)
         
-        deleteButton.snp.makeConstraints {
+        deleteImageButton.snp.makeConstraints {
             $0.top.equalTo(containerView.snp.top).offset(4)
             $0.trailing.equalTo(containerView.snp.trailing).offset(-4)
         }
     }
 }
+
+
 
 //#Preview {
 //    NewEntryImagesViewCell()

@@ -177,6 +177,6 @@ extension AboutDevViewController: MFMailComposeViewControllerDelegate {
     }
 }
 
-#Preview {
-    AboutDevViewController()
-}
+//#Preview {
+//    AboutDevViewController()
+//}

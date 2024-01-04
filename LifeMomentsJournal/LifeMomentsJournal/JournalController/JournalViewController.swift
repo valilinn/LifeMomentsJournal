@@ -30,9 +30,9 @@ class JournalViewController: UIViewController {
         setButton()
         bindTableView()
         
-        DispatchQueue.main.async {
+//        DispatchQueue.main.async {
             self.journalView.tableView.tableHeaderView = self.createHeaderView()
-        }
+//        }
         
     }
     

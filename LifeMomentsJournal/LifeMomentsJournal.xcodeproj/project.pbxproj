@@ -190,13 +190,6 @@
 			path = AboutDevController;
 			sourceTree = "<group>";
 		};
-		EA36776A2B31008C0018BDD8 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		EA50DA5C2B17F4DB003B50A5 /* AuthController */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,7 +299,6 @@
 		EAC4C5A82B0D291C00930A14 /* LifeMomentsJournal */ = {
 			isa = PBXGroup;
 			children = (
-				EA36776A2B31008C0018BDD8 /* New Group */,
 				EA72779C2B13A9500044F320 /* GoogleService-Info.plist */,
 				EAC4C5A92B0D291C00930A14 /* AppDelegate.swift */,
 				EAC4C5AB2B0D291C00930A14 /* SceneDelegate.swift */,

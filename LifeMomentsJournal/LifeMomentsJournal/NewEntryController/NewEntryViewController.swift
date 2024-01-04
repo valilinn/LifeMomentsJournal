@@ -20,10 +20,14 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
     
 //    private let newEntryImagesView = NewEntryCollectionView()
 //    private let imageView = UIImageView()
-    var allSelectedImages = [Data]()
+//    var allSelectedImages = [Data]()
     let bottomConstraintConstant: CGFloat = 200
     var keyboardHeight: CGFloat = 0
-  
+    private var allSelectedImages: [Data] = [] {
+        didSet {
+            // Обновите свой интерфейс или выполните другие необходимые действия с обновленным массивом изображений
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,8 +73,19 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
                 if let image = UIImage(data: imageData) {
                     cell.imageView.image = image
                 }
-            }
-            .disposed(by: bag)
+                    
+                    // Подписываемся на событие нажатия на кнопку удаления в ячейке
+                    cell.deleteButtonTappedSubject
+                        .subscribe(onNext: { [weak self] in
+                            self?.viewModel.removeImage(at: index)
+                            self?.allSelectedImages = self?.viewModel.allSelectedImages ?? []
+                        })
+                        .disposed(by: cell.bag)
+                    
+                    cell.tag = index
+                    
+                }
+                .disposed(by: bag)
 
         //to hide collectionView if there is no images yet
         viewModel.images
@@ -172,6 +187,7 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
         newEntryView.saveEntryButton.addTarget(self, action: #selector(saveEntryButtonTapped), for: .touchUpInside)
         
         newEntryView.addImagesButton.addTarget(self, action: #selector(showPickingAlertButtonTapped), for: .touchUpInside)
+        
     }
     
 

@@ -17,6 +17,12 @@ class NewEntryViewModel {
     let images = BehaviorSubject<[Data]>(value: [])
     let imagesURL = BehaviorSubject<[String]>(value: [])
 //    let saveEntryTapped = PublishSubject<Void>()
+    var allSelectedImages: [Data] {
+        if let allImages = try? images.value() {
+            return allImages
+        }
+        return []
+    }
     
     
     private let cameraSelectedSubject = PublishSubject<Void>()
@@ -74,6 +80,16 @@ class NewEntryViewModel {
             images.onNext(selectedImages)
         }
     
+    func removeImage(at index: Int) {
+        
+        if var currentImages = try? images.value() {
+            guard index >= 0 && index < currentImages.count else {
+                return
+            }
+            currentImages.remove(at: index)
+            images.onNext(currentImages)
+        }
+    }
     
     
 }
