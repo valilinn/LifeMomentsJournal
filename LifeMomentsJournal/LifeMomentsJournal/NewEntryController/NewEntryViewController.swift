@@ -93,7 +93,6 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
                 
                 let collectionViewHeight = image.isEmpty == true ? 0 : 154
                 self?.newEntryView.collectionViewHeightConstraint?.update(offset: collectionViewHeight)
-                
                 self?.newEntryView.imagesCollectionView.collectionView.reloadData()
             })
             .disposed(by: bag)
@@ -269,6 +268,21 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
 }
 
 extension NewEntryViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate, PHPickerViewControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+           picker.dismiss(animated: true)
+
+           if let image = info[.originalImage] as? UIImage {
+               // Обрабатывайте изображение, например, преобразовывайте его в Data и добавляйте в массив
+               if let imageData = image.jpegData(compressionQuality: 0.5) {
+                   allSelectedImages.append(imageData)
+                   viewModel.didSelectImages(allSelectedImages)
+               } else {
+                   print("Failed to convert image to data.")
+               }
+           }
+       }
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }

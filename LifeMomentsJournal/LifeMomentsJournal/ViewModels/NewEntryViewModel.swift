@@ -80,6 +80,7 @@ class NewEntryViewModel {
             images.onNext(selectedImages)
         }
     
+    
     func removeImage(at index: Int) {
         
         if var currentImages = try? images.value() {
