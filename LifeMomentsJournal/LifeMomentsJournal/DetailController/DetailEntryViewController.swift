@@ -52,6 +52,19 @@ class DetailEntryViewController: UIViewController {
             }
             .disposed(by: bag)
         
+        detailEntryView.imagesCollectionView.collectionView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
+            print(indexPath.row)
+            guard let entry = try? self?.viewModel?.entry.value() else { return }
+            guard let selectedImage = entry.imagesURL?[indexPath.row] else { return } 
+            print("selected image is \(selectedImage)")
+            let detailViewModel = DetailImageViewModel()
+            detailViewModel.image = selectedImage
+            let vc = DetailImageViewController()
+            vc.viewModel = detailViewModel
+            vc.modalPresentationStyle = .fullScreen
+            self?.present(vc, animated: true)
+        }).disposed(by: bag)
+        
         
     }
     

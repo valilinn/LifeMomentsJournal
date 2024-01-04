@@ -45,6 +45,19 @@ class ImagesViewController: UIViewController {
                 cell.configure(with: imageURL)
             }
             .disposed(by: bag)
+        
+        imagesView.collectionView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
+            print(indexPath.row)
+            guard let images = try? self?.viewModel.imagesURL.value() else { return }
+            let selectedImage = images[indexPath.row]
+            print("selected image is \(selectedImage)")
+            let detailViewModel = DetailImageViewModel()
+            detailViewModel.image = selectedImage
+            let vc = DetailImageViewController()
+            vc.viewModel = detailViewModel
+            vc.modalPresentationStyle = .fullScreen
+            self?.present(vc, animated: true)
+        }).disposed(by: bag)
     }
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
