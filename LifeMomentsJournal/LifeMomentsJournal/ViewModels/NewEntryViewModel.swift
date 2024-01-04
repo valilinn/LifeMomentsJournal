@@ -10,13 +10,12 @@ import RxSwift
 import RxCocoa
 
 class NewEntryViewModel {
-//    let documentId = BehaviorSubject<String>(value: "")
+
     let date = BehaviorSubject<String>(value: "")
     let title = BehaviorSubject<String>(value: "")
     let content = BehaviorSubject<String>(value: "")
     let images = BehaviorSubject<[Data]>(value: [])
     let imagesURL = BehaviorSubject<[String]>(value: [])
-//    let saveEntryTapped = PublishSubject<Void>()
     var allSelectedImages: [Data] {
         if let allImages = try? images.value() {
             return allImages
@@ -55,11 +54,9 @@ class NewEntryViewModel {
         do {
             currentContent = try content.value()
             if currentContent == "Write something..." {
-                // Если content равно "Write something...", устанавливаем defaultContent
                 currentContent = ""
             }
         } catch {
-            // Если произошла ошибка при получении значения content, устанавливаем defaultContent
             currentContent = ""
         }
         guard let images = try? images.value() else { return }
@@ -68,9 +65,6 @@ class NewEntryViewModel {
     }
     
     func updateEntry(newEntry: Entry) {
-//        let updatedEntry = Entry(userId: newEntry.userId, date: newEntry.date, title: newEntry.title, content: newEntry.content, images: newEntry.images)
-//        entry.onNext(updatedEntry)
-//        date.onNext(newEntry.date)
         title.onNext(newEntry.title ?? "")
         content.onNext(newEntry.content ?? "")
         images.onNext(newEntry.imagesData ?? [])

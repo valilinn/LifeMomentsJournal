@@ -16,7 +16,6 @@ struct CurrentDate {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = TimeZone.current
         let formattedDateString = dateFormatter.string(from: date)
-        print("my date is - \(formattedDateString)")
         return formattedDateString
     }()
 }

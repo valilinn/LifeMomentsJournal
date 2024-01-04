@@ -28,30 +28,19 @@ class EntryListViewModel {
                 print("Error fetching entries: \(error)")
                 // Handle error appropriately
             } else if let entries = entries {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                
-                let sortedEntries = entries.sorted { entry1, entry2 in
-                    guard let date1 = dateFormatter.date(from: entry1.date),
-                          let date2 = dateFormatter.date(from: entry2.date) else {
-                        return false // Handle invalid date format
-                    }
-                    return date1 > date2
-                }
+                let sortedEntries = EntrySorter.shared.sortedEntries(entries: entries)
                 self?.entries.onNext(sortedEntries)
-                print("Sorted entries by date: \(sortedEntries)")
             }
         }
     }
     
     deinit {
-            // Remove the listener when the ViewModel is deallocated
             entriesListener?.remove()
         }
     
     func deleteEntry(index: Int) {
         guard var currentEntries = try? entries.value() else { return }
-        guard index >= 0, index < currentEntries.count else { return } //if index in range
+        guard index >= 0, index < currentEntries.count else { return }
         
         let entryToDelete = currentEntries[index]
         guard let documentId = entryToDelete.documentId else { return }
@@ -61,8 +50,7 @@ class EntryListViewModel {
             } else {
                 currentEntries.remove(at: index)
                 self?.entries.onNext(currentEntries)
-                //                self?.fetchEntries()
-                print("Entry deleted successfully, current entries - \(currentEntries)")
+                print("Entry deleted successfully")
             }
         }
     }

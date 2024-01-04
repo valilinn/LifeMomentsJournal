@@ -98,7 +98,7 @@ class FirestoreAndStorageService {
                     let data = document.data()
                     
                     if let userId = data["userId"] as? String,
-                       let documentId = data["documentId"] as? String,
+                       let _ = data["documentId"] as? String,
                        let date = data["date"] as? String,
                        let title = data["title"] as? String,
                        let content = data["content"] as? String,
@@ -106,7 +106,6 @@ class FirestoreAndStorageService {
                         let documentId = document.documentID
                         let entry = Entry(userId: userId, documentId: documentId, date: date, title: title, content: content, imagesData: nil, imagesURL: imagesURL)
                         entries.append(entry)
-                        print("Entries downloaded")
                         completion(entries, nil)
                     }
                     

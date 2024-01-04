@@ -13,5 +13,4 @@ class DetailImageViewModel {
     
     var image = String()
     
-    
 }

@@ -37,10 +37,6 @@ class AuthenticationService {
     
     func loadFromUserDefaults() {
         let defaults = UserDefaults.standard
-//        if let stateRawValue = defaults.string(forKey: stateKey),
-//           let stateType = SignInState(rawValue: stateRawValue) {
-//            state = stateType
-//        }
         if let userIdValue = defaults.string(forKey: "userId") {
             userId = userIdValue
         }
@@ -61,20 +57,10 @@ class AuthenticationService {
 
         // Start the sign in flow!
         GIDSignIn.sharedInstance.signIn(withPresenting: vc) { [weak self] result, error in
-          guard error == nil else {
-            // ...
-              return
-          }
+          guard error == nil else { return }
 
           guard let user = result?.user,
-            let idToken = user.idToken?.tokenString
-                    
-          else {
-            // ...
-              return
-          }
-//            print(result?.user.userID)
-            
+            let idToken = user.idToken?.tokenString else { return }
 
           let credential = GoogleAuthProvider.credential(withIDToken: idToken,
                                                          accessToken: user.accessToken.tokenString)
@@ -84,8 +70,8 @@ class AuthenticationService {
                     print(error.localizedDescription)
                 } else {
                     let firebaseUser = result?.user
-                    let userID = firebaseUser?.uid //my id
-                    self?.userId = userID //my id
+                    let userID = firebaseUser?.uid
+                    self?.userId = userID
                     let userName = firebaseUser?.displayName
                     self?.userName = userName
                     let userPhoto = firebaseUser?.photoURL
@@ -94,22 +80,16 @@ class AuthenticationService {
                     print("My name is -\(firebaseUser?.displayName)")
                     print("User\(firebaseUser?.uid) signed in with email \(firebaseUser?.email ?? "unknown")")
                     completion(true)
-
-                    
-                    
                 }
                 print("Sign in successful!")
                 
               // At this point, our user is signed in
             }
-            
-            // ...
         }
     }
     
     func signOut() {
         GIDSignIn.sharedInstance.signOut()
-        
         do {
             try Auth.auth().signOut()
             state = .signedOut
@@ -119,6 +99,4 @@ class AuthenticationService {
             print(error.localizedDescription)
         }
     }
-
-    
 }

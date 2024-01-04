@@ -18,6 +18,4 @@ class Settings {
         self.title = title
     }
     
-//    let settings = ["Support", "About the developer", "Log out"]
-    
 }

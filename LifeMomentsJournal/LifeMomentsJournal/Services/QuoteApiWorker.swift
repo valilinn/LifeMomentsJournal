@@ -26,7 +26,6 @@ class QuoteApiWorker {
                 switch response.result {
                 case .success(let quote):
                     completion(quote)
-                    print(quote)
                 case .failure(let error):
                     completion(nil)
                     print("Api error is \(error)")

@@ -11,7 +11,6 @@ import RxCocoa
 
 class SettingsViewModel {
     
-//    let settings: BehaviorSubject<[String]> = BehaviorSubject(value: ["Support", "About the developer", "Log out"])
     var userPhoto = BehaviorSubject(value: String())
     var userName = BehaviorSubject(value: String())
     var settings = BehaviorSubject(value: [Settings]())
@@ -21,11 +20,6 @@ class SettingsViewModel {
         self.userPhoto.onNext(userPhoto)
         guard let userName = AuthenticationService.shared.userName else { return }
         self.userName.onNext(userName)
-        
-        //to delete
-        let defaults = UserDefaults.standard
-        print(defaults.string(forKey: "userName"))
-        print(defaults.string(forKey: "userPhoto"))
     }
     
     func getSettings() {
@@ -35,23 +29,6 @@ class SettingsViewModel {
         let settingsArray = [support, aboutDev, signOut]
         settings.onNext(settingsArray)
     }
-    
-    
-//    func getSettings() {
-//        let settings = Settings()
-//        self.settings.onNext(settings)
-//    }
-//    let journalTitle = BehaviorSubject<String>(value: "")
-    
-//    func updateSettings(title: String?) {
-//        guard let title = title else {
-//            self.journalTitle.onNext(settings.journalTitle)
-//            return
-//        }
-//        self.journalTitle.onNext(title)
-//    }
-    
-    
     
     
 }
