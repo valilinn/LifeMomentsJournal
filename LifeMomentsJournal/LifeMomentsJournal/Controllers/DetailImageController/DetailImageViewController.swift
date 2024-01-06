@@ -34,7 +34,6 @@ class DetailImageViewController: UIViewController {
         guard let image = viewModel?.image else { return }
         detailImageView.configure(image: image)
     }
-    
 }
 
 

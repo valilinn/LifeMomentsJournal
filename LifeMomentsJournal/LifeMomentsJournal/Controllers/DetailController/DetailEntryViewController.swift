@@ -15,7 +15,6 @@ class DetailEntryViewController: UIViewController {
     var viewModel: DetailEntryViewModel?
     private var bag = DisposeBag()
    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view = detailEntryView
@@ -75,7 +74,6 @@ class DetailEntryViewController: UIViewController {
 
         }
     }
-   
 }
 
 extension DetailEntryCollectionView: UICollectionViewDelegate {}

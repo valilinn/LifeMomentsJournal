@@ -23,9 +23,4 @@ class WelcomeViewController: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }
-
 }
-
-//#Preview {
-//    WelcomeViewController()
-//}

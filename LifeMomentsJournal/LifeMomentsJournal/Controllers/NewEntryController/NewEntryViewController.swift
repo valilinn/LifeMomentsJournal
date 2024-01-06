@@ -288,6 +288,3 @@ extension NewEntryViewController: UIImagePickerControllerDelegate & UINavigation
 }
 
 
-//#Preview {
-//    NewEntryViewController()
-//}

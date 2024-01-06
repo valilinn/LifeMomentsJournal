@@ -19,7 +19,7 @@ class QuoteApiWorker {
             "lang": "en"
         ]
 
-
+        
         AF.request(QuoteApiWorker.baseUrl, method: .get, parameters: parameters)
             .validate()
             .responseDecodable(of: Quote.self) { response in

@@ -55,7 +55,6 @@ class FirestoreAndStorageService {
                     }
                     print("document ID Firestore is \(documentId)")
                 }
-                
             }
         }
     }
@@ -108,11 +107,8 @@ class FirestoreAndStorageService {
                         entries.append(entry)
                         completion(entries, nil)
                     }
-                    
                 }
-                
             }
-            
         }
     }
     

@@ -23,7 +23,6 @@ class NewEntryViewModel {
         return []
     }
     
-    
     private let cameraSelectedSubject = PublishSubject<Void>()
     var cameraSelected: Observable<Void> {
         return cameraSelectedSubject.asObservable()

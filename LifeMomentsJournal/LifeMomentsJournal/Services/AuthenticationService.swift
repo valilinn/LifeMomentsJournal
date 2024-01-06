@@ -82,7 +82,6 @@ class AuthenticationService {
                     completion(true)
                 }
                 print("Sign in successful!")
-                
               // At this point, our user is signed in
             }
         }

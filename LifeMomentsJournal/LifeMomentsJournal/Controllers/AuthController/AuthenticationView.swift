@@ -99,5 +99,4 @@ class AuthenticationView: UIView {
         authButton.addSubview(authButtonTitle)
 
     }
-    
 }

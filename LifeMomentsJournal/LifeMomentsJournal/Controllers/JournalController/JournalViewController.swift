@@ -92,7 +92,6 @@ class JournalViewController: UIViewController {
             print("Deleted item - \(indexPath.row)")
         }).disposed(by: bag)
     }
-    
 }
 
 
