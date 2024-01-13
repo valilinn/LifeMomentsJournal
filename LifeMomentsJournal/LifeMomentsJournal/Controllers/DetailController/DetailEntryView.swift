@@ -17,6 +17,7 @@ class DetailEntryView: UIView {
     var dateLabel = UILabel()
     var titleLabel = UILabel()
     var contentView = UITextView()
+    let editButton = UIButton()
     
     var collectionViewHeightConstraint: Constraint?
     
@@ -35,6 +36,8 @@ class DetailEntryView: UIView {
         dateLabel.text = entry.date
         titleLabel.text = entry.title
         contentView.text = entry.content
+        editButton.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
+        editButton.tintColor = .black
     }
     
     private func setViews() {
@@ -85,6 +88,12 @@ class DetailEntryView: UIView {
         dateLabel.snp.makeConstraints {
             $0.top.equalTo(imagesCollectionView.snp.bottom).offset(16)
             $0.leading.equalTo(containerView.snp.leading).offset(16)
+        }
+        
+        containerView.addSubview(editButton)
+        editButton.snp.makeConstraints {
+            $0.centerY.equalTo(dateLabel.snp.centerY)
+            $0.trailing.equalTo(containerView.snp.trailing).offset(-16)
         }
         
         containerView.addSubview(titleLabel)

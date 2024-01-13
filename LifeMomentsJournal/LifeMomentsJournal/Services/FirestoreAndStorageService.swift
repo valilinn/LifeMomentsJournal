@@ -162,4 +162,52 @@ class FirestoreAndStorageService {
             }
         }
     }
+    
+    func updateEntry(entry: Entry) {
+        guard let documentId = entry.documentId else { return }
+
+        var updateData: [String: Any] = [
+            "title": entry.title ?? "",
+            "content": entry.content ?? ""
+        ]
+
+        if let imagesData = entry.imagesData, !imagesData.isEmpty {
+            var imagesURLArray: [String] = []
+            let group = DispatchGroup()
+
+            for (index, image) in imagesData.enumerated() {
+                group.enter()
+                saveImages(index: index, image: image, documentId: documentId) { url in
+                    if let imageURL = url {
+                        imagesURLArray.append(imageURL.absoluteString)
+                    } else {
+                        print("No images")
+                    }
+                    group.leave()
+                }
+            }
+
+            group.notify(queue: .main) {
+                updateData["imagesURL"] = imagesURLArray
+
+                self.database.collection("entries").document(documentId).updateData(updateData) { error in
+                    if let error = error {
+                        print("Error updating document \(documentId): \(error)")
+                    } else {
+                        print("Document updated successfully")
+                    }
+                }
+            }
+        } else {
+            // Handle the case when there are no images
+            self.database.collection("entries").document(documentId).updateData(updateData) { error in
+                if let error = error {
+                    print("Error updating document \(documentId): \(error)")
+                } else {
+                    print("Document updated successfully")
+                }
+            }
+        }
+    }
+    
 }

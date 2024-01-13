@@ -15,11 +15,11 @@ import SnapKit
 class NewEntryViewController: UIViewController, UICollectionViewDelegate {
     
     private let newEntryView = NewEntryView()
-    private var viewModel = NewEntryViewModel()
+    var viewModel = NewEntryViewModel()
     private let bag = DisposeBag()
     let bottomConstraintConstant: CGFloat = 200
     var keyboardHeight: CGFloat = 0
-    private var allSelectedImages: [Data] = []
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,30 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
         setBinds()
         registerKeyboardNotifications()
         setupGesture()
+    }
+    
+    func updateEntry(entry: Entry) {
+        viewModel.documentId.onNext(entry.documentId ?? "")
+        viewModel.date.onNext(entry.date)
+        viewModel.title.onNext(entry.title ?? "")
+        viewModel.content.onNext(entry.content ?? "")
+        
+        viewModel.date
+            .asDriver(onErrorJustReturn: "")
+            .drive(newEntryView.dateLabel.rx.text)
+            .disposed(by: bag)
+        
+        viewModel.title
+            .asDriver(onErrorJustReturn: "")
+            .drive(newEntryView.titleView.rx.text)
+            .disposed(by: bag)
+        
+        viewModel.content
+            .asDriver(onErrorJustReturn: "")
+            .drive(newEntryView.contentView.rx.text)
+            .disposed(by: bag)
+        newEntryView.contentView.textColor = .black
+        
     }
     
     private func setupGesture() {
@@ -70,7 +94,7 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
                     cell.deleteButtonTappedSubject
                         .subscribe(onNext: { [weak self] in
                             self?.viewModel.removeImage(at: index)
-                            self?.allSelectedImages = self?.viewModel.allSelectedImages ?? []
+//                            self?.allSelectedImages = self?.viewModel.allSelectedImages ?? []
                         })
                         .disposed(by: cell.bag)
                 }
@@ -187,7 +211,11 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
     
     @objc
     private func saveEntryButtonTapped() {
-        viewModel.createEntry()
+        if let documentId = try? viewModel.documentId.value() {
+            viewModel.updateEntry()
+        } else {
+            viewModel.createEntry()
+        }
         dismiss(animated: true)
         if let tabBarController = self.presentingViewController as? TabBarViewController {
             tabBarController.selectedIndex = 0
@@ -252,8 +280,8 @@ extension NewEntryViewController: UIImagePickerControllerDelegate & UINavigation
 
            if let image = info[.originalImage] as? UIImage {
                if let imageData = image.jpegData(compressionQuality: 0.5) {
-                   allSelectedImages.append(imageData)
-                   viewModel.didSelectImages(allSelectedImages)
+                   viewModel.allSelectedImages.append(imageData)
+                   viewModel.didSelectImages()
                } else {
                    print("Failed to convert image to data.")
                }
@@ -275,14 +303,14 @@ extension NewEntryViewController: UIImagePickerControllerDelegate & UINavigation
                     dispatchGroup.leave()
                 }
                 if let image = object as? UIImage, let imageData = image.jpegData(compressionQuality: 0.5) {
-                    self?.allSelectedImages.append(imageData)
+                    self?.viewModel.allSelectedImages.append(imageData)
                 } else {
                     print("Something is wrong with image data (PHPicker)")
                 }
             }
         }
         dispatchGroup.notify(queue: .main) {
-            self.viewModel.didSelectImages(self.allSelectedImages)
+            self.viewModel.didSelectImages()
         }
     }
 }

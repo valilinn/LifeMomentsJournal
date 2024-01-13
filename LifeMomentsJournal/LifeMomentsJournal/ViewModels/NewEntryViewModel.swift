@@ -11,17 +11,13 @@ import RxCocoa
 
 class NewEntryViewModel {
 
+    let documentId = BehaviorSubject<String?>(value: nil)
     let date = BehaviorSubject<String>(value: "")
     let title = BehaviorSubject<String>(value: "")
     let content = BehaviorSubject<String>(value: "")
     let images = BehaviorSubject<[Data]>(value: [])
     let imagesURL = BehaviorSubject<[String]>(value: [])
-    var allSelectedImages: [Data] {
-        if let allImages = try? images.value() {
-            return allImages
-        }
-        return []
-    }
+    var allSelectedImages: [Data] = []
     
     private let cameraSelectedSubject = PublishSubject<Void>()
     var cameraSelected: Observable<Void> {
@@ -46,6 +42,7 @@ class NewEntryViewModel {
     }
     
     func createEntry() {
+        print("create")
         guard let userId = AuthenticationService.shared.userId else { return }
         guard let date = try? date.value() else { return }
         guard let title = try? title.value() else { return }
@@ -63,14 +60,28 @@ class NewEntryViewModel {
         FirestoreAndStorageService.shared.saveEntry(entry: entry)
     }
     
-    func updateEntry(newEntry: Entry) {
-        title.onNext(newEntry.title ?? "")
-        content.onNext(newEntry.content ?? "")
-        images.onNext(newEntry.imagesData ?? [])
+    func updateEntry() {
+        print("update")
+        guard let userId = AuthenticationService.shared.userId else { return }
+        guard let documentId = try? documentId.value() else { return }
+        guard let date = try? date.value() else { return }
+        guard let title = try? title.value() else { return }
+        var currentContent: String
+        do {
+            currentContent = try content.value()
+            if currentContent == "Write something..." {
+                currentContent = ""
+            }
+        } catch {
+            currentContent = ""
+        }
+        guard let images = try? images.value() else { return }
+        let entry = Entry(userId: userId, documentId: documentId, date: date, title: title, content: currentContent, imagesData: images)
+        FirestoreAndStorageService.shared.updateEntry(entry: entry)
     }
     
-    func didSelectImages(_ selectedImages: [Data]) {
-            images.onNext(selectedImages)
+    func didSelectImages() {
+            images.onNext(allSelectedImages)
         }
     
     
@@ -82,6 +93,7 @@ class NewEntryViewModel {
             }
             currentImages.remove(at: index)
             images.onNext(currentImages)
+            allSelectedImages = currentImages
         }
     }
     

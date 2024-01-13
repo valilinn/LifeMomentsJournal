@@ -23,10 +23,11 @@ class DetailEntryViewController: UIViewController {
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         navigationController?.navigationBar.prefersLargeTitles = false
         detailEntryView.imagesCollectionView.collectionView.collectionViewLayout = createLayout()
-        setBind()
+        setBinds()
+        setButton()
     }
     
-    private func setBind() {
+    private func setBinds() {
         viewModel?.entry
             .subscribe(onNext: { [weak self] entry in
                 guard let entry = entry else { return }
@@ -62,6 +63,21 @@ class DetailEntryViewController: UIViewController {
         }).disposed(by: bag)
         
         
+    }
+    
+    private func setButton() {
+        detailEntryView.editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc
+    private func editButtonTapped() {
+        guard let entry = try? viewModel?.entry.value() else { return }
+        
+        let newEntryViewModel = NewEntryViewModel()
+        let vc = NewEntryViewController()
+        vc.updateEntry(entry: entry)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
