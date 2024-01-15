@@ -84,17 +84,56 @@ class NewEntryViewModel {
             images.onNext(allSelectedImages)
         }
     
+    func uploadImagesToUpdate() {
+        guard let imagesURL = try? imagesURL.value() else { return }
+        var currentImagesData = [Data]()
+        
+        let dispatchGroup = DispatchGroup()
+        
+        for image in imagesURL {
+            dispatchGroup.enter()
+            if let imageURL = URL(string: image) {
+                URLSession.shared.dataTask(with: imageURL) { data, response, error in
+                    defer {
+                        dispatchGroup.leave()
+                    }
+                    if let error = error {
+                        print("Ошибка при загрузке данных из URL: \(error)")
+                        return
+                    }
+                    if let imageData = data {
+                        currentImagesData.append(imageData)
+                    }
+                }.resume()
+            }
+            
+        }
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            self?.images.onNext(currentImagesData)
+            self?.allSelectedImages = currentImagesData
+        }
+    }
+    
     
     func removeImage(at index: Int) {
         
-        if var currentImages = try? images.value() {
-            guard index >= 0 && index < currentImages.count else {
+        if var currentImagesData = try? images.value() {
+            guard index >= 0 && index < currentImagesData.count else {
                 return
             }
-            currentImages.remove(at: index)
-            images.onNext(currentImages)
-            allSelectedImages = currentImages
+            currentImagesData.remove(at: index)
+            images.onNext(currentImagesData)
+            allSelectedImages = currentImagesData
+            
         }
+        
+//        if var currentImagesURL = try? imagesURL.value() {
+//            guard index >= 0 && index < currentImagesURL.count else {
+//                return
+//            }
+//            currentImagesURL.remove(at: index)
+//            imagesURL.onNext(currentImagesURL)
+//        }
     }
     
     

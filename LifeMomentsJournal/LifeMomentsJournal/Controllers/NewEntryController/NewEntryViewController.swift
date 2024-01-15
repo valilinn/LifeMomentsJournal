@@ -11,6 +11,7 @@ import RxCocoa
 import PhotosUI
 import MobileCoreServices
 import SnapKit
+import Kingfisher
 
 class NewEntryViewController: UIViewController, UICollectionViewDelegate {
     
@@ -38,6 +39,7 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
         viewModel.date.onNext(entry.date)
         viewModel.title.onNext(entry.title ?? "")
         viewModel.content.onNext(entry.content ?? "")
+        viewModel.imagesURL.onNext(entry.imagesURL ?? [])
         
         viewModel.date
             .asDriver(onErrorJustReturn: "")
@@ -55,6 +57,7 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
             .disposed(by: bag)
         newEntryView.contentView.textColor = .black
         
+        viewModel.uploadImagesToUpdate()
     }
     
     private func setupGesture() {
@@ -94,7 +97,6 @@ class NewEntryViewController: UIViewController, UICollectionViewDelegate {
                     cell.deleteButtonTappedSubject
                         .subscribe(onNext: { [weak self] in
                             self?.viewModel.removeImage(at: index)
-//                            self?.allSelectedImages = self?.viewModel.allSelectedImages ?? []
                         })
                         .disposed(by: cell.bag)
                 }

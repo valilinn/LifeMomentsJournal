@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+//import Kingfisher
 
 class NewEntryImagesViewCell: UICollectionViewCell {
     
@@ -31,6 +32,15 @@ class NewEntryImagesViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+//    func configure(with imageURL: String?) {
+//        guard let imageURL = imageURL, !imageURL.isEmpty else {
+//            imageView.image = UIImage(named: "defaultImage")
+//            return
+//        }
+//        let url = URL(string: imageURL)
+//        imageView.kf.setImage(with: url)
+//    }
     
     override func prepareForReuse() {
         super.prepareForReuse()
