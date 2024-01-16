@@ -200,6 +200,7 @@ class FirestoreAndStorageService {
             }
         } else {
             // Handle the case when there are no images
+            updateData["imagesURL"] = []
             self.database.collection("entries").document(documentId).updateData(updateData) { error in
                 if let error = error {
                     print("Error updating document \(documentId): \(error)")

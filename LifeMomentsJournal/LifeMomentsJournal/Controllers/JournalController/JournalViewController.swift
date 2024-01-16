@@ -33,8 +33,10 @@ class JournalViewController: UIViewController {
         DispatchQueue.main.async { [weak self] in
             self?.viewModel.fetchEntries()
             self?.viewModel.getQuote()
+            self?.journalView.tableView.reloadData()
         }
     }
+    
     
     private func setButton() {
         let addEntryButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addEntryButtonTapped))
