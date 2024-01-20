@@ -76,8 +76,9 @@ class DetailEntryViewController: UIViewController {
         let newEntryViewModel = NewEntryViewModel()
         let vc = NewEntryViewController()
         vc.updateEntry(entry: entry)
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
     }
     
     private func createLayout() -> UICollectionViewCompositionalLayout {

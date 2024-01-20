@@ -14,9 +14,9 @@ class DetailEntryView: UIView {
     private let containerView = UIView()
     let imagesCollectionView = DetailEntryCollectionView()
     
-    var dateLabel = UILabel()
-    var titleLabel = UILabel()
-    var contentView = UITextView()
+    private var dateLabel = UILabel()
+    private var titleLabel = UILabel()
+    private var contentView = UITextView()
     let editButton = UIButton()
     
     var collectionViewHeightConstraint: Constraint?

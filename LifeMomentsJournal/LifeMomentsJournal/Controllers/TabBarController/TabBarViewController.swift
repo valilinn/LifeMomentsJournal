@@ -20,9 +20,10 @@ class TabBarViewController: UITabBarController {
     private func setupTabs() {
         let journal = createNav(with: "Journal", and: UIImage(systemName: "book"), mainTitle: "Life Moments Journal", selectedImage: UIImage(systemName: "book.fill"), vc: JournalViewController())
         let photos = createNav(with: "Photos", and: UIImage(systemName: "photo.on.rectangle"), mainTitle: "My Photos", selectedImage: UIImage(systemName: "photo.fill.on.rectangle.fill"), vc: ImagesViewController())
+        let calendar = createNav(with: "Calendar", and: UIImage(systemName: "calendar.circle"), mainTitle: "Calendar", selectedImage: UIImage(systemName: "calendar.circle.fill"), vc: CalendarViewController())
         let settings = createNav(with: "Settings", and: UIImage(systemName: "gearshape"), mainTitle: "Settings", selectedImage: UIImage(systemName: "gearshape.fill"), vc: SettingsViewController())
        
-        self.setViewControllers([journal, photos, settings], animated: true)
+        self.setViewControllers([journal, photos, calendar, settings], animated: true)
         
     }
 

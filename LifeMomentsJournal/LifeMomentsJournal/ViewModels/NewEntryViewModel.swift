@@ -36,9 +36,14 @@ class NewEntryViewModel {
     func didSelectPhotoLibrary() {
         photoLibrarySelectedSubject.onNext(())
     }
+    
     func getCurrentDate() {
-        let currentDate = CurrentDate().date
-        date.onNext(currentDate)
+        if let date = try? date.value(), !date.isEmpty {
+            return
+        } else {
+            let currentDate = CurrentDate().date
+            date.onNext(currentDate)
+        }
     }
     
     func createEntry() {

@@ -92,7 +92,9 @@ class FirestoreAndStorageService {
                 print("Error getting documents: \(error)")
                 completion(nil, error)
             } else {
+                print("Snapshot changes count: \(snapshot?.documentChanges.count ?? 0)")
                 for change in snapshot!.documentChanges {
+                    print("Change type: \(change.type.rawValue)")
                     let document = change.document
                     let data = document.data()
                     
@@ -105,9 +107,10 @@ class FirestoreAndStorageService {
                         let documentId = document.documentID
                         let entry = Entry(userId: userId, documentId: documentId, date: date, title: title, content: content, imagesData: nil, imagesURL: imagesURL)
                         entries.append(entry)
-                        completion(entries, nil)
+//                        completion(entries, nil)
                     }
                 }
+                completion(entries, nil)
             }
         }
     }

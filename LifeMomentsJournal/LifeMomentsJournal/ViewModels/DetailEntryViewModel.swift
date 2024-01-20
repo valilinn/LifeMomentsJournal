@@ -13,4 +13,5 @@ class DetailEntryViewModel {
     
     var entry: BehaviorSubject<Entry?> = BehaviorSubject(value: nil)
     
+    
 }

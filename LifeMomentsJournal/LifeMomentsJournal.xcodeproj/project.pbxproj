@@ -54,6 +54,9 @@
 		EA7277A42B13D4250044F320 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7277A32B13D4250044F320 /* AuthenticationService.swift */; };
 		EA7AD33B2B3F5FE4002E8D54 /* DetailEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AD33A2B3F5FE4002E8D54 /* DetailEntryViewController.swift */; };
 		EA7AD33D2B3F7575002E8D54 /* DetailEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AD33C2B3F7575002E8D54 /* DetailEntryViewModel.swift */; };
+		EA82EECB2B589089008AA2DD /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA82EECA2B589089008AA2DD /* CalendarViewController.swift */; };
+		EA82EECD2B5891A3008AA2DD /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA82EECC2B5891A3008AA2DD /* CalendarView.swift */; };
+		EA82EECF2B589220008AA2DD /* CalendarTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA82EECE2B589220008AA2DD /* CalendarTableView.swift */; };
 		EA8BC7302B2E5D2200046352 /* NewEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8BC72F2B2E5D2200046352 /* NewEntryViewModel.swift */; };
 		EAB800CB2B46F2510023DAF0 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = EAB800CA2B46F2510023DAF0 /* Lottie */; };
 		EAB800CD2B46F27A0023DAF0 /* animationIcon.json in Resources */ = {isa = PBXBuildFile; fileRef = EAB800CC2B46F27A0023DAF0 /* animationIcon.json */; };
@@ -69,6 +72,7 @@
 		EAC4C5AE2B0D291C00930A14 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4C5AD2B0D291C00930A14 /* AuthenticationViewController.swift */; };
 		EAC4C5B32B0D291F00930A14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAC4C5B22B0D291F00930A14 /* Assets.xcassets */; };
 		EAC4C5B62B0D291F00930A14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC4C5B42B0D291F00930A14 /* LaunchScreen.storyboard */; };
+		EAC6C9932B5C6858003782F1 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC6C9922B5C6858003782F1 /* CalendarViewModel.swift */; };
 		EADC21272B401BDF007FBF6C /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADC21262B401BDF007FBF6C /* ImagesViewController.swift */; };
 		EADC212A2B401C66007FBF6C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADC21292B401C66007FBF6C /* SettingsViewController.swift */; };
 		EADC212C2B401F85007FBF6C /* ImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADC212B2B401F85007FBF6C /* ImagesView.swift */; };
@@ -121,6 +125,9 @@
 		EA7277A32B13D4250044F320 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		EA7AD33A2B3F5FE4002E8D54 /* DetailEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEntryViewController.swift; sourceTree = "<group>"; };
 		EA7AD33C2B3F7575002E8D54 /* DetailEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEntryViewModel.swift; sourceTree = "<group>"; };
+		EA82EECA2B589089008AA2DD /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		EA82EECC2B5891A3008AA2DD /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		EA82EECE2B589220008AA2DD /* CalendarTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableView.swift; sourceTree = "<group>"; };
 		EA8BC72F2B2E5D2200046352 /* NewEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryViewModel.swift; sourceTree = "<group>"; };
 		EAB800CC2B46F27A0023DAF0 /* animationIcon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animationIcon.json; sourceTree = "<group>"; };
 		EAB800CF2B46F3BF0023DAF0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +144,7 @@
 		EAC4C5B22B0D291F00930A14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAC4C5B52B0D291F00930A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAC4C5B72B0D291F00930A14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAC6C9922B5C6858003782F1 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		EADC21262B401BDF007FBF6C /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		EADC21292B401C66007FBF6C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EADC212B2B401F85007FBF6C /* ImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesView.swift; sourceTree = "<group>"; };
@@ -284,15 +292,26 @@
 			path = LifeMomentsJournalTests;
 			sourceTree = "<group>";
 		};
+		EA82EEC92B58903A008AA2DD /* CalendarController */ = {
+			isa = PBXGroup;
+			children = (
+				EA82EECA2B589089008AA2DD /* CalendarViewController.swift */,
+				EA82EECC2B5891A3008AA2DD /* CalendarView.swift */,
+				EA82EECE2B589220008AA2DD /* CalendarTableView.swift */,
+			);
+			path = CalendarController;
+			sourceTree = "<group>";
+		};
 		EA8BC72E2B2E5C4E00046352 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				EA42404E2B34DDF40036815E /* EntryListViewModel.swift */,
 				EA8BC72F2B2E5D2200046352 /* NewEntryViewModel.swift */,
 				EA7AD33C2B3F7575002E8D54 /* DetailEntryViewModel.swift */,
-				EADC212F2B402514007FBF6C /* ImagesViewModel.swift */,
-				EA4524A32B448488006F4926 /* SettingsViewModel.swift */,
 				EAB800D42B4711540023DAF0 /* DetailImageViewModel.swift */,
+				EADC212F2B402514007FBF6C /* ImagesViewModel.swift */,
+				EAC6C9922B5C6858003782F1 /* CalendarViewModel.swift */,
+				EA4524A32B448488006F4926 /* SettingsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -326,6 +345,7 @@
 				EA66DF752B336C4D00943B90 /* DetailController */,
 				EADC21252B401BAF007FBF6C /* ImagesController */,
 				EAB800D12B470DA70023DAF0 /* DetailImageController */,
+				EA82EEC92B58903A008AA2DD /* CalendarController */,
 				EADC21282B401C48007FBF6C /* SettingsController */,
 				EA21B8B32B45CE520017A9F3 /* AboutDevController */,
 			);
@@ -598,7 +618,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAEF22852B1FDD730080173C /* NewEntryCollectionView.swift in Sources */,
+				EA82EECF2B589220008AA2DD /* CalendarTableView.swift in Sources */,
 				EAB800DB2B4737830023DAF0 /* WelcomeView.swift in Sources */,
+				EA82EECD2B5891A3008AA2DD /* CalendarView.swift in Sources */,
 				EADC21302B402514007FBF6C /* ImagesViewModel.swift in Sources */,
 				EA45249A2B434C3E006F4926 /* JournalView.swift in Sources */,
 				EAC4C5AE2B0D291C00930A14 /* AuthenticationViewController.swift in Sources */,
@@ -612,12 +634,14 @@
 				EADC21272B401BDF007FBF6C /* ImagesViewController.swift in Sources */,
 				EA67B7D82B20DC7C003DDBD7 /* DetailEntryImagesViewCell.swift in Sources */,
 				EA7AD33D2B3F7575002E8D54 /* DetailEntryViewModel.swift in Sources */,
+				EA82EECB2B589089008AA2DD /* CalendarViewController.swift in Sources */,
 				EA42404B2B34DC480036815E /* FirestoreAndStorageService.swift in Sources */,
 				EA4524A02B439042006F4926 /* SettingsViewCell.swift in Sources */,
 				EAE0CFE52B3238D900C670CA /* PhotosManager.swift in Sources */,
 				EAB800DD2B473B6B0023DAF0 /* AuthenticationView.swift in Sources */,
 				EA1583E02B1C9141006A6242 /* TabBarViewController.swift in Sources */,
 				EA1F432C2B1E83980033ED82 /* NewEntryImagesViewCell.swift in Sources */,
+				EAC6C9932B5C6858003782F1 /* CalendarViewModel.swift in Sources */,
 				EAF71CC72B1D0ACF00217052 /* NewEntryView.swift in Sources */,
 				EA7277A42B13D4250044F320 /* AuthenticationService.swift in Sources */,
 				EAB800D32B470DD30023DAF0 /* DetailImageViewController.swift in Sources */,
