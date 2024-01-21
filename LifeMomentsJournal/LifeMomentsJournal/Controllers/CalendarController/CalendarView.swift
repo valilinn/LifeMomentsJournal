@@ -17,8 +17,8 @@ class CalendarView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .white
-        containerView.backgroundColor = .white
+        self.backgroundColor = UIColor(named: "mainColor")
+        containerView.backgroundColor = UIColor(named: "mainColor")
         setupCalendar()
         setConstraints()
         
@@ -33,6 +33,7 @@ class CalendarView: UIView {
         calendarObject.locale = .current
         calendarObject.fontDesign = .rounded
         calendarObject.layer.cornerRadius = 12
+        calendarObject.backgroundColor = .white
     }
     
     private func setConstraints() {
@@ -53,7 +54,7 @@ class CalendarView: UIView {
             $0.top.equalTo(scrollView.snp.top)
             $0.leading.equalTo(containerView.snp.leading)
             $0.trailing.equalTo(containerView.snp.trailing)
-            $0.height.equalTo(450)
+            $0.height.equalTo(415)
         }
         
         containerView.addSubview(tableView)
