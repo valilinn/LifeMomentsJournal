@@ -52,9 +52,9 @@ class CalendarView: UIView {
         containerView.addSubview(calendarObject)
         calendarObject.snp.makeConstraints {
             $0.top.equalTo(scrollView.snp.top)
-            $0.leading.equalTo(containerView.snp.leading)
-            $0.trailing.equalTo(containerView.snp.trailing)
-            $0.height.equalTo(415)
+            $0.leading.equalTo(containerView.snp.leading).offset(8)
+            $0.trailing.equalTo(containerView.snp.trailing).offset(-8)
+            $0.height.equalTo(425)
         }
         
         containerView.addSubview(tableView)

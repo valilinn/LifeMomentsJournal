@@ -12,11 +12,10 @@ import RxCocoa
 
 class CalendarViewModel {
     
-    private var entries = BehaviorSubject(value: [Entry]())
     var dates = BehaviorSubject(value: [DateComponents]())
-    private var entriesListener: ListenerRegistration?
     
-
+    private var entries = BehaviorSubject(value: [Entry]())
+    private var entriesListener: ListenerRegistration?
     
     func getDates() {
         guard let userId = AuthenticationService.shared.userId else { return }
@@ -29,19 +28,19 @@ class CalendarViewModel {
                 print("Error fetching entries: \(error)")
             } else if let entries = entries {
                 for (index, entry) in entries.enumerated() {
-//                    print(entry.date)
                     let dateString = entry.date
+                    
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                     
                     if let date = dateFormatter.date(from: dateString) {
                         let calendar = Calendar(identifier: .gregorian)
                         var dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
-//                        dateComponents.timeZone = .current
                         dateComponents.calendar = Calendar(identifier: .gregorian)
-                        
-                        datesArray.append(dateComponents)
-//                        print(dateComponents)
+                        //check if array already contains the same date, because the date can't repeat, the app will crush
+                        if !datesArray.contains(dateComponents) {
+                            datesArray.append(dateComponents)
+                        }
                     } else {
                         print("Invalid date format")
                     }
@@ -52,10 +51,6 @@ class CalendarViewModel {
         }
         
     }
-    
-    
-    
-    
     
     deinit {
         entriesListener?.remove()
