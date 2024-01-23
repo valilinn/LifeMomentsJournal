@@ -13,8 +13,9 @@ import RxCocoa
 class CalendarViewModel {
     
     var dates = BehaviorSubject(value: [DateComponents]())
+//    var entries = BehaviorSubject(value: [Entry]())
+    var selectedDate = BehaviorSubject(value: DateComponents())
     
-    private var entries = BehaviorSubject(value: [Entry]())
     private var entriesListener: ListenerRegistration?
     
     func getDates() {
@@ -37,6 +38,7 @@ class CalendarViewModel {
                         let calendar = Calendar(identifier: .gregorian)
                         var dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
                         dateComponents.calendar = Calendar(identifier: .gregorian)
+                        print("ViewModel = \(dateComponents)")
                         //check if array already contains the same date, because the date can't repeat, the app will crush
                         if !datesArray.contains(dateComponents) {
                             datesArray.append(dateComponents)
