@@ -30,7 +30,7 @@ class CalendarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.getDates()
+        viewModel.getEntries()
         bindCalendar()
     }
     
@@ -52,19 +52,19 @@ class CalendarViewController: UIViewController {
     }
     
     private func bindTableView() {
-//        viewModel.entries
-//            .observe(on: MainScheduler.instance)
-//            .subscribe(onNext: { [weak self] _ in
-//                self?.calendarView.tableView.tableView.reloadData()
-//            })
-//            .disposed(by: bag)
+        viewModel.entries
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.calendarView.tableView.tableView.reloadData()
+            })
+            .disposed(by: bag)
         
-//        viewModel.entries
-//            .observe(on: MainScheduler.instance)
-//            .bind(to: calendarView.tableView.tableView.rx.items(cellIdentifier: EntriesListCell.reuseID, cellType: EntriesListCell.self)) { index, entry, cell in
-//                
-//                
-//            }
+        viewModel.entries
+            .observe(on: MainScheduler.instance)
+            .bind(to: calendarView.tableView.tableView.rx.items(cellIdentifier: EntriesListCell.reuseID, cellType: EntriesListCell.self)) { index, entry, cell in
+                
+                
+            }
     }
     
     
@@ -86,8 +86,9 @@ extension CalendarViewController: UICalendarViewDelegate, UICalendarSelectionSin
     
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
         guard let selectedDate = dateComponents else { return }
-        viewModel.selectedDate.onNext(selectedDate)
-        print(dateComponents)
+        viewModel.getSelectedDate(date: selectedDate)
+//        viewModel.selectedDate.onNext(selectedDate)
+        print("My selected date is \(selectedDate)")
     }
     
 }
