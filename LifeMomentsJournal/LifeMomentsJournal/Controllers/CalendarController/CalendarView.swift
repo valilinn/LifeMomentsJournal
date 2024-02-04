@@ -10,15 +10,19 @@ import SnapKit
 
 class CalendarView: UIView {
     
-    private let scrollView = UIScrollView()
-    private let containerView = UIView()
+    var tableViewHeightConstraint: Constraint?
     let calendarObject = UICalendarView()
     let tableView = CalendarTableView()
+    
+    private let scrollView = UIScrollView()
+    private let containerView = UIView()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor(named: "mainColor")
         containerView.backgroundColor = UIColor(named: "mainColor")
+        tableView.backgroundColor = .red
         setupCalendar()
         setConstraints()
         
@@ -63,6 +67,7 @@ class CalendarView: UIView {
             $0.leading.equalTo(containerView.snp.leading).offset(16)
             $0.trailing.equalTo(containerView.snp.trailing).offset(-16)
             $0.bottom.equalTo(containerView.snp.bottom).offset(-16)
+            tableViewHeightConstraint = $0.height.equalTo(0).constraint
         }
     }
     

@@ -33,8 +33,8 @@ class JournalView: UIView {
         tableView.register(EntriesListCell.self, forCellReuseIdentifier: EntriesListCell.reuseID)
         tableView.backgroundColor = .white
         
-        tableView.snp.makeConstraints { make in
-            make.edges.equalTo(safeAreaLayoutGuide.snp.edges)
+        tableView.snp.makeConstraints {
+            $0.edges.equalTo(safeAreaLayoutGuide.snp.edges)
         }
     }
     

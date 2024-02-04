@@ -25,7 +25,8 @@ class CalendarTableView: UIView {
         tableView = UITableView()
         addSubview(tableView)
         tableView.register(EntriesListCell.self, forCellReuseIdentifier: EntriesListCell.reuseID)
-        tableView.backgroundColor = .white
+//        tableView.backgroundColor = .white
+        tableView.backgroundColor = .cyan
         
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide.snp.edges)

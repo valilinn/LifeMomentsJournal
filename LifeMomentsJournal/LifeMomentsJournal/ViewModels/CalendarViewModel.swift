@@ -16,6 +16,16 @@ class CalendarViewModel {
     var entries = BehaviorSubject(value: [Entry]())
     var selectedDate = BehaviorSubject(value: String())
     var selectedEntries = BehaviorSubject(value: [Entry]())
+   
+//    let dataArray = [Entry(userId: "01", date: "14.02.2024", title: "TEST1"), Entry(userId: "01", date: "14.02.2024", title: "TEST2")]
+//    
+//    let data: BehaviorRelay<[Entry]> = BehaviorRelay(value: [])
+//       
+//       func fetchData() {
+//           // Здесь вы можете добавить логику для загрузки данных в массив
+//           // Например, data.accept(новые_данные)
+//           data.accept(dataArray)
+//       }
     
     private var entriesListener: ListenerRegistration?
     
@@ -27,6 +37,7 @@ class CalendarViewModel {
             if let error = error {
                 print("Error fetching entries: \(error)")
             } else if let entries = entries {
+                self?.entries.onNext(entries)
                 self?.getDates(entries: entries)
             }
         }
@@ -82,8 +93,9 @@ class CalendarViewModel {
             return
         }
         let filteredEntries = entries.filter({ $0.date.prefix(10) == selectedDate.prefix(10) })
+        print("rfrvffv \(entries.first?.date.prefix(10)), \(selectedDate.prefix(10))")
         selectedEntries.onNext(filteredEntries)
-        print("Entries from this day: \(filteredEntries.count)")
+        print("Entries from this day: \(try? selectedEntries.value())")
     }
 
     
