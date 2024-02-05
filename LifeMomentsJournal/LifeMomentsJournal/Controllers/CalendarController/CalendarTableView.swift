@@ -27,6 +27,7 @@ class CalendarTableView: UIView {
         tableView.register(EntriesListCell.self, forCellReuseIdentifier: EntriesListCell.reuseID)
 //        tableView.backgroundColor = .white
         tableView.backgroundColor = .cyan
+        tableView.isScrollEnabled = false
         
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide.snp.edges)

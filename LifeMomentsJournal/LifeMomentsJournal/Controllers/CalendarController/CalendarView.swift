@@ -64,8 +64,8 @@ class CalendarView: UIView {
         containerView.addSubview(tableView)
         tableView.snp.makeConstraints {
             $0.top.equalTo(calendarObject.snp.bottom).offset(28)
-            $0.leading.equalTo(containerView.snp.leading).offset(16)
-            $0.trailing.equalTo(containerView.snp.trailing).offset(-16)
+            $0.leading.equalTo(containerView.snp.leading)
+            $0.trailing.equalTo(containerView.snp.trailing)
             $0.bottom.equalTo(containerView.snp.bottom).offset(-16)
             tableViewHeightConstraint = $0.height.equalTo(0).constraint
         }

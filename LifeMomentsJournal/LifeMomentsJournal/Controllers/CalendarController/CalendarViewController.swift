@@ -14,7 +14,6 @@ class CalendarViewController: UIViewController {
     private let calendarView = CalendarView()
     private let viewModel = CalendarViewModel()
     private let bag = DisposeBag()
-    
     private let tableViewHeight: CGFloat = 150
     
     override func viewDidLoad() {
@@ -25,25 +24,24 @@ class CalendarViewController: UIViewController {
         let dateSelection = UICalendarSelectionSingleDate(delegate: self)
         calendarView.calendarObject.selectionBehavior = dateSelection
         calendarView.tableView.tableView.delegate = self
-//        bindTableView()
-//        viewModel.fetchData()
+        bindTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.getEntries()
         bindCalendar()
-        bindTableView()
     }
+    
+   
     
     private func bindCalendar() {
         viewModel.dates
             .observe(on: MainScheduler.instance)
+            .take(until: self.rx.deallocated)
             .subscribe(onNext: { [weak self] decoratedDates in
                 if decoratedDates == [] {
                 } else {
-//                    print("MY DATES FROM viewModel---\(decoratedDates)")
-//                    decoratedDates.forEach{print("date = \($0.date), year = \($0.year)")}
                     DispatchQueue.main.async {
                         self?.calendarView.calendarObject.reloadDecorations(forDateComponents: decoratedDates, animated: true)
                     }
@@ -54,8 +52,10 @@ class CalendarViewController: UIViewController {
     
     private func bindTableView() {
         
+        
         viewModel.selectedEntries
             .observe(on: MainScheduler.instance)
+            .take(until: self.rx.deallocated)
             .subscribe(onNext: { [weak self] _ in
                 let calculatedHeight = self?.calculateTableViewHeight() ?? 0
                 self?.calendarView.tableViewHeightConstraint?.update(offset: calculatedHeight)
@@ -68,7 +68,6 @@ class CalendarViewController: UIViewController {
         viewModel.selectedEntries
             .observe(on: MainScheduler.instance)
             .bind(to: calendarView.tableView.tableView.rx.items(cellIdentifier: EntriesListCell.reuseID, cellType: EntriesListCell.self)) { index, entry, cell in
-                print("HERE???")
                 
                 DispatchQueue.main.async {
                     cell.configure(with: entry)
@@ -79,10 +78,9 @@ class CalendarViewController: UIViewController {
     }
     
     private func calculateTableViewHeight() -> CGFloat {
-        // Рассчитайте высоту tableView в зависимости от данных
         let entries = try? viewModel.selectedEntries.value()
-        guard let numberOfRows = entries?.count else { return 0 }// ... определите количество строк в таблице ...
-        let rowHeight = 150// ... определите высоту одной строки ...
+        guard let numberOfRows = entries?.count else { return 0 }
+        let rowHeight = 150
 
         return CGFloat(numberOfRows * rowHeight)
     }
@@ -93,11 +91,8 @@ class CalendarViewController: UIViewController {
 extension CalendarViewController: UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
     
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
-//        print("DATES FROM CALENDAR---\(dateComponents.date)")
         guard let decoratedDates = try? viewModel.dates.value() else { return nil }
-//        print("MY DATES from delegate---\(decoratedDates)")
             if let filteredDates = decoratedDates.filter({ $0.date == dateComponents.date }).first {
-//                print("Sorted-----\(filteredDates)")
                 return .default(color: .gray, size: .medium)
             
         }
@@ -107,8 +102,6 @@ extension CalendarViewController: UICalendarViewDelegate, UICalendarSelectionSin
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
         guard let selectedDate = dateComponents else { return }
         viewModel.getSelectedDate(date: selectedDate)
-//        viewModel.selectedDate.onNext(selectedDate)
-//        print("My selected date is \(selectedDate)")
     }
     
 }

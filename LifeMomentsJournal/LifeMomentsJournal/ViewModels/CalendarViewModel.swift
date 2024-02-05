@@ -83,13 +83,16 @@ class CalendarViewModel {
             getEntriesFromSelectedDate()
             print("I have entries from this day \(filteredDate.date), selected date string is \(selectedDateString)")
         } else {
+            self.selectedDate.onNext("")
+            self.selectedEntries.onNext([])
             print("I don't have any entries from this day")
         }
     }
     
     private func getEntriesFromSelectedDate() {
-        guard let selectedDate = try? selectedDate.value(), let entries = try? entries.value() else {
+        guard let selectedDate = try? selectedDate.value(), !selectedDate.isEmpty, let entries = try? entries.value() else {
             print("Cant filter entries from selectedDate")
+            self.selectedEntries.onNext([])
             return
         }
         let filteredEntries = entries.filter({ $0.date.prefix(10) == selectedDate.prefix(10) })
@@ -97,6 +100,13 @@ class CalendarViewModel {
         selectedEntries.onNext(filteredEntries)
         print("Entries from this day: \(try? selectedEntries.value())")
     }
+    
+//    func clearData() {
+//        dates.onNext([])
+//        entries.onNext([])
+//        selectedDate.onNext("")
+//        selectedEntries.onNext([])
+//    }
 
     
     deinit {
