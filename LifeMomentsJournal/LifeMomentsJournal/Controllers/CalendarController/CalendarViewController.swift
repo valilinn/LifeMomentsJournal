@@ -31,6 +31,7 @@ class CalendarViewController: UIViewController {
         super.viewWillAppear(animated)
         viewModel.getEntries()
         bindCalendar()
+        calendarView.tableView.tableView.reloadData()
     }
     
    
@@ -51,7 +52,6 @@ class CalendarViewController: UIViewController {
     }
     
     private func bindTableView() {
-        
         
         viewModel.selectedEntries
             .observe(on: MainScheduler.instance)
@@ -75,6 +75,17 @@ class CalendarViewController: UIViewController {
                 }
             }
             .disposed(by: bag)
+        
+        calendarView.tableView.tableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
+            guard let selectedEntries = try? self?.viewModel.selectedEntries.value() else { return }
+            let selectedEntry = selectedEntries[indexPath.row]
+            let detailViewModel = DetailEntryViewModel()
+            detailViewModel.entry.onNext(selectedEntry)
+            let vc = DetailEntryViewController()
+            vc.viewModel = detailViewModel
+            vc.hidesBottomBarWhenPushed = true
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }).disposed(by: bag)
     }
     
     private func calculateTableViewHeight() -> CGFloat {
@@ -103,6 +114,8 @@ extension CalendarViewController: UICalendarViewDelegate, UICalendarSelectionSin
         guard let selectedDate = dateComponents else { return }
         viewModel.getSelectedDate(date: selectedDate)
     }
+    
+   
     
 }
 
