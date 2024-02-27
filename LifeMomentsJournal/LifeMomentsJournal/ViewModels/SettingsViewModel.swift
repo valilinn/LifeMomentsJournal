@@ -24,9 +24,10 @@ class SettingsViewModel {
     
     func getSettings() {
         let support = Settings(icon: "questionmark.circle", title: "Support")
-        let aboutDev = Settings(icon: "info.circle", title: "About the developer")
+        let aboutDev = Settings(icon: "info.circle", title: "About the Developer")
         let signOut = Settings(icon: "arrow.forward.to.line", title: "Sign Out")
-        let settingsArray = [support, aboutDev, signOut]
+        let deleteAccount = Settings(icon: "trash", title: "Delete Account")
+        let settingsArray = [support, aboutDev, signOut, deleteAccount]
         settings.onNext(settingsArray)
     }
     

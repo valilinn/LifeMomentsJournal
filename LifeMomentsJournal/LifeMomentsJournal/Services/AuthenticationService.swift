@@ -98,4 +98,16 @@ class AuthenticationService {
             print(error.localizedDescription)
         }
     }
+    
+    func deleteUser() {
+        let user = Auth.auth().currentUser
+
+        user?.delete { error in
+          if let error = error {
+            print("An error happened, user not deleted")
+          } else {
+              print("Account deleted")
+          }
+        }
+    }
 }

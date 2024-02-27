@@ -67,7 +67,13 @@ class SettingsViewController: UIViewController {
                 let vc = WelcomeViewController()
                 vc.modalPresentationStyle = .fullScreen
                 self?.present(vc, animated: true)
-                print("User sign out")
+                print("Sign out button tapped")
+            case 3:
+                AuthenticationService.shared.deleteUser()
+                let vc = WelcomeViewController()
+                vc.modalPresentationStyle = .fullScreen
+                self?.present(vc, animated: true)
+                print("Delete account button tapped")
             default:
                 return
             }

@@ -100,7 +100,7 @@ class SettingsView: UIView {
             $0.top.equalTo(userContainerView.snp.bottom).offset(80)
             $0.leading.equalTo(containerView.snp.leading).offset(16)
             $0.trailing.equalTo(containerView.snp.trailing).offset(-16)
-            $0.height.equalTo(180)
+            $0.height.equalTo(240)
         }
         
         settingsContainerView.addSubview(settingsTableView)
@@ -108,7 +108,7 @@ class SettingsView: UIView {
             $0.top.equalTo(settingsContainerView.snp.top)
             $0.leading.equalTo(settingsContainerView.snp.leading)
             $0.trailing.equalTo(settingsContainerView.snp.trailing)
-            $0.height.equalTo(180)
+            $0.height.equalTo(240)
         }
         
         containerView.addSubview(logo)
